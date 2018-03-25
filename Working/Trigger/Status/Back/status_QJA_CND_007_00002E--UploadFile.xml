@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Trigger>
+  <ClientName>Canada</ClientName>
+  <AppName>Canada007</AppName>
+  <RunDetail>
+    <RunNumber>QJA_CND_007_00002E</RunNumber>
+    <ComponentStatus>
+      <Status>success</Status>
+      <ComponentStartDate>02-10-2017 12:38:04</ComponentStartDate>
+      <ComponentEndDate>02-10-2017 12:38:13</ComponentEndDate>
+      <ErrorDescription></ErrorDescription>
+    </ComponentStatus>
+    <RunComponentStatusId>93</RunComponentStatusId>
+  </RunDetail>
+  <ComponentDetail>
+    <ComponentName>UploadFile</ComponentName>
+    <ComponentExe>E:\Jaspreet\AutomationNew\Automation\Component\Uploader\Uploader\bin\Debug\Uploader.exe</ComponentExe>
+    <ComponentStatusDirectory>E:\Jaspreet\AutomationNew\Automation\Working\Trigger\Status</ComponentStatusDirectory>
+    <ComponentInputLocation></ComponentInputLocation>
+    <ComponentOutputLocation></ComponentOutputLocation>
+    <ComponentConfigXmlFilePath></ComponentConfigXmlFilePath>
+  </ComponentDetail>
+</Trigger>

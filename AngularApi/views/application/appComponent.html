@@ -1,0 +1,152 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+
+        <div class="modal fade" id="appComponentModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Component</h4>
+                        <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Component</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="addappComponentform">
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">Component</label>
+                                <div class="col-sm-9">
+                                    <select data-ng-model="appComponent.ComponentId" class="form-control" data-ng-options="item.ComponentId as item.Name for item in components">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">Order</label>
+                                <div class="col-sm-9">
+                                    <select data-ng-model="appComponent.ComponentOrder" class="form-control" required data-ng-options="order for order in orders">
+                                        <option value="">--Select--</option>
+                                    </select> </div>
+                            </div>
+                            <div class="form-group" ng-if="isEnabled">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">Optional</label>
+                                <div class="col-sm-9">
+                                    <select data-ng-model="appComponent.IsOptional" class="form-control" data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">Status</label>                                
+                                <div class="col-sm-9">
+                                    <select data-ng-model="appComponent.Status" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <span data-ng-hide="editMode">
+                                        <input type="submit" value="Add" ng-disabled="addappComponentform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                    </span>
+                                    <span data-ng-show="editMode">
+                                        <input type="submit" value="Update" ng-disabled="addappComponentform.$invalid" data-ng-click="update(appComponent.ApplicationComponentId)" class="btn btn-primary" />
+                                    </span>
+                                    <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Components of {{applicationName}}</h1>
+        <table wt-responsive-table class="table table-hover">
+            <tr>
+                <!--<th>Index</th>-->
+                <th>Component</th>
+                <th>Order</th>
+                <th>Optional</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr data-ng-repeat="appComponent in appComponents">
+                <!--<td><strong>{{ $index }}</strong></td>-->
+                <td>
+                    <p>{{ GetComponentbyId(appComponent.ComponentId) }}</p>
+                </td>
+                <td>
+                    <p>{{ appComponent.ComponentOrder }}</p>
+                </td>
+                <td>
+                    <p>{{appComponent.IsOptional}}</p>
+                </td>
+                <td>
+                    <p>{{appComponent.Status}}</p>
+                </td>
+                <td>
+                    <p>
+                        <a href="#inputLocation?applicationId={{appComponent.ApplicationId}}&componentId={{appComponent.ComponentId}}">Input Location</a> |
+                        <a href="#outputLocation?applicationId={{appComponent.ApplicationId}}&componentId={{appComponent.ComponentId}}">Output Location</a> |
+                        <a data-ng-click="edit(appComponent)" href="javascript:;">Edit</a> |
+                        <a data-ng-click="showconfirm(appComponent)" href="javascript:;">Delete</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr />
+
+        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">View application</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="viewapplication">
+                            <div class="form-group">
+                                <label for="Name" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    {{application.FirstName}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-2 control-label">LastName</label>
+                                <div class="col-sm-10">
+                                    {{application.LastName}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-ng-click="delete()">Ok</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+
+        <div class="modal fade" id="outputLocationModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Component</h4>
+                        <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Component</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="addoutputLocationform">
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">File Mask</label>
+                                <div class="col-sm-9">
+                                    <input type="text" data-ng-model="outputLocation.FileMask" class="form-control" id="title" placeholder="File Mask" required title="File Mask" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">Output Location</label>
+                                <div class="col-sm-9">
+                                    <input type="text" data-ng-model="outputLocation.OutputLocation" class="form-control" id="title" placeholder="Output Location" required title="Output Location" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-3 control-label">Status</label>
+                                <div class="col-sm-9">
+                                    <select data-ng-model="outputLocation.Status" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <span data-ng-hide="editMode">
+                                        <input type="submit" value="Add" ng-disabled="addoutputLocationform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                    </span>
+                                    <span data-ng-show="editMode">
+                                        <input type="submit" value="Update" ng-disabled="addoutputLocationform.$invalid" data-ng-click="update(outputLocation.ComponentOutputLocationId)" class="btn btn-primary" />
+                                    </span>
+                                    <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Output Location of Application</h1>
+        <table wt-responsive-table class="table table-hover">
+            <tr>
+                <th>File Task</th>
+                <th>Output Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr data-ng-repeat="outputLocation in outputLocations">
+                <td>
+                    <p>{{ outputLocation.FileMask }}</p>
+                </td>
+                <td>
+                    <p>{{ outputLocation.OutputLocation }}</p>
+                </td>
+                <td>
+                    <p>{{outputLocation.Status}}</p>
+                </td>
+                <td>
+                    <p>
+                        <a data-ng-click="edit(outputLocation)" href="javascript:;">Edit</a> |
+                        <a data-ng-click="showconfirm(outputLocation)" href="javascript:;">Delete</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr />
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-ng-click="delete()">Ok</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

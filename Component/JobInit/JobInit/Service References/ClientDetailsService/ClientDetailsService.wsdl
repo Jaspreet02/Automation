@@ -1,0 +1,1903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientDetailsService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8090/ClientDetailsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8090/ClientDetailsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8090/ClientDetailsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BLW.DataAccessService.DataContract" />
+      <xsd:import schemaLocation="http://localhost:8090/ClientDetailsService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8090/ClientDetailsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccessService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClientDetailsService_GetEmailListbyCompId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailListbyCompId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailListbyCompId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailListbyCompIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailSeverityList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailSeverityList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailSeverityList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailSeverityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailListbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailListbyId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailListbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailListbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationSmtpList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationSmtpList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationSmtpList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationSmtpListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationSmtpbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationSmtpbyId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationSmtpbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationSmtpbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveApplicationSmtp_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveApplicationSmtp" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveApplicationSmtp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveApplicationSmtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_IsRecordExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsRecordExist" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_IsRecordExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsRecordExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageSmtpDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageSmtpDetails" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageSmtpDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageSmtpDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteSmtpDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSmtpDetails" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteSmtpDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSmtpDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetSmtpDetailbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSmtpDetailbyId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetSmtpDetailbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSmtpDetailbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllSmtpDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSmtpDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllSmtpDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSmtpDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EncodePasswordToBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:EncodePasswordToBase64" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EncodePasswordToBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EncodePasswordToBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DecodeFrom64_InputMessage">
+    <wsdl:part name="parameters" element="tns:DecodeFrom64" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DecodeFrom64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DecodeFrom64Response" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetActiveClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveClients" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetActiveClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetInActiveClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInActiveClients" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetInActiveClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInActiveClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetClientInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetClientInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllClients" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageClientDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageClientDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageClientDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageClientDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteClientDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClientDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteClientDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClientDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteAppDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAppDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteAppDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAppDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetActiveApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveApplications" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetActiveApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllApplications" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_AddApplicationDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddApplicationDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_AddApplicationDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddApplicationDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableClient" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableClient" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_FindClientActiveAppsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindClientActiveAppsCount" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_FindClientActiveAppsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindClientActiveAppsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetClientApps_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientApps" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetClientApps_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientAppsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetClientInactiveApps_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientInactiveApps" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetClientInactiveApps_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientInactiveAppsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationsByKeyword_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsByKeyword" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationsByKeyword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationsByKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetFileTransferSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileTransferSetting" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetFileTransferSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileTransferSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_AddFileTransferSettingInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFileTransferSettingInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_AddFileTransferSettingInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFileTransferSettingInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetLookupQueueType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupQueueType" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetLookupQueueType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupQueueTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetQueueTypeInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueueTypeInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetQueueTypeInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueueTypeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetFileTransferSettingInfoById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileTransferSettingInfoById" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetFileTransferSettingInfoById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileTransferSettingInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteFileTransferSettingInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFileTransferSettingInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteFileTransferSettingInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFileTransferSettingInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllActiveErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllActiveErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActiveErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_FindErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_FindErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableErrorNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableErrorNotification" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableErrorNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableErrorNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_UpdateApplicationDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_UpdateApplicationDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveRawFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRawFile" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveRawFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRawFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetRawFilesbyRunId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRawFilesbyRunId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetRawFilesbyRunId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRawFilesbyRunIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationFilesInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationFilesInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetApplicationFilesInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationFilesInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteApplicationFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApplicationFile" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteApplicationFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApplicationFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableApplication" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableApplication" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetConfigDetailsByAppComponentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigDetailsByAppComponentId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetConfigDetailsByAppComponentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigDetailsByAppComponentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAppOrCompName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppOrCompName" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAppOrCompName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppOrCompNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetConfigFileDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigFileDetails" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetConfigFileDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigFileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageConfigFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageConfigFiles" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageConfigFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageConfigFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteConfigurationFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteConfigurationFile" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteConfigurationFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteConfigurationFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetRunDetailsInfoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRunDetailsInfoList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetRunDetailsInfoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRunDetailsInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetRunComponentStatusInfoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRunComponentStatusInfoList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetRunComponentStatusInfoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRunComponentStatusInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetComponentStatusList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComponentStatusList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetComponentStatusList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComponentStatusListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetComponentInfoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComponentInfoList" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetComponentInfoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComponentInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetComponentListbyAppId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComponentListbyAppId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetComponentListbyAppId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComponentListbyAppIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllArchivalDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllArchivalDetails" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllArchivalDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllArchivalDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableArchival_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableArchival" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableArchival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableArchivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetArchivalInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArchivalInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetArchivalInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetArchivalInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableArchival_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableArchival" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableArchival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableArchivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageArchivalDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageArchivalDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageArchivalDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageArchivalDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteArchivalDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteArchivalDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteArchivalDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteArchivalDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableConfigFileDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableConfigFileDetails" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableConfigFileDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableConfigFileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableConfigFileDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableConfigFileDetails" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableConfigFileDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableConfigFileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageEDOcumentingDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageEDOcumentingDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageEDOcumentingDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageEDOcumentingDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteEDOcumentingDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEDOcumentingDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteEDOcumentingDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEDOcumentingDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableEDOcumenting_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableEDOcumenting" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableEDOcumenting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableEDOcumentingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableEDOcumenting_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableEDOcumenting" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableEDOcumenting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableEDOcumentingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetOutputArchivebyAppId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutputArchivebyAppId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetOutputArchivebyAppId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutputArchivebyAppIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllOutputArchive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOutputArchive" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllOutputArchive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOutputArchiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEDOccumentSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEDOccumentSetting" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEDOccumentSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEDOccumentSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllEDOcumentSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEDOcumentSetting" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllEDOcumentSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEDOcumentSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetGmcComponentbyAppCompId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGmcComponentbyAppCompId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetGmcComponentbyAppCompId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGmcComponentbyAppCompIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetGmcCommandbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGmcCommandbyId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetGmcCommandbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGmcCommandbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveGmcCommand_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveGmcCommand" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveGmcCommand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveGmcCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManagePrintPaperWorkDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManagePrintPaperWorkDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManagePrintPaperWorkDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManagePrintPaperWorkDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeletePrintPaperWorkDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePrintPaperWorkDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeletePrintPaperWorkDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePrintPaperWorkDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisablePrintPaperWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisablePrintPaperWork" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisablePrintPaperWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisablePrintPaperWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnablePrintPaperWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnablePrintPaperWork" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnablePrintPaperWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnablePrintPaperWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetPrintPaperWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrintPaperWork" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetPrintPaperWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrintPaperWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllPrintPaperWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPrintPaperWork" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllPrintPaperWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPrintPaperWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllGmcSchenerio_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGmcSchenerio" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllGmcSchenerio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGmcSchenerioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageContactInfoDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageContactInfoDetail" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ManageContactInfoDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageContactInfoDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DeleteContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetContactInfoGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactInfoGroup" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetContactInfoGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactInfoGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_EnableContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_DisableContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetAllContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailInputOutputListbyAppId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailInputOutputListbyAppId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailInputOutputListbyAppId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailInputOutputListbyAppIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailComponentListbyAppId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailComponentListbyAppId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailComponentListbyAppId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailComponentListbyAppIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailConfigurationbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailConfigurationbyId" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_GetEmailConfigurationbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailConfigurationbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveEmailConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEmailConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_SaveEmailConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveEmailConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ChangeEmailConfigurationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeEmailConfigurationStatus" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_ChangeEmailConfigurationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeEmailConfigurationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_IsRecorsExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsRecorsExist" />
+  </wsdl:message>
+  <wsdl:message name="IClientDetailsService_IsRecorsExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsRecorsExistResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClientDetailsService">
+    <wsdl:operation name="GetEmailListbyCompId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailListbyCompId" message="tns:IClientDetailsService_GetEmailListbyCompId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailListbyCompIdResponse" message="tns:IClientDetailsService_GetEmailListbyCompId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailTypeList" message="tns:IClientDetailsService_GetEmailTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailTypeListResponse" message="tns:IClientDetailsService_GetEmailTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailSeverityList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailSeverityList" message="tns:IClientDetailsService_GetEmailSeverityList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailSeverityListResponse" message="tns:IClientDetailsService_GetEmailSeverityList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailListbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailListbyId" message="tns:IClientDetailsService_GetEmailListbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailListbyIdResponse" message="tns:IClientDetailsService_GetEmailListbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationSmtpList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationSmtpList" message="tns:IClientDetailsService_GetApplicationSmtpList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationSmtpListResponse" message="tns:IClientDetailsService_GetApplicationSmtpList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationSmtpbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationSmtpbyId" message="tns:IClientDetailsService_GetApplicationSmtpbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationSmtpbyIdResponse" message="tns:IClientDetailsService_GetApplicationSmtpbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveApplicationSmtp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/SaveApplicationSmtp" message="tns:IClientDetailsService_SaveApplicationSmtp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/SaveApplicationSmtpResponse" message="tns:IClientDetailsService_SaveApplicationSmtp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsRecordExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/IsRecordExist" message="tns:IClientDetailsService_IsRecordExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/IsRecordExistResponse" message="tns:IClientDetailsService_IsRecordExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageSmtpDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManageSmtpDetails" message="tns:IClientDetailsService_ManageSmtpDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManageSmtpDetailsResponse" message="tns:IClientDetailsService_ManageSmtpDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSmtpDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteSmtpDetails" message="tns:IClientDetailsService_DeleteSmtpDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteSmtpDetailsResponse" message="tns:IClientDetailsService_DeleteSmtpDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmtpDetailbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetSmtpDetailbyId" message="tns:IClientDetailsService_GetSmtpDetailbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetSmtpDetailbyIdResponse" message="tns:IClientDetailsService_GetSmtpDetailbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSmtpDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllSmtpDetail" message="tns:IClientDetailsService_GetAllSmtpDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllSmtpDetailResponse" message="tns:IClientDetailsService_GetAllSmtpDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EncodePasswordToBase64">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EncodePasswordToBase64" message="tns:IClientDetailsService_EncodePasswordToBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EncodePasswordToBase64Response" message="tns:IClientDetailsService_EncodePasswordToBase64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DecodeFrom64">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DecodeFrom64" message="tns:IClientDetailsService_DecodeFrom64_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DecodeFrom64Response" message="tns:IClientDetailsService_DecodeFrom64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveClients">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetActiveClients" message="tns:IClientDetailsService_GetActiveClients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetActiveClientsResponse" message="tns:IClientDetailsService_GetActiveClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInActiveClients">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetInActiveClients" message="tns:IClientDetailsService_GetInActiveClients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetInActiveClientsResponse" message="tns:IClientDetailsService_GetInActiveClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetClientInfo" message="tns:IClientDetailsService_GetClientInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetClientInfoResponse" message="tns:IClientDetailsService_GetClientInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllClients" message="tns:IClientDetailsService_GetAllClients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllClientsResponse" message="tns:IClientDetailsService_GetAllClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageClientDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManageClientDetail" message="tns:IClientDetailsService_ManageClientDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManageClientDetailResponse" message="tns:IClientDetailsService_ManageClientDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClientDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteClientDetail" message="tns:IClientDetailsService_DeleteClientDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteClientDetailResponse" message="tns:IClientDetailsService_DeleteClientDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAppDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteAppDetail" message="tns:IClientDetailsService_DeleteAppDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteAppDetailResponse" message="tns:IClientDetailsService_DeleteAppDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetActiveApplications" message="tns:IClientDetailsService_GetActiveApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetActiveApplicationsResponse" message="tns:IClientDetailsService_GetActiveApplications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationInfo" message="tns:IClientDetailsService_GetApplicationInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationInfoResponse" message="tns:IClientDetailsService_GetApplicationInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllApplications" message="tns:IClientDetailsService_GetAllApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllApplicationsResponse" message="tns:IClientDetailsService_GetAllApplications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddApplicationDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/AddApplicationDetail" message="tns:IClientDetailsService_AddApplicationDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/AddApplicationDetailResponse" message="tns:IClientDetailsService_AddApplicationDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableClient" message="tns:IClientDetailsService_EnableClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableClientResponse" message="tns:IClientDetailsService_EnableClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableClient" message="tns:IClientDetailsService_DisableClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableClientResponse" message="tns:IClientDetailsService_DisableClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindClientActiveAppsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/FindClientActiveAppsCount" message="tns:IClientDetailsService_FindClientActiveAppsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/FindClientActiveAppsCountResponse" message="tns:IClientDetailsService_FindClientActiveAppsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientApps">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetClientApps" message="tns:IClientDetailsService_GetClientApps_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetClientAppsResponse" message="tns:IClientDetailsService_GetClientApps_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientInactiveApps">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetClientInactiveApps" message="tns:IClientDetailsService_GetClientInactiveApps_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetClientInactiveAppsResponse" message="tns:IClientDetailsService_GetClientInactiveApps_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationsByKeyword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationsByKeyword" message="tns:IClientDetailsService_GetApplicationsByKeyword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationsByKeywordResponse" message="tns:IClientDetailsService_GetApplicationsByKeyword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileTransferSetting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetFileTransferSetting" message="tns:IClientDetailsService_GetFileTransferSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetFileTransferSettingResponse" message="tns:IClientDetailsService_GetFileTransferSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFileTransferSettingInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/AddFileTransferSettingInfo" message="tns:IClientDetailsService_AddFileTransferSettingInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/AddFileTransferSettingInfoResponse" message="tns:IClientDetailsService_AddFileTransferSettingInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupQueueType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetLookupQueueType" message="tns:IClientDetailsService_GetLookupQueueType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetLookupQueueTypeResponse" message="tns:IClientDetailsService_GetLookupQueueType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueTypeInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetQueueTypeInfo" message="tns:IClientDetailsService_GetQueueTypeInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetQueueTypeInfoResponse" message="tns:IClientDetailsService_GetQueueTypeInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileTransferSettingInfoById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetFileTransferSettingInfoById" message="tns:IClientDetailsService_GetFileTransferSettingInfoById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetFileTransferSettingInfoByIdResponse" message="tns:IClientDetailsService_GetFileTransferSettingInfoById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileTransferSettingInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteFileTransferSettingInfo" message="tns:IClientDetailsService_DeleteFileTransferSettingInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteFileTransferSettingInfoResponse" message="tns:IClientDetailsService_DeleteFileTransferSettingInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllErrorNotification" message="tns:IClientDetailsService_GetAllErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllErrorNotificationResponse" message="tns:IClientDetailsService_GetAllErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllActiveErrorNotification" message="tns:IClientDetailsService_GetAllActiveErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllActiveErrorNotificationResponse" message="tns:IClientDetailsService_GetAllActiveErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/FindErrorNotification" message="tns:IClientDetailsService_FindErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/FindErrorNotificationResponse" message="tns:IClientDetailsService_FindErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/SaveErrorNotification" message="tns:IClientDetailsService_SaveErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/SaveErrorNotificationResponse" message="tns:IClientDetailsService_SaveErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteErrorNotification" message="tns:IClientDetailsService_DeleteErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteErrorNotificationResponse" message="tns:IClientDetailsService_DeleteErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableErrorNotification" message="tns:IClientDetailsService_EnableErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableErrorNotificationResponse" message="tns:IClientDetailsService_EnableErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableErrorNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableErrorNotification" message="tns:IClientDetailsService_DisableErrorNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableErrorNotificationResponse" message="tns:IClientDetailsService_DisableErrorNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/UpdateApplicationDetail" message="tns:IClientDetailsService_UpdateApplicationDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/UpdateApplicationDetailResponse" message="tns:IClientDetailsService_UpdateApplicationDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRawFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/SaveRawFile" message="tns:IClientDetailsService_SaveRawFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/SaveRawFileResponse" message="tns:IClientDetailsService_SaveRawFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRawFilesbyRunId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetRawFilesbyRunId" message="tns:IClientDetailsService_GetRawFilesbyRunId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetRawFilesbyRunIdResponse" message="tns:IClientDetailsService_GetRawFilesbyRunId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationFilesInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationFilesInfo" message="tns:IClientDetailsService_GetApplicationFilesInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetApplicationFilesInfoResponse" message="tns:IClientDetailsService_GetApplicationFilesInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApplicationFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteApplicationFile" message="tns:IClientDetailsService_DeleteApplicationFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteApplicationFileResponse" message="tns:IClientDetailsService_DeleteApplicationFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableApplication" message="tns:IClientDetailsService_EnableApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableApplicationResponse" message="tns:IClientDetailsService_EnableApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableApplication" message="tns:IClientDetailsService_DisableApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableApplicationResponse" message="tns:IClientDetailsService_DisableApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigDetailsByAppComponentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetConfigDetailsByAppComponentId" message="tns:IClientDetailsService_GetConfigDetailsByAppComponentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetConfigDetailsByAppComponentIdResponse" message="tns:IClientDetailsService_GetConfigDetailsByAppComponentId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppOrCompName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAppOrCompName" message="tns:IClientDetailsService_GetAppOrCompName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAppOrCompNameResponse" message="tns:IClientDetailsService_GetAppOrCompName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigFileDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetConfigFileDetails" message="tns:IClientDetailsService_GetConfigFileDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetConfigFileDetailsResponse" message="tns:IClientDetailsService_GetConfigFileDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageConfigFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManageConfigFiles" message="tns:IClientDetailsService_ManageConfigFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManageConfigFilesResponse" message="tns:IClientDetailsService_ManageConfigFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteConfigurationFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteConfigurationFile" message="tns:IClientDetailsService_DeleteConfigurationFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteConfigurationFileResponse" message="tns:IClientDetailsService_DeleteConfigurationFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRunDetailsInfoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetRunDetailsInfoList" message="tns:IClientDetailsService_GetRunDetailsInfoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetRunDetailsInfoListResponse" message="tns:IClientDetailsService_GetRunDetailsInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRunComponentStatusInfoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetRunComponentStatusInfoList" message="tns:IClientDetailsService_GetRunComponentStatusInfoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetRunComponentStatusInfoListResponse" message="tns:IClientDetailsService_GetRunComponentStatusInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComponentStatusList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetComponentStatusList" message="tns:IClientDetailsService_GetComponentStatusList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetComponentStatusListResponse" message="tns:IClientDetailsService_GetComponentStatusList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComponentInfoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetComponentInfoList" message="tns:IClientDetailsService_GetComponentInfoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetComponentInfoListResponse" message="tns:IClientDetailsService_GetComponentInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComponentListbyAppId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetComponentListbyAppId" message="tns:IClientDetailsService_GetComponentListbyAppId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetComponentListbyAppIdResponse" message="tns:IClientDetailsService_GetComponentListbyAppId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchivalDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllArchivalDetails" message="tns:IClientDetailsService_GetAllArchivalDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllArchivalDetailsResponse" message="tns:IClientDetailsService_GetAllArchivalDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableArchival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableArchival" message="tns:IClientDetailsService_EnableArchival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableArchivalResponse" message="tns:IClientDetailsService_EnableArchival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArchivalInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetArchivalInfo" message="tns:IClientDetailsService_GetArchivalInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetArchivalInfoResponse" message="tns:IClientDetailsService_GetArchivalInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableArchival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableArchival" message="tns:IClientDetailsService_DisableArchival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableArchivalResponse" message="tns:IClientDetailsService_DisableArchival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageArchivalDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManageArchivalDetail" message="tns:IClientDetailsService_ManageArchivalDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManageArchivalDetailResponse" message="tns:IClientDetailsService_ManageArchivalDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArchivalDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteArchivalDetail" message="tns:IClientDetailsService_DeleteArchivalDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteArchivalDetailResponse" message="tns:IClientDetailsService_DeleteArchivalDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableConfigFileDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableConfigFileDetails" message="tns:IClientDetailsService_EnableConfigFileDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableConfigFileDetailsResponse" message="tns:IClientDetailsService_EnableConfigFileDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableConfigFileDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableConfigFileDetails" message="tns:IClientDetailsService_DisableConfigFileDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableConfigFileDetailsResponse" message="tns:IClientDetailsService_DisableConfigFileDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageEDOcumentingDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManageEDOcumentingDetail" message="tns:IClientDetailsService_ManageEDOcumentingDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManageEDOcumentingDetailResponse" message="tns:IClientDetailsService_ManageEDOcumentingDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEDOcumentingDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteEDOcumentingDetail" message="tns:IClientDetailsService_DeleteEDOcumentingDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteEDOcumentingDetailResponse" message="tns:IClientDetailsService_DeleteEDOcumentingDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableEDOcumenting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableEDOcumenting" message="tns:IClientDetailsService_DisableEDOcumenting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableEDOcumentingResponse" message="tns:IClientDetailsService_DisableEDOcumenting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableEDOcumenting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableEDOcumenting" message="tns:IClientDetailsService_EnableEDOcumenting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableEDOcumentingResponse" message="tns:IClientDetailsService_EnableEDOcumenting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutputArchivebyAppId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetOutputArchivebyAppId" message="tns:IClientDetailsService_GetOutputArchivebyAppId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetOutputArchivebyAppIdResponse" message="tns:IClientDetailsService_GetOutputArchivebyAppId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOutputArchive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllOutputArchive" message="tns:IClientDetailsService_GetAllOutputArchive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllOutputArchiveResponse" message="tns:IClientDetailsService_GetAllOutputArchive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEDOccumentSetting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEDOccumentSetting" message="tns:IClientDetailsService_GetEDOccumentSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEDOccumentSettingResponse" message="tns:IClientDetailsService_GetEDOccumentSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEDOcumentSetting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllEDOcumentSetting" message="tns:IClientDetailsService_GetAllEDOcumentSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllEDOcumentSettingResponse" message="tns:IClientDetailsService_GetAllEDOcumentSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGmcComponentbyAppCompId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetGmcComponentbyAppCompId" message="tns:IClientDetailsService_GetGmcComponentbyAppCompId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetGmcComponentbyAppCompIdResponse" message="tns:IClientDetailsService_GetGmcComponentbyAppCompId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGmcCommandbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetGmcCommandbyId" message="tns:IClientDetailsService_GetGmcCommandbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetGmcCommandbyIdResponse" message="tns:IClientDetailsService_GetGmcCommandbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGmcCommand">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/SaveGmcCommand" message="tns:IClientDetailsService_SaveGmcCommand_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/SaveGmcCommandResponse" message="tns:IClientDetailsService_SaveGmcCommand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManagePrintPaperWorkDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManagePrintPaperWorkDetail" message="tns:IClientDetailsService_ManagePrintPaperWorkDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManagePrintPaperWorkDetailResponse" message="tns:IClientDetailsService_ManagePrintPaperWorkDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrintPaperWorkDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeletePrintPaperWorkDetail" message="tns:IClientDetailsService_DeletePrintPaperWorkDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeletePrintPaperWorkDetailResponse" message="tns:IClientDetailsService_DeletePrintPaperWorkDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisablePrintPaperWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisablePrintPaperWork" message="tns:IClientDetailsService_DisablePrintPaperWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisablePrintPaperWorkResponse" message="tns:IClientDetailsService_DisablePrintPaperWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnablePrintPaperWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnablePrintPaperWork" message="tns:IClientDetailsService_EnablePrintPaperWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnablePrintPaperWorkResponse" message="tns:IClientDetailsService_EnablePrintPaperWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintPaperWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetPrintPaperWork" message="tns:IClientDetailsService_GetPrintPaperWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetPrintPaperWorkResponse" message="tns:IClientDetailsService_GetPrintPaperWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPrintPaperWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllPrintPaperWork" message="tns:IClientDetailsService_GetAllPrintPaperWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllPrintPaperWorkResponse" message="tns:IClientDetailsService_GetAllPrintPaperWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGmcSchenerio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllGmcSchenerio" message="tns:IClientDetailsService_GetAllGmcSchenerio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllGmcSchenerioResponse" message="tns:IClientDetailsService_GetAllGmcSchenerio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageContactInfoDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ManageContactInfoDetail" message="tns:IClientDetailsService_ManageContactInfoDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ManageContactInfoDetailResponse" message="tns:IClientDetailsService_ManageContactInfoDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteContactInfo" message="tns:IClientDetailsService_DeleteContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DeleteContactInfoResponse" message="tns:IClientDetailsService_DeleteContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactInfoGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetContactInfoGroup" message="tns:IClientDetailsService_GetContactInfoGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetContactInfoGroupResponse" message="tns:IClientDetailsService_GetContactInfoGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/EnableContactInfo" message="tns:IClientDetailsService_EnableContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/EnableContactInfoResponse" message="tns:IClientDetailsService_EnableContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/DisableContactInfo" message="tns:IClientDetailsService_DisableContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/DisableContactInfoResponse" message="tns:IClientDetailsService_DisableContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllContactInfo" message="tns:IClientDetailsService_GetAllContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetAllContactInfoResponse" message="tns:IClientDetailsService_GetAllContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailInputOutputListbyAppId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailInputOutputListbyAppId" message="tns:IClientDetailsService_GetEmailInputOutputListbyAppId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailInputOutputListbyAppIdResponse" message="tns:IClientDetailsService_GetEmailInputOutputListbyAppId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailComponentListbyAppId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailComponentListbyAppId" message="tns:IClientDetailsService_GetEmailComponentListbyAppId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailComponentListbyAppIdResponse" message="tns:IClientDetailsService_GetEmailComponentListbyAppId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailConfigurationbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailConfigurationbyId" message="tns:IClientDetailsService_GetEmailConfigurationbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/GetEmailConfigurationbyIdResponse" message="tns:IClientDetailsService_GetEmailConfigurationbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmailConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/SaveEmailConfiguration" message="tns:IClientDetailsService_SaveEmailConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/SaveEmailConfigurationResponse" message="tns:IClientDetailsService_SaveEmailConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeEmailConfigurationStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/ChangeEmailConfigurationStatus" message="tns:IClientDetailsService_ChangeEmailConfigurationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/ChangeEmailConfigurationStatusResponse" message="tns:IClientDetailsService_ChangeEmailConfigurationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsRecorsExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientDetailsService/IsRecorsExist" message="tns:IClientDetailsService_IsRecorsExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientDetailsService/IsRecorsExistResponse" message="tns:IClientDetailsService_IsRecorsExist_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IClientDetailsService" type="tns:IClientDetailsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEmailListbyCompId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailListbyCompId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailTypeList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailSeverityList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailSeverityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailListbyId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailListbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationSmtpList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetApplicationSmtpList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationSmtpbyId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetApplicationSmtpbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveApplicationSmtp">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/SaveApplicationSmtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsRecordExist">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/IsRecordExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageSmtpDetails">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManageSmtpDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSmtpDetails">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteSmtpDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmtpDetailbyId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetSmtpDetailbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSmtpDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllSmtpDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncodePasswordToBase64">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EncodePasswordToBase64" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecodeFrom64">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DecodeFrom64" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveClients">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetActiveClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInActiveClients">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetInActiveClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetClientInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageClientDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManageClientDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClientDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteClientDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAppDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteAppDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveApplications">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetActiveApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetApplicationInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllApplications">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddApplicationDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/AddApplicationDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableClient">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableClient">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindClientActiveAppsCount">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/FindClientActiveAppsCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientApps">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetClientApps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientInactiveApps">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetClientInactiveApps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationsByKeyword">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetApplicationsByKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileTransferSetting">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetFileTransferSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFileTransferSettingInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/AddFileTransferSettingInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupQueueType">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetLookupQueueType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueTypeInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetQueueTypeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileTransferSettingInfoById">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetFileTransferSettingInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileTransferSettingInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteFileTransferSettingInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllActiveErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/FindErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/SaveErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableErrorNotification">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableErrorNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/UpdateApplicationDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRawFile">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/SaveRawFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRawFilesbyRunId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetRawFilesbyRunId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationFilesInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetApplicationFilesInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApplicationFile">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteApplicationFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableApplication">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableApplication">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigDetailsByAppComponentId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetConfigDetailsByAppComponentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppOrCompName">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAppOrCompName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigFileDetails">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetConfigFileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageConfigFiles">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManageConfigFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteConfigurationFile">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteConfigurationFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRunDetailsInfoList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetRunDetailsInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRunComponentStatusInfoList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetRunComponentStatusInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComponentStatusList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetComponentStatusList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComponentInfoList">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetComponentInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComponentListbyAppId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetComponentListbyAppId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchivalDetails">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllArchivalDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableArchival">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableArchival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchivalInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetArchivalInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableArchival">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableArchival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageArchivalDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManageArchivalDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArchivalDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteArchivalDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableConfigFileDetails">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableConfigFileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableConfigFileDetails">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableConfigFileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageEDOcumentingDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManageEDOcumentingDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEDOcumentingDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteEDOcumentingDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableEDOcumenting">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableEDOcumenting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableEDOcumenting">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableEDOcumenting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutputArchivebyAppId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetOutputArchivebyAppId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOutputArchive">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllOutputArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEDOccumentSetting">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEDOccumentSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEDOcumentSetting">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllEDOcumentSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGmcComponentbyAppCompId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetGmcComponentbyAppCompId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGmcCommandbyId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetGmcCommandbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGmcCommand">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/SaveGmcCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManagePrintPaperWorkDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManagePrintPaperWorkDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrintPaperWorkDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeletePrintPaperWorkDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisablePrintPaperWork">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisablePrintPaperWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnablePrintPaperWork">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnablePrintPaperWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintPaperWork">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetPrintPaperWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPrintPaperWork">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllPrintPaperWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGmcSchenerio">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllGmcSchenerio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageContactInfoDetail">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ManageContactInfoDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DeleteContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactInfoGroup">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetContactInfoGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableContactInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/EnableContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableContactInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/DisableContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactInfo">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetAllContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailInputOutputListbyAppId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailInputOutputListbyAppId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailComponentListbyAppId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailComponentListbyAppId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailConfigurationbyId">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/GetEmailConfigurationbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmailConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/SaveEmailConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeEmailConfigurationStatus">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/ChangeEmailConfigurationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsRecorsExist">
+      <soap:operation soapAction="http://tempuri.org/IClientDetailsService/IsRecorsExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientDetailsService">
+    <wsdl:port name="BasicHttpBinding_IClientDetailsService" binding="tns:BasicHttpBinding_IClientDetailsService">
+      <soap:address location="http://localhost:8090/ClientDetailsService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

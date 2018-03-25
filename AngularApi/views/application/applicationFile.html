@@ -1,0 +1,73 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+
+        <h1>Masks of {{applicationName}}</h1>
+        <table wt-responsive-table class="table table-hover">
+            <tr>
+                <th>Mask</th>
+                <th>Proof Day</th>
+                <th>Required</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr data-ng-repeat="applicationFile in applicationFiles" data-ng-include="getTemplate(applicationFile)">
+                <script type="text/ng-template" id="display">
+                    <td>
+                        <p>{{ applicationFile.Mask }}</p>
+                    </td>
+                    <td>
+                        <p>{{ applicationFile.ProofRestrictedDays }}</p>
+                    </td>
+                    <td>
+                        <p>{{applicationFile.IsRequired}}</p>
+                    </td>
+                    <td>
+                        <p>{{applicationFile.Status}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <button type="button" class="btn btn-primary" ng-click="edit(applicationFile)">Edit</button>
+                            <button type="button" class="btn btn-danger" ng-click="delete(applicationFile)">Delete</button>
+                        </p>
+                    </td>
+                </script>
+                <script type="text/ng-template" id="edit">
+                    <td>
+                        <p><input type="text" data-ng-model="applicationFile.Mask" class="form-control input-sm" /></p>
+                    </td>
+                    <td>
+                        <p><input type="text" data-ng-model="applicationFile.ProofRestrictedDays" class="form-control input-sm" /></p>
+                    </td>
+                    <td>
+                        <p>
+                            <select data-ng-model="applicationFile.IsRequired" class="form-control input-sm" data-ng-options="item.id as item.name for item in statusList">
+                                <option value="">--Select--</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <select data-ng-model="applicationFile.Status" class="form-control input-sm" data-ng-options="item.id as item.name for item in statusList">
+                                <option value="">--Select--</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <button type="button" class="btn btn-primary" ng-click="update(applicationFile)">Save</button>
+                            <button type="button" class="btn btn-danger" ng-click="reset()">Cancel</button>
+                        </p>
+                    </td>
+                </script>
+            </tr>
+        </table>
+        <hr />
+
+    </div>
+</div>

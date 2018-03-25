@@ -1,0 +1,52 @@
+<div class="ui-g" *ngIf="selectedUser">
+        <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-4">
+                First Name
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="firstName" [(ngModel)]="selectedUser.FirstName" />
+            </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-4">
+                Last Name
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="lastName" [(ngModel)]="selectedUser.LastName" />
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-4">
+                Gender
+            </div>
+            <div class="ui-g-8">
+                <p-dropdown [options]="genders" [(ngModel)]="gender" placeholder="Select a Gender" optionLabel="Label"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-4">
+                Phone Number
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="phoneNumber" [(ngModel)]="selectedUser.PhoneNumber" />
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-4">
+                Email
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="email" [(ngModel)]="selectedUser.Email" />
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-6">
+        </div>
+        <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-4">
+            </div>
+            <div class="ui-g-8">
+                <button pButton label="Save" type="button" (click)="save()" ></button>
+                <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+            </div>
+        </div>
+    </div>

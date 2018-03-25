@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DataAccessService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataAccessService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfFileTransferSettingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FileTransferSettingInfo" nillable="true" type="tns:FileTransferSettingInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFileTransferSettingInfo" nillable="true" type="tns:ArrayOfFileTransferSettingInfo" />
+  <xs:complexType name="FileTransferSettingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Host" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Port" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueueType" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileTransferSettingInfo" nillable="true" type="tns:FileTransferSettingInfo" />
+  <xs:complexType name="ArrayOfLookup_QueueTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Lookup_QueueTypeInfo" nillable="true" type="tns:Lookup_QueueTypeInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLookup_QueueTypeInfo" nillable="true" type="tns:ArrayOfLookup_QueueTypeInfo" />
+  <xs:complexType name="Lookup_QueueTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Lookup_QueueTypeInfo" nillable="true" type="tns:Lookup_QueueTypeInfo" />
+</xs:schema>

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BLW.DataAccessService.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BLW.DataAccessService.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfEmailConfigurationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailConfigurationInfo" nillable="true" type="tns:EmailConfigurationInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmailConfigurationInfo" nillable="true" type="tns:ArrayOfEmailConfigurationInfo" />
+  <xs:complexType name="EmailConfigurationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompId" type="xs:int" />
+      <xs:element minOccurs="0" name="ContectInfoList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailSeverityId" type="xs:int" />
+      <xs:element minOccurs="0" name="EmailTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailConfigurationInfo" nillable="true" type="tns:EmailConfigurationInfo" />
+  <xs:complexType name="ArrayOfEmailTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailTypeInfo" nillable="true" type="tns:EmailTypeInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmailTypeInfo" nillable="true" type="tns:ArrayOfEmailTypeInfo" />
+  <xs:complexType name="EmailTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailTypeInfo" nillable="true" type="tns:EmailTypeInfo" />
+  <xs:complexType name="ArrayOfEmailSeverityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailSeverityInfo" nillable="true" type="tns:EmailSeverityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmailSeverityInfo" nillable="true" type="tns:ArrayOfEmailSeverityInfo" />
+  <xs:complexType name="EmailSeverityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailSeverityInfo" nillable="true" type="tns:EmailSeverityInfo" />
+  <xs:complexType name="ArrayOfApplicationSmtpInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApplicationSmtpInfo" nillable="true" type="tns:ApplicationSmtpInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplicationSmtpInfo" nillable="true" type="tns:ArrayOfApplicationSmtpInfo" />
+  <xs:complexType name="ApplicationSmtpInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="SmtpId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplicationSmtpInfo" nillable="true" type="tns:ApplicationSmtpInfo" />
+  <xs:complexType name="SmtpDetailsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SmtpHost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SmtpUser" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SmtpDetailsInfo" nillable="true" type="tns:SmtpDetailsInfo" />
+  <xs:complexType name="ArrayOfSmtpDetailsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SmtpDetailsInfo" nillable="true" type="tns:SmtpDetailsInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSmtpDetailsInfo" nillable="true" type="tns:ArrayOfSmtpDetailsInfo" />
+  <xs:complexType name="ArrayOfClientInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientInfo" nillable="true" type="tns:ClientInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientInfo" nillable="true" type="tns:ArrayOfClientInfo" />
+  <xs:complexType name="ClientInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SPOCContact" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SPOCName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientInfo" nillable="true" type="tns:ClientInfo" />
+  <xs:complexType name="ArrayOfAppInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppInfo" nillable="true" type="tns:AppInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppInfo" nillable="true" type="tns:ArrayOfAppInfo" />
+  <xs:complexType name="AppInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationFiles" nillable="true" type="tns:ArrayOfApplicationFileInfo" />
+      <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArchivalDays" type="xs:int" />
+      <xs:element minOccurs="0" name="ArchiveFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArchivePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FileTransferSetting" type="xs:int" />
+      <xs:element minOccurs="0" name="HotFolder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="InputPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAppEndNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAppStartNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsArchive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBatch" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFileMove" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsStepEndNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsStepStartNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Modified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessingType" type="xs:int" />
+      <xs:element minOccurs="0" name="SLA" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TempCleanupDays" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppInfo" nillable="true" type="tns:AppInfo" />
+  <xs:complexType name="ArrayOfApplicationFileInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApplicationFileInfo" nillable="true" type="tns:ApplicationFileInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApplicationFileInfo" nillable="true" type="tns:ArrayOfApplicationFileInfo" />
+  <xs:complexType name="ApplicationFileInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mask" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplicationFileInfo" nillable="true" type="tns:ApplicationFileInfo" />
+  <xs:complexType name="ArrayOfErrorNotificationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ErrorNotificationInfo" nillable="true" type="tns:ErrorNotificationInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfErrorNotificationInfo" nillable="true" type="tns:ArrayOfErrorNotificationInfo" />
+  <xs:complexType name="ErrorNotificationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="DistributionList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExclationCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorNotificationInfo" nillable="true" type="tns:ErrorNotificationInfo" />
+  <xs:complexType name="RawFileInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotFolder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RunNumberId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RawFileInfo" nillable="true" type="tns:RawFileInfo" />
+  <xs:complexType name="ArrayOfRawFileInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RawFileInfo" nillable="true" type="tns:RawFileInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRawFileInfo" nillable="true" type="tns:ArrayOfRawFileInfo" />
+  <xs:complexType name="ArrayOfComponentConfigInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ComponentConfigInfo" nillable="true" type="tns:ComponentConfigInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComponentConfigInfo" nillable="true" type="tns:ArrayOfComponentConfigInfo" />
+  <xs:complexType name="ComponentConfigInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppComponentId" type="xs:int" />
+      <xs:element minOccurs="0" name="ConfigFile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfigName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ComponentConfigInfo" nillable="true" type="tns:ComponentConfigInfo" />
+  <xs:complexType name="ArrayOfRunDetailInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RunDetailInfo" nillable="true" type="tns:RunDetailInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRunDetailInfo" nillable="true" type="tns:ArrayOfRunDetailInfo" />
+  <xs:complexType name="RunDetailInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RunNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RunDetailInfo" nillable="true" type="tns:RunDetailInfo" />
+  <xs:complexType name="ArrayOfRunComponentStatusInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RunComponentStatusInfo" nillable="true" type="tns:RunComponentStatusInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRunComponentStatusInfo" nillable="true" type="tns:ArrayOfRunComponentStatusInfo" />
+  <xs:complexType name="RunComponentStatusInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ComponentId" type="xs:int" />
+      <xs:element minOccurs="0" name="ComponentOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ComponentStatus" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="RunNumberId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RunComponentStatusInfo" nillable="true" type="tns:RunComponentStatusInfo" />
+  <xs:complexType name="ArrayOfComponentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ComponentInfo" nillable="true" type="tns:ComponentInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComponentInfo" nillable="true" type="tns:ArrayOfComponentInfo" />
+  <xs:complexType name="ComponentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ComponentExe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Detail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ComponentInfo" nillable="true" type="tns:ComponentInfo" />
+  <xs:complexType name="ArrayOfArchivalInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArchivalInfo" nillable="true" type="tns:ArchivalInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArchivalInfo" nillable="true" type="tns:ArrayOfArchivalInfo" />
+  <xs:complexType name="ArchivalInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="ArchiveFileExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArchiveFileTransferSettingId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ArchiveOutputPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComponentId" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileInputPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="InputFileMask" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsArchiveOutputRequired" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMoveFileRequired" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MoveFileExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoveFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoveFileTransferSettingId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArchivalInfo" nillable="true" type="tns:ArchivalInfo" />
+  <xs:complexType name="EDocumentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailCc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsAttachmentDelete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsZipAttachment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OutputFileArchiveIdList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipWorkingDir" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EDocumentInfo" nillable="true" type="tns:EDocumentInfo" />
+  <xs:complexType name="ArrayOfEDocumentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EDocumentInfo" nillable="true" type="tns:EDocumentInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEDocumentInfo" nillable="true" type="tns:ArrayOfEDocumentInfo" />
+  <xs:complexType name="ArrayOfGmcCommandInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GmcCommandInfo" nillable="true" type="tns:GmcCommandInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGmcCommandInfo" nillable="true" type="tns:ArrayOfGmcCommandInfo" />
+  <xs:complexType name="GmcCommandInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppsId" type="xs:int" />
+      <xs:element minOccurs="0" name="CommandKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommandOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="CommandValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComponentsId" type="xs:int" />
+      <xs:element minOccurs="0" name="GmcAddonSchenerioId" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GmcCommandInfo" nillable="true" type="tns:GmcCommandInfo" />
+  <xs:complexType name="PrintPaperWorkInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppId" type="xs:int" />
+      <xs:element minOccurs="0" name="FileMask" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="InputFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrintPaperWorkInfo" nillable="true" type="tns:PrintPaperWorkInfo" />
+  <xs:complexType name="ArrayOfPrintPaperWorkInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PrintPaperWorkInfo" nillable="true" type="tns:PrintPaperWorkInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPrintPaperWorkInfo" nillable="true" type="tns:ArrayOfPrintPaperWorkInfo" />
+  <xs:complexType name="ArrayOfGmcSchenerioInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GmcSchenerioInfo" nillable="true" type="tns:GmcSchenerioInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGmcSchenerioInfo" nillable="true" type="tns:ArrayOfGmcSchenerioInfo" />
+  <xs:complexType name="GmcSchenerioInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GmcSchenerioInfo" nillable="true" type="tns:GmcSchenerioInfo" />
+  <xs:complexType name="ContactInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactInfo" nillable="true" type="tns:ContactInfo" />
+  <xs:complexType name="ArrayOfContactInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactInfo" nillable="true" type="tns:ContactInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContactInfo" nillable="true" type="tns:ArrayOfContactInfo" />
+</xs:schema>

@@ -1,0 +1,94 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+
+        <h1>File Transfer List</h1>
+        <table wt-responsive-table class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Queue Type</th>
+                <th>Host</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Port</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr data-ng-repeat="fileTransfer in fileTransfers" data-ng-include="getTemplate(fileTransfer)">
+                <script type="text/ng-template" id="display">
+                    <td>
+                        <p>{{ fileTransfer.Name }}</p>
+                    </td>
+                    <td>
+                        <p>{{ GetQueuebyId(fileTransfer.QueueTypeId) }}</p>
+                    </td>
+                    <td>
+                        <p>{{fileTransfer.Host}}</p>
+                    </td>
+                    <td>
+                        <p>{{fileTransfer.UserName}}</p>
+                    </td>
+                    <td>
+                        <p>{{fileTransfer.Password}}</p>
+                    </td>
+                    <td>
+                        <p>{{fileTransfer.Port}}</p>
+                    </td>
+                    <td>
+                        <p>{{fileTransfer.Status}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <button type="button" class="btn btn-primary" ng-click="edit(fileTransfer)">Edit</button>
+                            <button type="button" class="btn btn-danger" ng-click="delete(fileTransfer)">Delete</button>
+                        </p>
+                    </td>
+                </script>
+                <script type="text/ng-template" id="edit">
+                    <td>
+                        <p><input type="text" data-ng-model="fileTransfer.Name" class="form-control input-sm" /></p>
+                    </td>
+                    <td>
+                        <p>
+                            <select data-ng-model="fileTransfer.QueueTypeId" class="form-control input-sm" data-ng-options="item.QueueTypeId as item.Status for item in queueList">
+                                <option value="">--Select--</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td>
+                        <p><input type="text" data-ng-model="fileTransfer.Host" class="form-control input-sm" /></p>
+                    </td>
+                    <td>
+                        <p><input type="text" data-ng-model="fileTransfer.UserName" class="form-control input-sm" /></p>
+                    </td>
+                    <td>
+                        <p><input type="text" data-ng-model="fileTransfer.Password" class="form-control input-sm" /></p>
+                    </td>
+                    <td>
+                        <p><input type="text" data-ng-model="fileTransfer.Port" class="form-control input-sm" /></p>
+                    </td>                    
+                    <td>
+                        <p>
+                            <select data-ng-model="fileTransfer.Status" class="form-control input-sm" data-ng-options="item.id as item.name for item in statusList">
+                                <option value="">--Select--</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <button type="button" class="btn btn-primary" ng-click="update(fileTransfer)">Save</button>
+                            <button type="button" class="btn btn-danger" ng-click="reset()">Cancel</button>
+                        </p>
+                    </td>
+                </script>
+            </tr>
+        </table>
+        <hr />
+
+    </div>
+</div>

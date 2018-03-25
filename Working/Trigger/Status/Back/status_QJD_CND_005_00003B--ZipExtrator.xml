@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Trigger>
+  <ClientName>Canada</ClientName>
+  <AppName>Canada005</AppName>
+  <RunDetail>
+    <RunNumber>QJD_CND_005_00003B</RunNumber>
+    <ComponentStatus>
+      <Status>success</Status>
+      <ComponentStartDate>04-10-2017 11:38:53</ComponentStartDate>
+      <ComponentEndDate>04-10-2017 11:38:54</ComponentEndDate>
+      <ErrorDescription></ErrorDescription>
+    </ComponentStatus>
+    <RunComponentStatusId>1158</RunComponentStatusId>
+  </RunDetail>
+  <ComponentDetail>
+    <ComponentName>ZipExtrator</ComponentName>
+    <ComponentExe>E:\Jaspreet\AutomationNew\Automation\Component\ZipExtractor\bin\Debug\BLW.Modules.Helpers.ZipExtractor.exe</ComponentExe>
+    <ComponentStatusDirectory>E:\Jaspreet\AutomationNew\Automation\Working\Trigger\Status</ComponentStatusDirectory>
+    <ComponentInputLocation>
+      <InputLocation Mask="*.zip">E:\Jaspreet\AutomationNew\Automation\Working\HotFolder\{{RUN_NUMBER}}</InputLocation>
+    </ComponentInputLocation>
+    <ComponentOutputLocation>
+      <OutputLocation Mask="*.*">E:\Jaspreet\AutomationNew\Automation\Working\HotFolder\{{RUN_NUMBER}}</OutputLocation>
+    </ComponentOutputLocation>
+    <ComponentConfigXmlFilePath></ComponentConfigXmlFilePath>
+  </ComponentDetail>
+</Trigger>

@@ -1,0 +1,167 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+
+        <div class="modal fade" id="componentModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add component</h4>
+                        <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit component</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="addcomponentform">
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Name</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Short Name</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <input type="text" data-ng-model="component.Name" class="form-control" id="title" placeholder="Your Name" required title="Enter Name" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" data-ng-model="component.ShortName" class="form-control" id="title" placeholder="Your Code" required title="Enter Code" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-12 control-label">Detail</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="text" data-ng-model="component.Detail" class="form-control" id="title" placeholder="Contact" required title="Enter Contact" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-12 control-label">Component Exe</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="text" data-ng-model="component.ComponentExe" class="form-control" id="title" placeholder="Contact" required title="Enter Contact" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Is Optional</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Status</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <select data-ng-model="component.IsOptional" class="form-control" data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select data-ng-model="component.Status" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <span data-ng-hide="editMode">
+                                        <input type="submit" value="Add" ng-disabled="addcomponentform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                    </span>
+                                    <span data-ng-show="editMode">
+                                        <input type="submit" value="Update" ng-disabled="addcomponentform.$invalid" data-ng-click="update(component.ComponentId)" class="btn btn-primary" />
+                                    </span>
+                                    <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>component List</h1>
+        <table wt-responsive-table class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Short Name</th>
+                <th>Detail</th>
+                <th>Is Optional</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr data-ng-repeat="component in components">
+                <td>
+                    <p>{{ component.Name }}</p>
+                </td>
+                <td>
+                    <p>{{ component.ShortName }}</p>
+                </td>
+                <td>
+                    <p>{{ component.Detail }}</p>
+                </td>
+                <td>
+                    <p>{{ component.IsOptional }}</p>
+                </td>
+                <td>
+                    <p>{{component.Status}}</p>
+                </td>
+                <td>
+                    <p>
+                        <a data-ng-click="get(component.TriggerandStatusFile)" href="javascript:;">View</a> |
+                        <a data-ng-click="edit(component)" href="javascript:;">Edit</a> |
+                        <a data-ng-click="showconfirm(component)" href="javascript:;">Delete</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr />
+
+        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Component processing files</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="viewcomponent">
+                            <div class="form-group">
+                                <label style="text-align:left" class="col-sm-10 control-label">Trigger File Location</label>
+                                <div class="col-sm-12">
+                                    <input type="text" data-ng-model="triggerandStatusFile.TriggerFilelocation" class="form-control" id="title" placeholder="Trigger file" required title="Enter trigger file path" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" class="col-sm-10 control-label">Status File Location</label>
+                                <div class="col-sm-12">
+                                    <input type="text" data-ng-model="triggerandStatusFile.StepStatusLocation" class="form-control" id="title" placeholder="Status file" required title="Enter Trigger file path" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Update" ng-disabled="viewcomponent.$invalid" data-ng-click="triggerAdd()" class="btn btn-primary" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-ng-click="delete()">Ok</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

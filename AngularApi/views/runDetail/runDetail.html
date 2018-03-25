@@ -1,0 +1,116 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <select data-ng-model="client" class="form-control" data-ng-options="item.Name for item in clients" data-ng-change="dropdownEvent('client')">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <select data-ng-model="application" class="form-control" data-ng-options="item.Name for item in applications | filter : filterExpression" data-ng-change="dropdownEvent()">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <select data-ng-model="status" class="form-control" data-ng-options="item for item in runStatus" data-ng-change="dropdownEvent()">
+                    <option value="">--All--</option>
+                </select>
+            </div>
+            <hr />
+        </div>
+
+        <table wt-responsive-table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <button type="button" ng-click="expandAll(allExpanded = !allExpanded)">
+                            <span ng-bind="allExpanded ? '-' : '+'"></span>
+                        </button>
+                    </th>
+                    <th>RunNumber</th>
+                    <th>Application</th>
+                    <th>Run Status</th>
+                    <th>Download At</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat-start="runDetail in runDetails">
+                    <td>
+                        <button ng-click="expanded = !expanded" expand>
+                            <span ng-bind="expanded ? '-' : '+'"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <p>{{ runDetail.RunNumber }}</p>
+                    </td>
+                    <td>
+                        <p>{{ GetApplicationbyId(runDetail.ApplicationId) }}</p>
+                    </td>
+                    <td>
+                        <p>{{ GetRunStatusbyId(runDetail.RunNumberStatusId) }}</p>
+                    </td>
+                    <td>
+                        <p>{{ runDetail.CreatedAt }}</p>
+                    </td>
+                    <td>
+                        <p>{{runDetail.Status}}</p>
+                    </td>
+                </tr>
+                <tr data-ng-repeat-end ng-show="expanded">
+                    <td></td>
+                    <td colspan="6">
+                        <table wt-responsive-table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Order</th>
+                                    <th>Status</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Message</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="item in runDetail.RunComponentStatus">
+                                    <td><p>{{ item.ComponentId }}</p></td>
+                                    <td><p>{{ item.ComponentOrder }}</p></td>
+                                    <td><p>{{ item.ComponentStatusId }}</p></td>
+                                    <td><p>{{ item.StartDate }}</p></td>
+                                    <td><p>{{ item.EndDate }}</p></td>
+                                    <td><p>{{ item.Message }}</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td align="center" colspan="6   ">
+                        <span class="form-group pull-left page-size form-inline">
+                            <select id="ddlPageSize" class="form-control control-color"
+                                    ng-model="pageSizeSelected"
+                                    ng-change="changePageSize()">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                            </select>
+                        </span>
+                        <div class="pull-right">
+                            <pagination total-items="totalCount" ng-change="pageChanged()" items-per-page="pageSizeSelected" direction-links="true" ng-model="pageIndex" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+                            <a class="btn btn-primary">Page: {{pageIndex}} / {{numPages}}</a>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <hr />
+    </div>
+</div>

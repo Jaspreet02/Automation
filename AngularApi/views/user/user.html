@@ -1,0 +1,229 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+
+        <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add User</h4>
+                        <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="adduserform">
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Name</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Last Name</label>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <input type="text" data-ng-model="user.FirstName" class="form-control" id="title" placeholder="Your First" required title="Enter UserName" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" data-ng-model="user.LastName" class="form-control" id="title" placeholder="Your LastName" required title="Enter LastName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Phone Number</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Email</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <input type="text" data-ng-model="user.PhoneNumber" class="form-control" id="title" placeholder="Phone Number" required title="Enter Phone Number" is-number />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" data-ng-model="user.Email" class="form-control" id="title" placeholder="Email" required title="Enter Email" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-ng-hide="editMode">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Password</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Confirm Password</label>
+                            </div>
+                            <div class="form-group" data-ng-hide="editMode">
+                                <div class="col-sm-6">
+                                    <input type="password" data-ng-model="user.PasswordHash" class="form-control" id="Password" name="Password" placeholder="Password" required title="Enter Password" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" />
+                                    <span class="error" ng-show="adduserform.Password.$error.pattern">
+                                        Password should be atleast 8 characters long
+                                        and should contain one number,one character and one special
+                                        character.
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" data-ng-model="user.ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password" required title="Enter Confirm Password" pw-check="Password" />
+                                    <span class="error" ng-show="adduserform.ConfirmPassword.$error.pwmatch">Passwords don't match.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Gender</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Role</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <select data-ng-model="user.Gender" class="form-control" required data-ng-options="item.id as item.name for item in genderList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select data-ng-model="role" class="form-control" required data-ng-options="item.id as item.name for item in roleList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Locked</label>
+                                <label style="text-align:left" for="title" class="col-sm-6 control-label">Status</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <select data-ng-model="user.LockoutEnabled" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select data-ng-model="user.Status" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <span data-ng-hide="editMode">
+                                        <input type="submit" value="Add" ng-disabled="adduserform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                    </span>
+                                    <span data-ng-show="editMode">
+                                        <input type="submit" value="Update" ng-disabled="adduserform.$invalid" data-ng-click="update(user.Id)" class="btn btn-primary" />
+                                    </span>
+                                    <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>User List</h1>
+        <table wt-responsive-table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Contact No</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Islocked</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="user in users">
+                    <td>
+                        <p>{{ user.FirstName }}</p>
+                    </td>
+                    <td>
+                        <p>{{ user.LastName }}</p>
+                    </td>
+                    <td>
+                        <p>{{ user.PhoneNumber }}</p>
+                    </td>
+                    <td>
+                        <p>{{ user.Email }}</p>
+                    </td>
+                    <td>
+                        <p>{{ GetGender(user.Gender)}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.LockoutEnabled}}</p>
+                    </td>
+                    <td>
+                        <p>{{user.Status}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <a data-ng-click="get(user)" href="javascript:;">View</a> |
+                            <a data-ng-click="edit(user)" href="javascript:;">Edit</a> |
+                            <a data-ng-click="showconfirm(user)" href="javascript:;">Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td align="center" colspan="8   ">
+                        <span class="form-group pull-left page-size form-inline">
+                            <select id="ddlPageSize" class="form-control control-color"
+                                    ng-model="pageSizeSelected"
+                                    ng-change="changePageSize()">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                            </select>
+                        </span>
+                        <div class="pull-right">
+                            <pagination total-items="totalCount" ng-change="pageChanged()" items-per-page="pageSizeSelected" direction-links="true" ng-model="pageIndex" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+                            <a class="btn btn-primary">Page: {{pageIndex}} / {{numPages}}</a>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <hr />
+
+        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">View User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="viewuser">
+                            <div class="form-group">
+                                <label for="Name" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    {{user.FirstName}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-2 control-label">LastName</label>
+                                <div class="col-sm-10">
+                                    {{user.LastName}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-ng-click="delete()">Ok</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

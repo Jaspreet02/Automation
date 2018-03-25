@@ -1,0 +1,6 @@
+﻿Pinnacle file Processing-
+It includes Two type of files mainly.  
+i) x937
+ii) DDC Data files
+
+This section will focus on read/open these files.

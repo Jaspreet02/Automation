@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Automation</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/angular-responsive-tables.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script data-main="scripts/main.js" src="scripts/libs/require.js"></script>
+</head>
+<body data-ng-controller="loginCtrl">
+    <div ng-include="'views/shared/_' + authorizationService.getUserInfo().userType + '.html'"></div>
+    <!--<my-customer></my-customer>-->
+    <p class="text-center text-muted" data-loading>
+        <span class="fa fa-spinner fa-spin fa-4x"></span>
+        <br /><br />
+        Loading, please wait...
+    </p>
+     <ng-view></ng-view>
+</body>
+</html>
+

@@ -1,0 +1,135 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Upload File</h4>
+            <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Upload File</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" role="form" name="adduploadFileform">
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.Name" class="form-control" id="title" placeholder="Your Name" required title="Enter Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Description</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.Description" class="form-control" id="title" placeholder="Your Name" required title="Enter Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Application</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.ApplicationId" class="form-control" data-ng-options="item.ApplicationId as item.Name for item in applicationList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Component</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.ComponentId" class="form-control" data-ng-options="item.ComponentId as item.Name for item in componentList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">File Input Path</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.FileInputPath" class="form-control" id="title" placeholder="Input Path" required title="Input Path" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Input File Mask</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.InputFileMask" class="form-control" id="title" placeholder="Input Mask" required title="Input Mask" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Archive Required</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.IsArchiveOutputRequired" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="uploadFile.IsArchiveOutputRequired">
+                    <label for="title" class="control-label col-sm-2">Archive Output Path</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.ArchiveOutputPath" class="form-control" id="title" placeholder="Archive Output Path" title="Archive Output Path" />
+                    </div>
+                </div>
+                <div class="form-group" ng-show="uploadFile.IsArchiveOutputRequired">
+                    <label for="title" class="control-label col-sm-2">Archive File Extension</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.ArchiveFileExpression" class="form-control" id="title" placeholder="Archive File Extension" title="Archive File Extension" />
+                    </div>
+                </div>
+                <div class="form-group" ng-show="uploadFile.IsArchiveOutputRequired">
+                    <label for="title" class="control-label col-sm-2">Archive File Transfer</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.ArchiveFileTransferSettingId" class="form-control" data-ng-options="item.FileTransferSettingId as item.Name for item in fileTransferList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Move Required</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.IsMoveFileRequired" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="uploadFile.IsMoveFileRequired">
+                    <label for="title" class="control-label col-sm-2">Move Output Path</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.MoveFilePath" class="form-control" id="title" placeholder="Move Output Path" title="Move Output Path" />
+                    </div>
+                </div>
+                <div class="form-group" ng-show="uploadFile.IsMoveFileRequired">
+                    <label for="title" class="control-label col-sm-2">Move File Extension</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="uploadFile.MoveFileExpression" class="form-control" id="title" placeholder="Move File Extension" title="Move File Extension" />
+                    </div>
+                </div>
+                <div class="form-group" ng-show="uploadFile.IsMoveFileRequired">
+                    <label for="title" class="control-label col-sm-2">Move File Transfer</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.MoveFileTransferSettingId" class="form-control" data-ng-options="item.FileTransferSettingId as item.Name for item in fileTransferList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Status</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="uploadFile.Status" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <span data-ng-hide="editMode">
+                            <input type="submit" value="Add" ng-disabled="adduploadFileform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                        </span>
+                        <span data-ng-show="editMode">
+                            <input type="submit" value="Update" ng-disabled="adduploadFileform.$invalid" data-ng-click="update(uploadFile.UploadFileId)" class="btn btn-primary" />
+                        </span>
+                        <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

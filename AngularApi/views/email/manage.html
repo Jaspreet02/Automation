@@ -1,0 +1,95 @@
+﻿<div class="container">
+    <div data-ng-app="app" class="container">
+        <div data-ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Email</h4>
+            <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Email</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" role="form" name="addemailform">
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Token</label>
+                    <div class="col-sm-6">                        
+                        <select data-ng-model="email.EmailToken" class="form-control" required data-ng-options="item for item in emailToken">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Client</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="email.ClientId" class="form-control" data-ng-options="item.ClientId as item.Name for item in clientList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Application</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="email.ApplicationId" class="form-control" data-ng-options="item.ApplicationId as item.Name for item in applicationList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Component</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="email.ApplicationComponentId" class="form-control" data-ng-options="item.ComponentId as item.Name for item in componentList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Email To</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="email.EmailToIds" class="form-control" id="title" placeholder="Email To" required title="Email To" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Email Cc</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="email.EmailCcIds" class="form-control" id="title" placeholder="Email Cc" title="Email Cc" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Subject</label>
+                    <div class="col-sm-6">
+                        <input type="text" data-ng-model="email.Subject" class="form-control" id="title" placeholder="Subject" required title="Subject" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Body</label>
+                    <div class="col-sm-6">
+                        <textarea type="text" data-ng-bind-html="email.Body" class="form-control" id="body" placeholder="Body" required title="Body" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="control-label col-sm-2">Status</label>
+                    <div class="col-sm-6">
+                        <select data-ng-model="email.Status" class="form-control" required data-ng-options="item.id as item.name for item in statusList">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <span data-ng-hide="editMode">
+                            <input type="submit" value="Add" ng-disabled="addemailform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                        </span>
+                        <span data-ng-show="editMode">
+                            <input type="submit" value="Update" ng-disabled="addemailform.$invalid" data-ng-click="update(email.EmailTemplateId)" class="btn btn-primary" />
+                        </span>
+                        <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

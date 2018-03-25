@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C879674-ABAC-499F-B3A6-95ABCB41ABA9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DbHander</RootNamespace>
+    <AssemblyName>DbHander</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContext.cs" />
+    <Compile Include="DomainClass\AppCommandArgument.cs" />
+    <Compile Include="DomainClass\Application.cs" />
+    <Compile Include="DomainClass\ApplicationComponent.cs" />
+    <Compile Include="DomainClass\ApplicationConfigFile.cs" />
+    <Compile Include="DomainClass\ApplicationFile.cs" />
+    <Compile Include="DomainClass\ApplicationSmtp.cs" />
+    <Compile Include="DomainClass\BaseModel.cs" />
+    <Compile Include="DomainClass\EnumEntity.cs" />
+    <Compile Include="DomainClass\Role.cs" />
+    <Compile Include="DomainClass\TriggerandStatusFile.cs" />
+    <Compile Include="DomainClass\UploadFile.cs" />
+    <Compile Include="DomainClass\Client.cs" />
+    <Compile Include="DomainClass\ClientSmtp.cs" />
+    <Compile Include="DomainClass\ComponentConfig.cs" />
+    <Compile Include="DomainClass\Component.cs" />
+    <Compile Include="DomainClass\ComponentInputLocation.cs" />
+    <Compile Include="DomainClass\ComponentOutputLocation.cs" />
+    <Compile Include="DomainClass\ContactInfo.cs" />
+    <Compile Include="DomainClass\DeliveryEmailSetting.cs" />
+    <Compile Include="DomainClass\EmailTemplate.cs" />
+    <Compile Include="DomainClass\EmailTracking.cs" />
+    <Compile Include="DomainClass\ErrorLog.cs" />
+    <Compile Include="DomainClass\FileTransferSetting.cs" />
+    <Compile Include="DomainClass\GMCCommand.cs" />
+    <Compile Include="DomainClass\GmcSchenerio.cs" />
+    <Compile Include="DomainClass\ProcComponent.cs" />
+    <Compile Include="DomainClass\ProcSession.cs" />
+    <Compile Include="DomainClass\Proof.cs" />
+    <Compile Include="DomainClass\ProofFile.cs" />
+    <Compile Include="DomainClass\RawFile.cs" />
+    <Compile Include="DomainClass\RunArchiveDetail.cs" />
+    <Compile Include="DomainClass\RunComponentStatus.cs" />
+    <Compile Include="DomainClass\RunDetail.cs" />
+    <Compile Include="DomainClass\ScheduledFrequency.cs" />
+    <Compile Include="DomainClass\ScheduledType.cs" />
+    <Compile Include="DomainClass\SmtpDetail.cs" />
+    <Compile Include="DomainClass\SystemSetting.cs" />
+    <Compile Include="DomainClass\User.cs" />
+    <Compile Include="EmailService\EmailService.cs" />
+    <Compile Include="Enum\Enum.cs" />
+    <Compile Include="Enum\EnumHelper.cs" />
+    <Compile Include="IRepository\AbstractRepository.cs" />
+    <Compile Include="IRepository\IAppCommandArgumentRepository.cs" />
+    <Compile Include="IRepository\IApplicationComponentRepository.cs" />
+    <Compile Include="IRepository\IApplicationConfigFileRepository.cs" />
+    <Compile Include="IRepository\IApplicationFilesRepository.cs" />
+    <Compile Include="IRepository\IApplicationRepository.cs" />
+    <Compile Include="IRepository\IApplicationSmtpRepository.cs" />
+    <Compile Include="IRepository\IClientRepository.cs" />
+    <Compile Include="IRepository\IComponentConfigRepository.cs" />
+    <Compile Include="IRepository\IComponentInputLocationRepository.cs" />
+    <Compile Include="IRepository\IComponentOutputLocationRepository.cs" />
+    <Compile Include="IRepository\IComponentRepository.cs" />
+    <Compile Include="IRepository\IUploadFileRepository.cs" />
+    <Compile Include="IRepository\ITriggerandStatusFileRepository.cs" />
+    <Compile Include="IRepository\IContactInfoRepository.cs" />
+    <Compile Include="IRepository\IEmailTemplateRepository.cs" />
+    <Compile Include="IRepository\IEmailTrackingRepository.cs" />
+    <Compile Include="IRepository\IFileTransferSettingsRepository.cs" />
+    <Compile Include="IRepository\IGenericRepository.cs" />
+    <Compile Include="IRepository\IGmcCommandRepository.cs" />
+    <Compile Include="IRepository\IGmcSchenerioRepository.cs" />
+    <Compile Include="IRepository\IProcComponantRepository.cs" />
+    <Compile Include="IRepository\IProcSessionsRepository.cs" />
+    <Compile Include="IRepository\IProofFilesRepository.cs" />
+    <Compile Include="IRepository\IProofRepository.cs" />
+    <Compile Include="IRepository\IRawFileRepository.cs" />
+    <Compile Include="IRepository\IRunArchiveDetailsRepository.cs" />
+    <Compile Include="IRepository\IRunComponentStatusRepository.cs" />
+    <Compile Include="IRepository\IRunDetailsRepository.cs" />
+    <Compile Include="IRepository\IScheduledFrequencyRepository.cs" />
+    <Compile Include="IRepository\IScheduledTypeRepository.cs" />
+    <Compile Include="IRepository\ISmtpDetailsRepository.cs" />
+    <Compile Include="IRepository\ISystemSettingRepository.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
+    <Compile Include="Migrations\201801271425353_27-01-2018.cs" />
+    <Compile Include="Migrations\201801271425353_27-01-2018.Designer.cs">
+      <DependentUpon>201801271425353_27-01-2018.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801271524541_27-01-2018-01.cs" />
+    <Compile Include="Migrations\201801271524541_27-01-2018-01.Designer.cs">
+      <DependentUpon>201801271524541_27-01-2018-01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803152246459_15-03-2018.cs" />
+    <Compile Include="Migrations\201803152246459_15-03-2018.Designer.cs">
+      <DependentUpon>201803152246459_15-03-2018.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803152254396_15-03-2018-02.cs" />
+    <Compile Include="Migrations\201803152254396_15-03-2018-02.Designer.cs">
+      <DependentUpon>201803152254396_15-03-2018-02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803152258043_15-03-2018-03.cs" />
+    <Compile Include="Migrations\201803152258043_15-03-2018-03.Designer.cs">
+      <DependentUpon>201803152258043_15-03-2018-03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AppCommandArgumentRepository.cs" />
+    <Compile Include="Repository\ApplicationComponentRepository.cs" />
+    <Compile Include="Repository\ApplicationConfigFileRepository.cs" />
+    <Compile Include="Repository\ApplicationFileRepository.cs" />
+    <Compile Include="Repository\ApplicationRepository.cs" />
+    <Compile Include="Repository\ApplicationSmtpRepository.cs" />
+    <Compile Include="Repository\ClientRepository.cs" />
+    <Compile Include="Repository\ClientSmtpRepository.cs" />
+    <Compile Include="Repository\ComponentConfigRepository.cs" />
+    <Compile Include="Repository\ComponentInputLocationRepository.cs" />
+    <Compile Include="Repository\ComponentOutputLocationRepository.cs" />
+    <Compile Include="Repository\ComponentRepository.cs" />
+    <Compile Include="Repository\TriggerandStatusFileRepository.cs" />
+    <Compile Include="Repository\ContactInfoRepository.cs" />
+    <Compile Include="Repository\EmailTemplateRepository.cs" />
+    <Compile Include="Repository\EmailTrackingRepository.cs" />
+    <Compile Include="Repository\FileTransferSettingsRepository.cs" />
+    <Compile Include="Repository\GmcCommandRepository.cs" />
+    <Compile Include="Repository\ProcComponantRepository.cs" />
+    <Compile Include="Repository\ProcSessionsRepository.cs" />
+    <Compile Include="Repository\ProofFilesRepository.cs" />
+    <Compile Include="Repository\ProofRepository.cs" />
+    <Compile Include="Repository\RawFileRepository.cs" />
+    <Compile Include="Repository\RunComponentStatusRepository.cs" />
+    <Compile Include="Repository\RunDetailRepository.cs" />
+    <Compile Include="Repository\ScheduledFrequencyRepository.cs" />
+    <Compile Include="Repository\ScheduledTypeRepository.cs" />
+    <Compile Include="Repository\SmtpDetailsRepository.cs" />
+    <Compile Include="Repository\SystemSettingRepository.cs" />
+    <Compile Include="Repository\UploadFileRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801271425353_27-01-2018.resx">
+      <DependentUpon>201801271425353_27-01-2018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801271524541_27-01-2018-01.resx">
+      <DependentUpon>201801271524541_27-01-2018-01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803152246459_15-03-2018.resx">
+      <DependentUpon>201803152246459_15-03-2018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803152254396_15-03-2018-02.resx">
+      <DependentUpon>201803152254396_15-03-2018-02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803152258043_15-03-2018-03.resx">
+      <DependentUpon>201803152258043_15-03-2018-03.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
