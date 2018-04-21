@@ -31,7 +31,7 @@ namespace MobileService.Controllers
             return Ok(await CreatePageResult<ApplicationUser>(result, pageNumber, pageSize, fetchAll));
         }
 
-        // GET: api/Client/5
+        // GET: api/Client/51
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
