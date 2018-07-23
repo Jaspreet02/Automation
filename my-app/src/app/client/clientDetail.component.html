@@ -1,0 +1,139 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <div *ngIf="selectedClient">
+        <form [formGroup]="clientform" (ngSubmit)="save()">
+            <p-panel header="Validate">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="name" [(ngModel)]="selectedClient.Name" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['name'].valid&&clientform.controls['name'].dirty">
+                                <i class="fa fa-close"></i>
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Code *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="code" [(ngModel)]="selectedClient.Code" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['code'].valid&&clientform.controls['code'].dirty">
+                                <i class="fa fa-close"></i>
+                                Code is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Contact Number *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-inputMask mask="(999) 999-9999" formControlName="contact" [(ngModel)]="selectedClient.Contact" placeholder="(999) 999-9999"></p-inputMask>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['contact'].valid&&clientform.controls['contact'].dirty">
+                                <i class="fa fa-close"></i>
+                                Contact Number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Email Address *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="email" formControlName="emailAddress" [(ngModel)]="selectedClient.EmailAddress" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['emailAddress'].valid&&clientform.controls['emailAddress'].dirty">
+                                <i class="fa fa-close"></i>
+                                <span *ngIf="clientform.controls['emailAddress'].errors['required']">Email Address is required</span>
+                                <span *ngIf="clientform.controls['emailAddress'].errors['email']">Not valid email address</span>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Proof Format *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="proofFormat" name="proofFormat" formControlName="proofFormat" [options]="proofFormats" [(ngModel)]="proofFormat" placeholder="Select a Proof Format"
+                                optionLabel="Label"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['proofFormat'].valid&&clientform.controls['proofFormat'].dirty">
+                                <i class="fa fa-close"></i>
+                                Proof Format is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="!(proofFormat.Value == null)">
+                        <div class="ui-grid-col-2">
+                            Proof Password *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="proofPassword" [(ngModel)]="selectedClient.ProofPassword" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['proofPassword'].valid&&clientform.controls['proofPassword'].dirty">
+                                <i class="fa fa-close"></i>
+                                Proof Password is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="proofFormat.Value == 'PGP'">
+                        <div class="ui-grid-col-2">
+                            Proof Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="proofName" [(ngModel)]="selectedClient.ProofName" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['proofName'].valid&&clientform.controls['proofName'].dirty">
+                                <i class="fa fa-close"></i>
+                                Proof Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="status" name="status" formControlName="status" [options]="statuses" [(ngModel)]="status" placeholder="Select Status"
+                                optionLabel="Label"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['status'].valid&&clientform.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!clientform.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>

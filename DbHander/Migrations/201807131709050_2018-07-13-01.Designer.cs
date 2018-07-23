@@ -7,13 +7,13 @@ namespace DbHander.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _1503201803 : IMigrationMetadata
+    public sealed partial class _2018071301 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_1503201803));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_2018071301));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803152258043_15-03-2018-03"; }
+            get { return "201807131709050_2018-07-13-01"; }
         }
         
         string IMigrationMetadata.Source

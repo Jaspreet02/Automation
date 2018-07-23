@@ -3,7 +3,7 @@ export  class User {
     FirstName: string;
     LastName: string;
     Gender: string;
-    Status: number;
+    Status: boolean;
     PhoneNumber: number;
     Email: string;
 }

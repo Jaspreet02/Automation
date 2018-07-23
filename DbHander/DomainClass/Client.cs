@@ -23,7 +23,7 @@ namespace DbHander
         [DataType(DataType.EmailAddress, ErrorMessage = "Not a valid email address")]
         public string EmailAddress { get; set; }
         [Required]
-        [StringLength(10)]
+        [StringLength(15)]
         public string Contact { get; set; }
         [StringLength(3)]
         public string ProofFormat { get; set; }

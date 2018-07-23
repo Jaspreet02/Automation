@@ -30,7 +30,7 @@ namespace MobileService.Controllers
 
         protected async Task<IPageResult<T>> CreatePageResult<T>(IQueryable<T> items, int pageNumber, int pageSize,bool fetchAll)
         {
-            pageNumber = fetchAll ? 1 : pageNumber;
+            pageNumber = fetchAll ? 0 : pageNumber;
             var count = await items.CountAsync();
             pageSize = fetchAll ? count : pageSize;
             var result = items.Skip(pageNumber * pageSize).Take(pageSize);

@@ -9,6 +9,7 @@ using MobileService.Common;
 using Microsoft.AspNet.Identity.Owin;
 using MobileService.App_Start;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MobileService
 {
@@ -26,7 +27,7 @@ namespace MobileService
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "http://localhost:4200" });
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 

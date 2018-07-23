@@ -1,0 +1,27 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+  <p-dataTable [value]="Applications" [responsive]="true" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" selectionMode="single"
+    [(selection)]="selectedApplication" (onRowSelect)="onSelect()">
+    <p-header>Applications</p-header>
+    <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
+    <p-column field="ClientId" header="Client" [sortable]="true">
+      <ng-template let-item="rowData" pTemplate type="body">
+        {{ GetClientbyId(item.ClientId) }}
+      </ng-template>
+    </p-column>
+    <p-column field="Name" header="Name" [sortable]="true"></p-column>
+    <p-column field="Code" header="Code" [sortable]="true"></p-column>
+    <p-column field="IsBatch" header="Is Batch" [sortable]="true"></p-column>
+    <p-column field="InputPath" header="Input Path" [sortable]="true"></p-column>
+    <p-column field="Status" header="Status" [sortable]="true"></p-column>
+  </p-dataTable>
+  <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
+  <p-footer>
+    <div class="ui-helper-clearfix" style="width:100%">
+      <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+    </div>
+  </p-footer>
+</div>

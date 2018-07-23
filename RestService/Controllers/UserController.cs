@@ -13,6 +13,7 @@ using System.Web.Http.OData;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class UserController : BaseController
     {
         IUserRepository _objUserRepository;
@@ -24,10 +25,10 @@ namespace MobileService.Controllers
 
         // GET: api/Client
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10, bool fetchAll = false)
+        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10,string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
-            // var userList = GenericPrincipalExtensions.Users(User);
-            var result = _objUserRepository.FindAll().OrderByDescending(x => x.CreatedAt); // _objUserRepository.FindAll().Where(x => userList.Contains(x.Id)).OrderByDescending(x => x.CreatedAt);
+            var userList = GenericPrincipalExtensions.Users(User);
+            var result = _objUserRepository.FindAll().Where(x => userList.Contains(x.Id)).OrderBy(sortField + " " + sortOrder);
             return Ok(await CreatePageResult<ApplicationUser>(result, pageNumber, pageSize, fetchAll));
         }
 
@@ -43,7 +44,7 @@ namespace MobileService.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post(ApplicationUser value, string roleName)
         {
-            value.ParentId = "130783d2-fb08-4c8e-a727-c36b7a5f1122"; // User.Identity.GetUserId();
+            value.ParentId = User.Identity.GetUserId();
             value.UserName = value.Email;
             const string password = "Gurdit@s1ngh007";
             value.PasswordHash = password;
@@ -79,8 +80,8 @@ namespace MobileService.Controllers
             user.UserName = value.UserName;
             user.Email = value.Email;
             user.PhoneNumber = value.PhoneNumber;
-            user.Gender = value.Gender; //custom property
-
+            user.Gender = value.Gender;
+            user.Status = value.Status;
             // Apply the changes if any to the db
              await UserManager.UpdateAsync(user);
             return Ok(user.Id);

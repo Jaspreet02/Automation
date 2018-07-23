@@ -1,52 +1,111 @@
-<div class="ui-g" *ngIf="selectedUser">
-        <div class="ui-g-12 ui-md-6">
-            <div class="ui-g-4">
-                First Name
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="firstName" [(ngModel)]="selectedUser.FirstName" />
-            </div>
-            </div>
-            <div class="ui-g-12 ui-md-6">
-            <div class="ui-g-4">
-                Last Name
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="lastName" [(ngModel)]="selectedUser.LastName" />
-            </div>
-        </div>
-        <div class="ui-g-12 ui-md-6">
-            <div class="ui-g-4">
-                Gender
-            </div>
-            <div class="ui-g-8">
-                <p-dropdown [options]="genders" [(ngModel)]="gender" placeholder="Select a Gender" optionLabel="Label"></p-dropdown>
-            </div>
-        </div>
-        <div class="ui-g-12 ui-md-6">
-            <div class="ui-g-4">
-                Phone Number
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="phoneNumber" [(ngModel)]="selectedUser.PhoneNumber" />
-            </div>
-        </div>
-        <div class="ui-g-12 ui-md-6">
-            <div class="ui-g-4">
-                Email
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="email" [(ngModel)]="selectedUser.Email" />
-            </div>
-        </div>
-        <div class="ui-g-12 ui-md-6">
-        </div>
-        <div class="ui-g-12 ui-md-6">
-            <div class="ui-g-4">
-            </div>
-            <div class="ui-g-8">
-                <button pButton label="Save" type="button" (click)="save()" ></button>
-                <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
-            </div>
-        </div>
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <div *ngIf="selectedUser">
+        <form [formGroup]="userform" (ngSubmit)="save()">
+            <p-panel header="Validate">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            First Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="firstname" [(ngModel)]="selectedUser.FirstName" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty">
+                                <i class="fa fa-close"></i>
+                                Firstname is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Last Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="lastname" [(ngModel)]="selectedUser.LastName" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['lastname'].valid&&userform.controls['lastname'].dirty">
+                                <i class="fa fa-close"></i>
+                                Lastname is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Phone Number *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-inputMask mask="(999) 999-9999" formControlName="phonenumber" [(ngModel)]="selectedUser.PhoneNumber" placeholder="(999) 999-9999"></p-inputMask>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['phonenumber'].valid&&userform.controls['phonenumber'].dirty">
+                                <i class="fa fa-close"></i>
+                                Phone Number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Email Address *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="email" formControlName="email" [(ngModel)]="selectedUser.Email" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['email'].valid&&userform.controls['email'].dirty">
+                                <i class="fa fa-close"></i>
+                                <span *ngIf="userform.controls['email'].errors['required']">Email Address is required</span>
+                                <span *ngIf="userform.controls['email'].errors['email']">Not valid email address</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Gender *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="gender" name="gender" formControlName="gender" [options]="genders" [(ngModel)]="gender" placeholder="Select a Gender"
+                                optionLabel="Label"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['gender'].valid&&userform.controls['gender'].dirty">
+                                <i class="fa fa-close"></i>
+                                Gender is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="status" name="status" formControlName="status" [options]="statuses" [(ngModel)]="status" placeholder="Select Status"
+                                optionLabel="Label"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['status'].valid&&userform.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
     </div>
+</div>

@@ -21,8 +21,8 @@ namespace MobileService.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> Get(int pageNumber = 1, int pageSize = 10, bool fetchAll = false)
         {
-            // var userList = GenericPrincipalExtensions.Users(User);
-            var result = _objclientRepository.FindAll().OrderByDescending(x => x.CreatedAt);  //_objclientRepository.FindAll().Where(x => userList.Contains(x.UserId)).OrderByDescending(x => x.CreatedAt);
+            var userList = GenericPrincipalExtensions.Users(User);
+            var result = _objclientRepository.FindAll().Where(x => userList.Contains(x.UserId)).OrderByDescending(x => x.CreatedAt);
             return Ok(await CreatePageResult<Client>(result, pageNumber, pageSize, fetchAll));
         }
 

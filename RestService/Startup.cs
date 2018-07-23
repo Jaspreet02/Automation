@@ -20,10 +20,10 @@ namespace MobileService
         {
             HttpConfiguration config = new HttpConfiguration();
 
+            app.UseCors(CorsOptions.AllowAll);
             ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
-            app.UseCors(CorsOptions.AllowAll);
             
             app.UseWebApi(config);
             //Rest of code is here;

@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { AppPage } from '../../../e2e/app.po';
-import { NumberValueAccessor } from '@angular/forms/src/directives/number_value_accessor';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-user',
@@ -19,18 +15,32 @@ export class UserComponent implements OnInit {
 
   _total: number;
 
-  sortF: string;
+  pageNumber: number = 0;
 
-  sortO: string;
+  pageSize: number = 5;
+
+  sortF: string = 'CreatedAt';
+
+  sortO: string ;
 
   newUser: boolean;
 
   selectedUser: User;
 
+  cols: any[];
+
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.getUsers(0, 2);
+    this.getUsers();
+    this.cols = [
+      { field: 'FirstName', header: 'First Name' },
+      { field: 'LastName', header: 'Last Name' },
+      { field: 'PhoneNumber', header: 'Phone Number' },
+      { field: 'Gender', header: 'Gender' },
+      {field: 'Email', header: 'Email'},
+      {field: 'Status', header: 'Status'}
+  ];
   }
 
   showDialogToAdd() {
@@ -65,14 +75,17 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/user/' + this.selectedUser.Id]);
   }
 
-  getUsers(pagenumber: number, pageSize: number): void {
+  getUsers(): void {
+    debugger;
     this.userService
-      .getUsers(pagenumber, pageSize)
+      .getUsers(this.pageNumber, this.pageSize,this.sortF,this.sortO == '1' ? 'asc' : 'desc')
       .subscribe(x => (this.Users = x.Result, this._total = x.Count));
   }
 
   paginate(event) {
-    this.getUsers(event.page, event.rows);
+    this.pageNumber = event.page;
+    this.pageSize = event.rows;
+    this.getUsers();
     // event.first = Index of the first record
     // event.rows = Number of rows to display in new page
     // event.page = Index of the new page
@@ -81,9 +94,12 @@ export class UserComponent implements OnInit {
 
   changeSort(event) {
     if (!event.order) {
-      this.sortF = 'year';
+      this.sortF = 'CreatedAt';
+      this.sortO = '-1';
     } else {
       this.sortF = event.field;
+      this.sortO = event.order;
     }
+    this.getUsers();
   }
 }

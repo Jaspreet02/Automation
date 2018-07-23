@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges} from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Location } from '@angular/common';
@@ -8,6 +8,7 @@ import { NumberValueAccessor } from '@angular/forms/src/directives/number_value_
 import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 import { timingSafeEqual } from 'crypto';
 import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
+import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-userDetail',
@@ -27,8 +28,14 @@ export class UserDetailComponent implements OnInit {
 
   gender: SelectedItem;
 
+  statuses: SelectedItem[];
+
+  status: SelectedItem;
+
+  userform: FormGroup;
+  
   constructor(private userService: UserService,
-    private location: Location, private router: Router, private route: ActivatedRoute) {
+    private location: Location, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) {
     this.route.params.subscribe(res => {
       if (res['id']) {
         this.userId = res.id;
@@ -39,10 +46,15 @@ export class UserDetailComponent implements OnInit {
       }
     });
 
-    this.genders =[
-      { Label:'Male', Value:'M' },
-      { Label:'Female', Value:'F' },
-      { Label:'Other', Value:'O' }
+    this.genders = [
+      { Label: 'Male', Value: 'M' },
+      { Label: 'Female', Value: 'F' },
+      { Label: 'Other', Value: 'O' }
+    ];
+
+    this.statuses = [
+      { Label: 'True', Value: 'true'   },
+      { Label: 'False', Value: 'false' }
     ];
 
   }
@@ -54,28 +66,42 @@ export class UserDetailComponent implements OnInit {
     else {
       this.getUser();
     }
+    this.userform = this.fb.group({
+      'firstname': new FormControl('', Validators.required),
+      'lastname': new FormControl('', Validators.required),
+      'phonenumber': new FormControl('', Validators.required),
+      'email': new FormControl('', Validators.compose([Validators.required,Validators.email])),
+      'gender': new FormControl('', Validators.required),
+      'status': new FormControl('',Validators.required)
+    });
   }
 
   getUser(): void {
     this.userService.getUser(this.userId)
-      .subscribe(x => { this.selectedUser = x ;  this.gender = this.genders.find(g=> g.Value == this.selectedUser.Gender) });
+      .subscribe(x => {
+        this.selectedUser = x;
+        this.gender = this.genders.find(g => g.Value == this.selectedUser.Gender);
+        this.status = this.statuses.find(s=> s.Value == this.selectedUser.Status.toString())
+      });;
   }
 
   save() {
+    debugger;
     if (this.newUser) {
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.addUser(this.selectedUser).subscribe(x=> { this.selectedUser = null; this.router.navigate(['/users']); });
+      this.selectedUser.Status = Boolean(this.status.Value);
+      this.userService.addUser(this.selectedUser).subscribe(x => { this.selectedUser = null; this.router.navigate(['/users']); });
     } else {
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.updateUser(this.selectedUser).subscribe(x=> { this.selectedUser = null; this.router.navigate(['/users']); });
-    }  
+      this.selectedUser.Status = Boolean(this.status.Value);
+      this.userService.updateUser(this.selectedUser).subscribe(x => { this.selectedUser = null; this.router.navigate(['/users']); });
+    }
   }
 
   cancel() {
     this.selectedUser = null;
     this.location.back();
   }
-
 }
 
 interface SelectedItem {

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 import { User } from './user';
 
@@ -18,9 +19,23 @@ export class UserService {
 
   constructor( private http: HttpClient) {}
 
-  getUsers(pageNumber: number, pageSize: number): Observable<PagedResponse<User>> {
+  userAuthentication(userName: string, password: string):Observable<any>  {
+    var data = "username=" + userName + "&password=" + password + "&grant_type=password";
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded', 'No-Auth':'True'});
+    return this.http.post('http://127.0.0.1:8001/token', data, { headers: reqHeader });
+  }
+
+  private serializeObj(obj) {
+    var result = [];
+    for (var property in obj)
+        result.push(encodeURIComponent(property) + "=" + encodeURIComponent(obj[property]));
+
+    return result.join("&");
+}
+
+  getUsers(pageNumber: number, pageSize: number,sortField: string, sortOrder: string): Observable<PagedResponse<User>> {
    // return of(Users);
-   return this.http.get<PagedResponse<User>>(this.userUrl + '/Get?pageNumber=' + pageNumber + '&pageSize=' + pageSize);
+   return this.http.get<PagedResponse<User>>(this.userUrl + '/Get?pageNumber=' + pageNumber + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortOrder=' + sortOrder);
   }
 
     /** POST: add a new user to the server */
