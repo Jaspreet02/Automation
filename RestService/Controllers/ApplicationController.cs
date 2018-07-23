@@ -20,10 +20,10 @@ namespace MobileService.Controllers
 
         // GET: api/Application
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int pageNumber = 1, int pageSize = 10, bool fetchAll = false)
+        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
             var clientList = GenericPrincipalExtensions.Clients(User);
-            var result = objApplicationRepository.FindAll().Where(x => clientList.Contains(x.ClientId)).OrderByDescending(x => x.CreatedAt);
+            var result = objApplicationRepository.FindAll().Where(x => clientList.Contains(x.ClientId)).OrderBy(sortField + " " + sortOrder);
             return Ok(await CreatePageResult<Application>(result, pageNumber, pageSize, fetchAll));
         }
 

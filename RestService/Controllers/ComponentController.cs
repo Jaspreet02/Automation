@@ -24,9 +24,9 @@ namespace MobileService.Controllers
         // GET: api/Client
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IHttpActionResult> Get(int pageNumber = 1, int pageSize = 10, bool fetchAll = false)
+        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
-            var result = _objComponentRepository.FindAll().OrderByDescending(x => x.CreatedAt);
+            var result = _objComponentRepository.FindAll().OrderBy(sortField + " " + sortOrder);
             return Ok(await CreatePageResult<Component>(result, pageNumber, pageSize, fetchAll));
         }
 

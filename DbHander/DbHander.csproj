@@ -154,6 +154,10 @@
     <Compile Include="Migrations\201807131709050_2018-07-13-01.Designer.cs">
       <DependentUpon>201807131709050_2018-07-13-01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807232158056_2018-07-23.cs" />
+    <Compile Include="Migrations\201807232158056_2018-07-23.Designer.cs">
+      <DependentUpon>201807232158056_2018-07-23.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AppCommandArgumentRepository.cs" />
@@ -214,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807131709050_2018-07-13-01.resx">
       <DependentUpon>201807131709050_2018-07-13-01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807232158056_2018-07-23.resx">
+      <DependentUpon>201807232158056_2018-07-23.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

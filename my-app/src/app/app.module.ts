@@ -12,10 +12,14 @@ import { LoginComponent } from './login/login.component';
 import {  ClientComponent } from './client/client.component';
 import { ClientDetailComponent } from './client/clientDetail.component';
 import { ApplicationComponent } from './application/application.component';
-import { ApplicationDetailComponent } from './application/applicationDetail.component'
+import { ApplicationDetailComponent } from './application/applicationDetail.component';
+import { FileTransferComponent } from './fileTransfer/fileTransfer.component';
+import { FileTransferDetailComponent } from './fileTransfer/fileTransferDetail.component';
 import { UserService } from './user.service';
 import  { ClientService } from './client.service';
-import { ApplicationService } from './application.service'
+import { ApplicationService } from './application.service';
+import { FileTransferService } from './fileTransfer.service';
+import { MasterService } from './master.service'
 
 import { AppHeaderComponent } from './_layout/app-header/app-header.component';
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
@@ -36,6 +40,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ClientDetailComponent,
     ApplicationComponent,
     ApplicationDetailComponent,
+    FileTransferComponent,
+    FileTransferDetailComponent,
     AppHeaderComponent,
     AdminHeaderComponent,
     UserHeaderComponent,
@@ -57,7 +63,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     PanelModule ,
     BrowserAnimationsModule
   ],
-  providers: [UserService,ClientService,ApplicationService,AuthGuard,,
+  providers: [UserService,ClientService,ApplicationService,FileTransferService,MasterService,AuthGuard,,
     {
       provide : HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,

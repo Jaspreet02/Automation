@@ -8,6 +8,8 @@ import { ClientComponent } from './client/client.component';
 import { ClientDetailComponent } from './client/clientDetail.component';
 import { ApplicationComponent } from './application/application.component';
 import { ApplicationDetailComponent } from './application/applicationDetail.component';
+import { FileTransferComponent } from './fileTransfer/fileTransfer.component';
+import { FileTransferDetailComponent } from './fileTransfer/fileTransferDetail.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,7 +22,10 @@ const routes: Routes = [
     {path: 'client', component: ClientDetailComponent},
     { path: 'applications', component: ApplicationComponent},
     { path: 'application/:id', component: ApplicationDetailComponent },
-    {path: 'application', component: ApplicationDetailComponent}
+    {path: 'application', component: ApplicationDetailComponent},
+    { path: 'fileTransfers', component: FileTransferComponent},
+    { path: 'fileTransfer/:id', component: FileTransferDetailComponent },
+    {path: 'fileTransfer', component: FileTransferDetailComponent}
   ];
 
   @NgModule({

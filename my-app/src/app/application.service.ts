@@ -19,9 +19,9 @@ export class ApplicationService {
 
   constructor(private http: HttpClient) { }
 
-  getApplications(pageNumber: number, pageSize: number, sortField: string, sortOrder: string): Observable<PagedResponse<Application>> {
+  getApplications(pageNumber: number, pageSize: number, sortField: string, sortOrder: string, fetchAll: boolean = false): Observable<PagedResponse<Application>> {
     // return of(Users);
-    return this.http.get<PagedResponse<Application>>(this.ApplicationUrl + '/Get?pageNumber=' + pageNumber + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortOrder=' + sortOrder);
+    return this.http.get<PagedResponse<Application>>(this.ApplicationUrl + '/Get?pageNumber=' + pageNumber + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortOrder=' + sortOrder + '&fetchAll=' + fetchAll);
   }
 
   /** POST: add a new user to the server */

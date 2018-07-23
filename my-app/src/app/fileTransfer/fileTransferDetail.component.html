@@ -1,0 +1,123 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <div *ngIf="selectedFileTransfer">
+        <form [formGroup]="fileTransferForm" (ngSubmit)="save()">
+            <p-panel header="File Transfer">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="name" [(ngModel)]="selectedFileTransfer.Name" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['name'].valid&&fileTransferForm.controls['name'].dirty">
+                                <i class="fa fa-close"></i>
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Queue Type *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="queueType" name="queueType" formControlName="queueType" [options]="queueTypes" [(ngModel)]="queueType" optionLabel="Status" placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['queueType'].valid&&fileTransferForm.controls['queueType'].dirty">
+                                <i class="fa fa-close"></i>
+                                Queue Type is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="(queueType.QueueTypeId != '4')">
+                        <div class="ui-grid-col-2">
+                            Host *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="host" [(ngModel)]="selectedFileTransfer.Host" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['host'].valid&&fileTransferForm.controls['host'].dirty">
+                                <i class="fa fa-close"></i>
+                                Host is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="(queueType.QueueTypeId != '4')">
+                        <div class="ui-grid-col-2">
+                            User Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="userName" [(ngModel)]="selectedFileTransfer.UserName" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['userName'].valid&&fileTransferForm.controls['userName'].dirty">
+                                <i class="fa fa-close"></i>
+                                User Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="(queueType.QueueTypeId != '4')">
+                        <div class="ui-grid-col-2">
+                            Password *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="password" [(ngModel)]="selectedFileTransfer.Password" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['password'].valid&&fileTransferForm.controls['password'].dirty">
+                                <i class="fa fa-close"></i>
+                                Password is required
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="ui-grid-row" *ngIf="(queueType.QueueTypeId != '4')">
+                        <div class="ui-grid-col-2">
+                            Port *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="port" [(ngModel)]="selectedFileTransfer.Port" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['port'].valid&&fileTransferForm.controls['port'].dirty">
+                                <i class="fa fa-close"></i>
+                                Port is required
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="status" name="status" formControlName="status" [options]="statuses" [(ngModel)]="status" placeholder="Select Status"
+                                optionLabel="Label"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fileTransferForm.controls['status'].valid&&fileTransferForm.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!fileTransferForm.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>

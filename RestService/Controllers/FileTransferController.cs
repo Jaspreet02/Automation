@@ -1,4 +1,5 @@
 ﻿using DbHander;
+using Microsoft.AspNet.Identity;
 using MobileService.Common;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,9 +19,10 @@ namespace MobileService.Controllers
 
         // GET: api/Application
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int pageNumber = 1, int pageSize = 10, bool fetchAll = false)
+        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
-            var result = objFileTransferRepository.FindAll().AsQueryable().OrderByDescending(x=> x.CreatedAt);
+            var userList = GenericPrincipalExtensions.Users(User);
+            var result = objFileTransferRepository.FindAll().Where(x => userList.Contains(x.UserId)).OrderBy(sortField + " " + sortOrder);
             return Ok(await CreatePageResult<FileTransferSetting>(result, pageNumber, pageSize,fetchAll));
         }
 
@@ -36,6 +38,7 @@ namespace MobileService.Controllers
         [HttpPost]
         public IHttpActionResult Post(FileTransferSetting value)
         {
+            value.UserId = User.Identity.GetUserId();
             var result = objFileTransferRepository.Save(value);
             return Ok(result);
         }
