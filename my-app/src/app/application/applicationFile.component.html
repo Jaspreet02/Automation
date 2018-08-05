@@ -1,0 +1,54 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+  <p-dataTable [value]="ApplicationFiles" [responsive]="true" selectionMode="single"
+  [(selection)]="ApplicationFile" (onRowSelect)="onSelect()">
+  <p-header>Application Files</p-header>
+  <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
+  <p-column field="Mask" header="Mask"></p-column>
+  <p-column field="IsRequired" header="Required"></p-column>
+  <p-column field="Status" header="Status"></p-column>
+</p-dataTable>
+<p-footer>
+  <div class="ui-helper-clearfix" style="width:100%">
+    <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+  </div>
+</p-footer>
+
+<p-dialog header="Application File" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+    <div class="ui-g ui-fluid" *ngIf="ApplicationFile">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label>Mask</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="mask" [(ngModel)]="ApplicationFile.Mask" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label>Required</label>
+            </div>
+            <div class="ui-g-8">
+                <p-inputSwitch onLabel="true" offLabel="false" [(ngModel)]="ApplicationFile.IsRequired"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label>Status</label>
+            </div>
+            <div class="ui-g-8">
+                <p-inputSwitch onLabel="true" offLabel="false" [(ngModel)]="ApplicationFile.Status"></p-inputSwitch>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+</div>

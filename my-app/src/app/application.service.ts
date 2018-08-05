@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { Application } from './application';
+import { ApplicationFile } from './applicationFile';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -47,6 +48,22 @@ export class ApplicationService {
   updateApplication(application: Application): Observable<any> {
     const url = `${this.ApplicationUrl}/Put/${application.ApplicationId}`;
     return this.http.put(url, application, httpOptions);
+  }
+
+  getApplicationFiles(applicationId: number): Observable<ApplicationFile[]> {
+    // return of(Users);
+    return this.http.get<ApplicationFile[]>(this.ApplicationUrl + '/ApplicationFiles?applicationId=' + applicationId);
+  }
+
+  addApplicationFile(applicationFile: ApplicationFile): Observable<ApplicationFile> {
+    const url = `${this.ApplicationUrl}/AddApplicationFile`;
+    return this.http.post<ApplicationFile>(url, applicationFile, httpOptions);
+  }
+
+  deleteApplicationFile(applicationFile: ApplicationFile | number): Observable<ApplicationFile> {
+    const id = typeof applicationFile === 'number' ? applicationFile : applicationFile.ApplicationFileId;
+    const url = `${this.ApplicationUrl}/DeleteApplicationFile?applicationFileId=${id}`;
+    return this.http.delete<ApplicationFile>(url, httpOptions);
   }
 
 }

@@ -1,0 +1,94 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <div *ngIf="selectedComponentExe">
+        <form [formGroup]="componentExeform" (ngSubmit)="save()">
+            <p-panel header="Component">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="name" [(ngModel)]="selectedComponentExe.Name" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!componentExeform.controls['name'].valid&&componentExeform.controls['name'].dirty">
+                                <i class="fa fa-close"></i>
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Short Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="shortName" [(ngModel)]="selectedComponentExe.ShortName" placeholder="Required"/>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!componentExeform.controls['shortName'].valid&&componentExeform.controls['shortName'].dirty">
+                                <i class="fa fa-close"></i>
+                                Short Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Exe Path *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="componentExe" [(ngModel)]="selectedComponentExe.ComponentExe" placeholder="Required"/>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!componentExeform.controls['componentExe'].valid&&componentExeform.controls['componentExe'].dirty">
+                                <i class="fa fa-close"></i>
+                                Exe Path is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Detail *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="detail" [(ngModel)]="selectedComponentExe.Detail" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!componentExeform.controls['detail'].valid&&componentExeform.controls['detail'].dirty">
+                                <i class="fa fa-close"></i>
+                                Detail is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-inputSwitch id="status" name="status" formControlName="status" onLabel="true" offLabel="false" [(ngModel)]="selectedComponentExe.Status"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!componentExeform.controls['status'].valid&&componentExeform.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!componentExeform.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>
