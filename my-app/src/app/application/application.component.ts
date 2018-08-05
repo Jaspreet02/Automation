@@ -61,7 +61,7 @@ export class ApplicationComponent implements OnInit {
 
   onSelect(): void {
     this.newUser = false;
-    this.router.navigate(['/applicationFile/' + this.selectedApplication.ApplicationId]);
+    this.router.navigate(['/application/' + this.selectedApplication.ApplicationId]);
   }
 
   getApplications(): void {

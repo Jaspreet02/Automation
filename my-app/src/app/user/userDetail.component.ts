@@ -28,10 +28,6 @@ export class UserDetailComponent implements OnInit {
 
   gender: SelectedItem;
 
-  statuses: SelectedItem[];
-
-  status: SelectedItem;
-
   userform: FormGroup;
   
   constructor(private userService: UserService,
@@ -52,11 +48,6 @@ export class UserDetailComponent implements OnInit {
       { Label: 'Other', Value: 'O' }
     ];
 
-    this.statuses = [
-      { Label: 'True', Value: 'true'   },
-      { Label: 'False', Value: 'false' }
-    ];
-
   }
 
   ngOnInit() {
@@ -72,7 +63,7 @@ export class UserDetailComponent implements OnInit {
       'phonenumber': new FormControl('', Validators.required),
       'email': new FormControl('', Validators.compose([Validators.required,Validators.email])),
       'gender': new FormControl('', Validators.required),
-      'status': new FormControl('',Validators.required)
+      'status': new FormControl('')
     });
   }
 
@@ -81,19 +72,15 @@ export class UserDetailComponent implements OnInit {
       .subscribe(x => {
         this.selectedUser = x;
         this.gender = this.genders.find(g => g.Value == this.selectedUser.Gender);
-        this.status = this.statuses.find(s=> s.Value == this.selectedUser.Status.toString())
-      });;
+      });
   }
 
   save() {
-    debugger;
     if (this.newUser) {
       this.selectedUser.Gender = this.gender.Value;
-      this.selectedUser.Status = Boolean(this.status.Value);
       this.userService.addUser(this.selectedUser).subscribe(x => { this.selectedUser = null; this.router.navigate(['/users']); });
     } else {
       this.selectedUser.Gender = this.gender.Value;
-      this.selectedUser.Status = Boolean(this.status.Value);
       this.userService.updateUser(this.selectedUser).subscribe(x => { this.selectedUser = null; this.router.navigate(['/users']); });
     }
   }

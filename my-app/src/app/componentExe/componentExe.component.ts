@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentExe } from '../componentExe';
+import { TriggerandStatusFile } from '../TriggerandStatusFile';
 import { ComponentExeService } from '../componentExe.service';
 import { Router } from '@angular/router';
 
@@ -25,7 +26,11 @@ export class ComponentExeComponent implements OnInit {
 
   newUser: boolean;
 
+  displayDialog: boolean;
+
   selectedComponentExe: ComponentExe;
+
+  triggerStatusFile: TriggerandStatusFile;
 
   constructor(private router: Router, private componentExeService: ComponentExeService) { }
 
@@ -34,15 +39,34 @@ export class ComponentExeComponent implements OnInit {
   }
 
   getComponentExes(): void {
-        this.componentExeService
-          .getComponentExes(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-          .subscribe(x => (this.ComponentExes = x.Result, this._total = x.Count));
+    this.componentExeService
+      .getComponentExes(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
+      .subscribe(x => (this.ComponentExes = x.Result, this._total = x.Count));
   }
 
   showDialogToAdd() {
     this.newUser = true;
     this.selectedComponentExe = new ComponentExe();
     this.router.navigate(['/componentExe']);
+  }
+
+  showDialogToAddTriggerFile(id, item) {
+    if (item == null) {
+      this.triggerStatusFile = new TriggerandStatusFile();
+      this.triggerStatusFile.ComponentId = id;
+    }
+    else {
+      this.triggerStatusFile = item;
+    }
+    this.displayDialog = true;
+  }
+
+  save() {
+    this.componentExeService.addTriggerStatusFile(this.triggerStatusFile)
+      .subscribe(x => {
+        this.triggerStatusFile = null;
+        this.displayDialog = false;
+      });
   }
 
   onSelect(): void {

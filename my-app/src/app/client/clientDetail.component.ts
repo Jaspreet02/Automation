@@ -28,10 +28,6 @@ export class ClientDetailComponent implements OnInit {
 
     proofFormat: SelectedItem;
 
-    statuses: SelectedItem[];
-
-    status: SelectedItem;
-
     clientform: FormGroup;
 
     constructor(private clientService: ClientService,
@@ -51,12 +47,6 @@ export class ClientDetailComponent implements OnInit {
             { Label: 'ZIP', Value: 'ZIP' },
             { Label: 'PGP', Value: 'PGP' }
         ];
-
-        this.statuses = [
-            { Label: 'True', Value: 'true' },
-            { Label: 'False', Value: 'false' }
-        ];
-
     }
 
     ngOnInit() {
@@ -74,7 +64,7 @@ export class ClientDetailComponent implements OnInit {
             'proofFormat': new FormControl('', Validators.required),
             'proofPassword': new FormControl(''),
             'proofName':new FormControl(''),
-            'status': new FormControl('', Validators.required)
+            'status': new FormControl('')
         });
     }
 
@@ -83,18 +73,15 @@ export class ClientDetailComponent implements OnInit {
             .subscribe(x => {
                 this.selectedClient = x;
                 this.proofFormat = this.proofFormats.find(g => g.Value == this.selectedClient.ProofFormat);
-                this.status = this.statuses.find(s => s.Value == this.selectedClient.Status.toString())
-            });;
+             });
     }
 
     save() {
         if (this.newClient) {
             this.selectedClient.ProofFormat = this.proofFormat.Value;
-            this.selectedClient.Status = Boolean(this.status.Value);
             this.clientService.addClient(this.selectedClient).subscribe(x => { this.selectedClient = null; this.router.navigate(['/clients']); });
         } else {
             this.selectedClient.ProofFormat = this.proofFormat.Value;
-            this.selectedClient.Status = Boolean(this.status.Value);
             this.clientService.updateClient(this.selectedClient).subscribe(x => { this.selectedClient = null; this.router.navigate(['/clients']); });
         }
     }

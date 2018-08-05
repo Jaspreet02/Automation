@@ -24,10 +24,6 @@ export class FileTransferDetailComponent implements OnInit {
 
     queueType: any;
 
-    statuses: SelectedItem[];
-
-    status: SelectedItem;
-
     fileTransferForm: FormGroup;
 
     constructor(private fileTransferService: FileTransferService, private masterService: MasterService,  private location: Location, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) {
@@ -40,12 +36,6 @@ export class FileTransferDetailComponent implements OnInit {
                 this.newFileTransfer = true;
             }
         });
-
-        this.statuses = [
-            { Label: 'True', Value: 'true' },
-            { Label: 'False', Value: 'false' }
-        ];
-
     }
 
     ngOnInit() {
@@ -63,7 +53,7 @@ export class FileTransferDetailComponent implements OnInit {
             'userName': new FormControl('', Validators.required),
             'password': new FormControl('', Validators.required),
             'port': new FormControl('', Validators.required),
-            'status': new FormControl('', Validators.required)
+            'status': new FormControl('')
         });
         this.fileTransferForm.get('queueType').valueChanges.subscribe(
             (queueType:any)=> {
@@ -95,17 +85,14 @@ export class FileTransferDetailComponent implements OnInit {
                 .subscribe(x => { 
                     this.selectedFileTransfer = x;
                     this.queueType = this.queueTypes.find(s=> s.QueueTypeId == this.selectedFileTransfer.QueueTypeId);
-                    this.status = this.statuses.find(s => s.Value == this.selectedFileTransfer.Status.toString());
                   });});
     }   
 
     save() {
         if (this.newFileTransfer) {
-            this.selectedFileTransfer.Status = (this.status.Value == 'true');
             this.selectedFileTransfer.QueueTypeId = this.queueType.QueueTypeId;
             this.fileTransferService.addFileTransfer(this.selectedFileTransfer).subscribe(x => { this.selectedFileTransfer = null; this.router.navigate(['/fileTransfers']); });
         } else {
-            this.selectedFileTransfer.Status = (this.status.Value == 'true');
             this.selectedFileTransfer.QueueTypeId = this.queueType.QueueTypeId;
             this.fileTransferService.updateFileTransfer(this.selectedFileTransfer).subscribe(x => { this.selectedFileTransfer = null; this.router.navigate(['/fileTransfers']); });
         }
@@ -115,10 +102,4 @@ export class FileTransferDetailComponent implements OnInit {
         this.selectedFileTransfer = null;
         this.location.back();
     }
-
-}
-
-interface SelectedItem {
-    Label: string;
-    Value: string
 }

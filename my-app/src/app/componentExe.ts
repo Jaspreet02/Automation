@@ -1,3 +1,5 @@
+import { TriggerandStatusFile } from "./TriggerandStatusFile";
+
 export  class ComponentExe {
     ComponentId: number;
     Name: string;
@@ -6,4 +8,5 @@ export  class ComponentExe {
     ShortName:string;
     IsOptional:boolean;
     Status: boolean;
+    TriggerandStatusFile: TriggerandStatusFile;
 }

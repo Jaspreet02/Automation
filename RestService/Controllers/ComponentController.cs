@@ -13,7 +13,6 @@ namespace MobileService.Controllers
     {
         IComponentRepository _objComponentRepository;
         ITriggerandStatusFileRepository _objTriggerandStatusFileRepository;
-        UserManager<ApplicationUser> userManager;
 
         public ComponentController()
         {

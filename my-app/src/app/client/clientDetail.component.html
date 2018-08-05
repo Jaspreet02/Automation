@@ -112,8 +112,7 @@
                             Status *:
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="status" name="status" formControlName="status" [options]="statuses" [(ngModel)]="status" placeholder="Select Status"
-                                optionLabel="Label"></p-dropdown>
+                                <p-inputSwitch formControlName="status" onLabel="true" offLabel="false" [(ngModel)]="selectedClient.Status"></p-inputSwitch>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!clientform.controls['status'].valid&&clientform.controls['status'].dirty">

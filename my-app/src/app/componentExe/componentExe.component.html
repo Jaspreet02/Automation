@@ -5,13 +5,18 @@
 <div class="container body-content">
   <p-dataTable [value]="ComponentExes" [responsive]="true" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" selectionMode="single"
     [(selection)]="selectedComponentExe" (onRowSelect)="onSelect()">
-    <p-header>Applications</p-header>
+    <p-header>Components</p-header>
     <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
     <p-column field="Name" header="Name" [sortable]="true"></p-column>
     <p-column field="ShortName" header="Short Name" [sortable]="true"></p-column>
     <p-column field="ComponentExe" header="Exe Path" [sortable]="true"></p-column>
     <p-column field="IsOptional" header="Optional" [sortable]="true"></p-column>
     <p-column field="Status" header="Status" [sortable]="true"></p-column>
+    <p-column field="TriggerandStatusFile" header="Action">
+        <ng-template let-item="rowData" pTemplate type="body">
+            <a style="color:blue;" (click)="showDialogToAddTriggerFile(item.ComponentId,item.TriggerandStatusFile)">Trigger and Status Files</a>
+        </ng-template>
+    </p-column>
   </p-dataTable>
   <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
   <p-footer>
@@ -19,4 +24,38 @@
       <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
     </div>
   </p-footer>
+
+  <p-dialog header="Trigger and Status File" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="500">
+      <div class="ui-g ui-fluid" *ngIf="triggerStatusFile">
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Trigger File Path</label>
+              </div>
+              <div class="ui-g-8">
+                  <input pInputText [(ngModel)]="triggerStatusFile.TriggerFilelocation" />
+              </div>
+          </div>
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Status File Path</label>
+              </div>
+              <div class="ui-g-8">
+                  <input pInputText [(ngModel)]="triggerStatusFile.StepStatusLocation" /> 
+                </div>
+          </div>
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Status</label>
+              </div>
+              <div class="ui-g-8">
+                  <p-inputSwitch onLabel="true" offLabel="false" [(ngModel)]="triggerStatusFile.Status"></p-inputSwitch>
+              </div>
+          </div>
+      </div>
+      <p-footer>
+          <div class="ui-dialog-buttonpane ui-helper-clearfix">
+              <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+          </div>
+      </p-footer>
+  </p-dialog>
 </div>

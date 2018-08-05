@@ -82,8 +82,7 @@
                             Is Archive *:
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="isArchive" name="isArchive" formControlName="isArchive" [options]="statuses" [(ngModel)]="isArchive" placeholder="Select"
-                                optionLabel="Label"></p-dropdown>
+                                <p-inputSwitch formControlName="isArchive" onLabel="true" offLabel="false" [(ngModel)]="selectedApplication.IsArchive"></p-inputSwitch>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationform.controls['isArchive'].valid&&applicationform.controls['isArchive'].dirty">
@@ -92,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui-grid-row" *ngIf="(isArchive.Value == 'true')">
+                    <div class="ui-grid-row" *ngIf="(selectedApplication.IsArchive)">
                         <div class="ui-grid-col-2">
                             Archive Path *:
                         </div>
@@ -106,7 +105,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="ui-grid-row" *ngIf="(isArchive.Value == 'true')">
+                    <div class="ui-grid-row" *ngIf="(selectedApplication.IsArchive)">
                         <div class="ui-grid-col-2">
                             Archive File Name *:
                         </div>
@@ -139,8 +138,7 @@
                             Is Move File *:
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="isFileMove" name="isFileMove" formControlName="isFileMove" [options]="statuses" [(ngModel)]="isFileMove" placeholder="Select"
-                                optionLabel="Label"></p-dropdown>
+                                <p-inputSwitch formControlName="isFileMove" onLabel="true" offLabel="false" [(ngModel)]="selectedApplication.IsFileMove"></p-inputSwitch>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationform.controls['isFileMove'].valid&&applicationform.controls['isFileMove'].dirty">
@@ -154,8 +152,7 @@
                             Is Batch *:
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="isBatch" name="isBatch" formControlName="isBatch" [options]="statuses" [(ngModel)]="isBatch" placeholder="Select"
-                                optionLabel="Label"></p-dropdown>
+                                <p-inputSwitch formControlName="isBatch" onLabel="true" offLabel="false" [(ngModel)]="selectedApplication.IsBatch"></p-inputSwitch>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationform.controls['isBatch'].valid&&applicationform.controls['isBatch'].dirty">
@@ -169,8 +166,7 @@
                             Status *:
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="status" name="status" formControlName="status" [options]="statuses" [(ngModel)]="status" placeholder="Select Status"
-                                optionLabel="Label"></p-dropdown>
+                                <p-inputSwitch formControlName="status" onLabel="true" offLabel="false" [(ngModel)]="selectedApplication.Status"></p-inputSwitch>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationform.controls['status'].valid&&applicationform.controls['status'].dirty">

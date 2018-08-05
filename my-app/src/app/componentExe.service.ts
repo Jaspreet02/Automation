@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { ComponentExe } from './componentExe';
+import { TriggerandStatusFile } from './TriggerandStatusFile';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -47,6 +48,11 @@ export class ComponentExeService {
   updateComponentExe(componentExe: ComponentExe): Observable<any> {
     const url = `${this.ComponentExeUrl}/Put/${componentExe.ComponentId}`;
     return this.http.put(url, componentExe, httpOptions);
+  }
+
+  addTriggerStatusFile(triggerStatusFile: TriggerandStatusFile): Observable<TriggerandStatusFile> {
+    const url = `${this.ComponentExeUrl}/AddUpdateTriggerandStatusFile`;
+    return this.http.post<TriggerandStatusFile>(url, triggerStatusFile, httpOptions);
   }
 }
 

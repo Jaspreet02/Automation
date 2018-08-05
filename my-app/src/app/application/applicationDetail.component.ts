@@ -36,16 +36,6 @@ export class ApplicationDetailComponent implements OnInit {
 
     fileTransfer: FileTransfer;
 
-    statuses: SelectedItem[];
-
-    status: SelectedItem;
-
-    isArchive: SelectedItem;
-
-    isFileMove: SelectedItem;
-
-    isBatch: SelectedItem;
-
     applicationform: FormGroup;
 
     constructor(private applicationService: ApplicationService, private clientService: ClientService, private fileTransferService: FileTransferService,
@@ -61,17 +51,11 @@ export class ApplicationDetailComponent implements OnInit {
 
         });
 
-        this.statuses = [
-            { Label: 'True', Value: 'true' },
-            { Label: 'False', Value: 'false' }
-        ];
-
     }
 
     ngOnInit() {
         if (this.newApplication) {
             this.selectedApplication = new Application();
-            this.isArchive = this.statuses.find(s => s.Value == 'false');
             this.clientService.getClients(0,0,'CreatedAt','desc',true).subscribe(c=> this.clients = c.Result);            
             this.fileTransferService.getFileTransfers(0,0,'CreatedAt','desc',true).subscribe(c=> this.fileTransfers = c.Result);                
         }
@@ -86,15 +70,15 @@ export class ApplicationDetailComponent implements OnInit {
             'hotFolder': new FormControl('', Validators.required),
             'archivePath': new FormControl('', Validators.required),
             'archiveFileName': new FormControl(''),
-            'isArchive': new FormControl('', Validators.required),
+            'isArchive': new FormControl(''),
             'inputPath': new FormControl('', Validators.required),
-            'isFileMove': new FormControl('', Validators.required),
-            'isBatch': new FormControl('', Validators.required),
-            'status': new FormControl('', Validators.required)
+            'isFileMove': new FormControl(''),
+            'isBatch': new FormControl(''),
+            'status': new FormControl('')
         });
         this.applicationform.get('isArchive').valueChanges.subscribe(
-            (isArchive:SelectedItem)=> {
-                if(isArchive.Value === 'true')
+            (isArchive:boolean)=> {
+                if(isArchive)
                 {
                     this.applicationform.get('archivePath').setValidators([Validators.required]);
                     this.applicationform.get('archiveFileName').setValidators([Validators.required]);
@@ -118,10 +102,6 @@ export class ApplicationDetailComponent implements OnInit {
                 this.selectedApplication = x;
                 this.client = this.clients.find(f=> f.ClientId == this.selectedApplication.ClientId);
                this.fileTransfer = this.fileTransfers.find(f=> f.FileTransferSettingId == this.selectedApplication.FileTransferSettingId);
-                this.status = this.statuses.find(s => s.Value == this.selectedApplication.Status.toString());
-                this.isArchive = this.statuses.find(s => s.Value == this.selectedApplication.IsArchive.toString());
-                this.isFileMove = this.statuses.find(s => s.Value == this.selectedApplication.IsFileMove.toString());
-                this.isBatch = this.statuses.find(s => s.Value == this.selectedApplication.IsBatch.toString())
             });});});
      }   
 
@@ -129,19 +109,11 @@ export class ApplicationDetailComponent implements OnInit {
         if (this.newApplication) {
             this.selectedApplication.ClientId = this.client.ClientId;
             this.selectedApplication.FileTransferSettingId = this.fileTransfer.FileTransferSettingId;
-            this.selectedApplication.Status = (this.status.Value == 'true');
-            this.selectedApplication.IsArchive = (this.isArchive.Value == 'true');
-            this.selectedApplication.IsFileMove = (this.isFileMove.Value == 'true');
-            this.selectedApplication.IsBatch = (this.isBatch.Value == 'true');
             this.applicationService.addApplication(this.selectedApplication).subscribe(x => { this.selectedApplication = null; this.router.navigate(['/applications']); });
         } else {
             this.selectedApplication.ClientId = this.client.ClientId;
             this.selectedApplication.FileTransferSettingId = this.fileTransfer.FileTransferSettingId;
-            this.selectedApplication.Status = (this.status.Value == 'true');
-            this.selectedApplication.IsArchive = (this.isArchive.Value == 'true');
-            this.selectedApplication.IsFileMove = (this.isFileMove.Value == 'true');
-            this.selectedApplication.IsBatch = (this.isBatch.Value == 'true');
-            this.applicationService.updateApplication(this.selectedApplication).subscribe(x => { this.selectedApplication = null; this.router.navigate(['/applications']); });
+             this.applicationService.updateApplication(this.selectedApplication).subscribe(x => { this.selectedApplication = null; this.router.navigate(['/applications']); });
         }
     }
 
@@ -150,9 +122,4 @@ export class ApplicationDetailComponent implements OnInit {
         this.location.back();
     }
 
-}
-
-interface SelectedItem {
-    Label: string;
-    Value: string
 }
