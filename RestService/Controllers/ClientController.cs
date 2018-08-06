@@ -8,6 +8,7 @@ using System.Web.Http.OData;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class ClientController : BaseController
     {
         IClientRepository _objclientRepository;

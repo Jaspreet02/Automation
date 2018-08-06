@@ -8,6 +8,7 @@ using System.Web.Http.OData;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class FileTransferController : BaseController
     {
         IFileTransferSettingsRepository objFileTransferRepository;

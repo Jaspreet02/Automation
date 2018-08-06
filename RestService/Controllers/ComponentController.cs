@@ -9,6 +9,7 @@ using System.Web.Http.OData;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class ComponentController : BaseController
     {
         IComponentRepository _objComponentRepository;

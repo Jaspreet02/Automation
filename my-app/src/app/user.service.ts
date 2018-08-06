@@ -15,14 +15,14 @@ const httpOptions = {
 
 export class UserService {
 
-  private userUrl = 'http://127.0.0.1:8001/api/User';  // URL to web api
+  private userUrl = 'http://localhost:5100/api/User';  // URL to web api
 
   constructor( private http: HttpClient) {}
 
   userAuthentication(userName: string, password: string):Observable<any>  {
     var data = "username=" + userName + "&password=" + password + "&grant_type=password";
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded', 'No-Auth':'True'});
-    return this.http.post('http://127.0.0.1:8001/token', data, { headers: reqHeader });
+    return this.http.post('http://localhost:5100/token', data, { headers: reqHeader });
   }
 
   private serializeObj(obj) {

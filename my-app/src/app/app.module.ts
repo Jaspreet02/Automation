@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataTableModule, SharedModule, InputMaskModule, InputTextModule, PaginatorModule, DialogModule, ButtonModule, PanelModule, InputSwitchModule } from 'primeng/primeng';
+import {SpinnerModule} from 'primeng/spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -18,12 +19,15 @@ import { FileTransferComponent } from './fileTransfer/fileTransfer.component';
 import { FileTransferDetailComponent } from './fileTransfer/fileTransferDetail.component';
 import { ComponentExeComponent } from './componentExe/componentExe.component';
 import { ComponentExeDetailComponent } from './componentExe/componentExeDetail.component';
+import { ApplicationComponentComponent } from './applicationComponent/applicationComponent.component';
+import { ApplicationComponentDetailComponent } from './applicationComponent/applicationComponentDetail.component';
 import { UserService } from './user.service';
 import { ClientService } from './client.service';
 import { ApplicationService } from './application.service';
 import { FileTransferService } from './fileTransfer.service';
-import { ComponentExeService } from './componentExe.service'
-import { MasterService } from './master.service'
+import { ComponentExeService } from './componentExe.service';
+import { ApplicationComponentService } from './applicationComponent.service';
+import { MasterService } from './master.service';
 
 import { AppHeaderComponent } from './_layout/app-header/app-header.component';
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
@@ -50,6 +54,8 @@ import { ImplicitReceiver } from '@angular/compiler';
     FileTransferDetailComponent,
     ComponentExeComponent,
     ComponentExeDetailComponent,
+    ApplicationComponentComponent,
+    ApplicationComponentDetailComponent,
     AppHeaderComponent,
     AdminHeaderComponent,
     UserHeaderComponent,
@@ -69,10 +75,11 @@ import { ImplicitReceiver } from '@angular/compiler';
     InputTextModule,
     ButtonModule,
     PanelModule,
+    SpinnerModule,
     BrowserAnimationsModule,
     InputSwitchModule
   ],
-  providers: [UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService, MasterService, AuthGuard, ,
+  providers: [UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, AuthGuard, ,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

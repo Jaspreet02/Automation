@@ -6,6 +6,7 @@ using System.Web.Http.OData;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class EmailTemplateController : BaseController
     {
         IEmailTemplateRepository _objEmailTemplateRepository;

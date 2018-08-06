@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class RunDetailController : BaseController
     {
         IRunDetailsRepository _objRunDetailRepository;

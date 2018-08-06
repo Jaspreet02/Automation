@@ -1,0 +1,81 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <div *ngIf="selectedApplicationComponent">
+        <form [formGroup]="applicationComponentform" (ngSubmit)="save()">
+            <p-panel header="Application Component">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Component *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="component" name="component" formControlName="component" [options]="components" [(ngModel)]="component" optionLabel="Name"
+                                placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationComponentform.controls['component'].valid&&applicationComponentform.controls['component'].dirty">
+                                <i class="fa fa-close"></i>
+                                Component is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Order *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-spinner formControlName="order" [(ngModel)]="selectedApplicationComponent.ComponentOrder" [min]="1" [max]="maximunValue"></p-spinner>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationComponentform.controls['order'].valid&&applicationComponentform.controls['order'].dirty">
+                                <i class="fa fa-close"></i>
+                                order is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Is Optional *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-inputSwitch formControlName="isOptional" onLabel="true" offLabel="false" [(ngModel)]="selectedApplicationComponent.IsOptional"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationComponentform.controls['isOptional'].valid&&applicationComponentform.controls['isOptional'].dirty">
+                                <i class="fa fa-close"></i>
+                                This Field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-inputSwitch formControlName="status" onLabel="true" offLabel="false" [(ngModel)]="selectedApplicationComponent.Status"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationComponentform.controls['status'].valid&&applicationComponentform.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!applicationComponentform.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>

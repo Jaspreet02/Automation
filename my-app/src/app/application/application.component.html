@@ -19,7 +19,8 @@
     <p-column field="Status" header="Status" [sortable]="true"></p-column>
     <p-column field="ApplicationId" header="Action">
       <ng-template let-item="rowData" pTemplate type="body">
-          <a style="color:blue;" routerLink="/applicationFile/{{item.ApplicationId}}">Files</a>
+          <a style="color:blue;" routerLink="/applicationFile/{{item.ApplicationId}}">Files</a> |
+          <a style="color:blue;" [routerLink]="['/applicationComponents']" [queryParams]="{applicationId:item.ApplicationId}">Components</a>
       </ng-template>
     </p-column>
   </p-dataTable>

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class ApplicationController : BaseController
     {
         IApplicationRepository objApplicationRepository;

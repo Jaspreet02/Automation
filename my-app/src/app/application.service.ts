@@ -16,7 +16,7 @@ const httpOptions = {
 
 export class ApplicationService {
 
-  private ApplicationUrl = 'http://127.0.0.1:8001/api/Application';  // URL to web api
+  private ApplicationUrl = 'http://localhost:5100/api/Application';  // URL to web api
 
   constructor(private http: HttpClient) { }
 

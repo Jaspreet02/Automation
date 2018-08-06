@@ -3,27 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AngularApi", "AngularApi\", "{A9694AA5-6AFE-4D15-AF74-67331962EB05}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/AngularApi"
-		Debug.AspNetCompiler.PhysicalPath = "AngularApi\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AngularApi\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/AngularApi"
-		Release.AspNetCompiler.PhysicalPath = "AngularApi\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AngularApi\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "1791"
-		SlnRelativePath = "AngularApi\"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\RestService.csproj", "{F99E9FC8-C830-46AF-8FCB-D9BE22CBF223}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbHander", "DbHander\DbHander.csproj", "{6C879674-ABAC-499F-B3A6-95ABCB41ABA9}"
@@ -31,8 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3935BABC-0A5B-4F2C-95B4-007CD04C47DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{927C8F52-B61C-4A66-91C0-F176BB804C7A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplication", "WebApplication", "{9CB0BA16-8A73-45B6-A11B-B1D9322F331C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{BEDEE106-FB5A-41E2-A022-D135CF5680B8}"
 EndProject
@@ -110,18 +87,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Debug|x64.Build.0 = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Debug|x86.Build.0 = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Release|x64.ActiveCfg = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Release|x64.Build.0 = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Release|x86.ActiveCfg = Debug|Any CPU
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05}.Release|x86.Build.0 = Debug|Any CPU
 		{F99E9FC8-C830-46AF-8FCB-D9BE22CBF223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F99E9FC8-C830-46AF-8FCB-D9BE22CBF223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F99E9FC8-C830-46AF-8FCB-D9BE22CBF223}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -379,7 +344,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A9694AA5-6AFE-4D15-AF74-67331962EB05} = {9CB0BA16-8A73-45B6-A11B-B1D9322F331C}
 		{F99E9FC8-C830-46AF-8FCB-D9BE22CBF223} = {927C8F52-B61C-4A66-91C0-F176BB804C7A}
 		{6C879674-ABAC-499F-B3A6-95ABCB41ABA9} = {3935BABC-0A5B-4F2C-95B4-007CD04C47DB}
 		{E2521CE7-D2A5-4242-9DF9-2402B4F1EBDD} = {BEDEE106-FB5A-41E2-A022-D135CF5680B8}

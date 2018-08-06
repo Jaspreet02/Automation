@@ -13,6 +13,8 @@ import { FileTransferComponent } from './fileTransfer/fileTransfer.component';
 import { FileTransferDetailComponent } from './fileTransfer/fileTransferDetail.component';
 import { ComponentExeComponent } from './componentExe/componentExe.component';
 import { ComponentExeDetailComponent } from './componentExe/componentExeDetail.component';
+import { ApplicationComponentComponent } from './applicationComponent/applicationComponent.component';
+import { ApplicationComponentDetailComponent } from './applicationComponent/applicationComponentDetail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -32,7 +34,10 @@ const routes: Routes = [
   { path: 'fileTransfer', component: FileTransferDetailComponent },  
   { path: 'componentExes', component: ComponentExeComponent }, 
   { path: 'componentExe/:id', component: ComponentExeDetailComponent }, 
-  { path: 'componentExe', component: ComponentExeDetailComponent }
+  { path: 'componentExe', component: ComponentExeDetailComponent },
+  { path: 'applicationComponents', component: ApplicationComponentComponent },
+  { path: 'applicationComponent/:id', component: ApplicationComponentDetailComponent },
+  { path: 'applicationComponent', component: ApplicationComponentDetailComponent }
 ];
 
 @NgModule({

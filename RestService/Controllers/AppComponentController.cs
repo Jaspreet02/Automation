@@ -1,11 +1,13 @@
 ﻿using DbHander;
 using MobileService.Common;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 
 namespace MobileService.Controllers
 {
-    public class AppComponentController : ApiController
+    [Authorize]
+    public class AppComponentController : BaseController
     {
         IApplicationComponentRepository _objAppComponentRepository;
         IComponentInputLocationRepository _objInputLocationRepository;
@@ -20,10 +22,10 @@ namespace MobileService.Controllers
 
         // GET: api/Application
         [HttpGet]
-        public IHttpActionResult GetApplication(int applicationId)
+        public async Task<IHttpActionResult> GetApplication(int applicationId, int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
-            var result = _objAppComponentRepository.GetApplicationComponentListbyappId(applicationId);
-            return Ok(result);
+            var result = _objAppComponentRepository.GetApplicationComponentListbyappId(applicationId).OrderBy(sortField + " " + sortOrder);
+            return Ok(await CreatePageResult<ApplicationComponent>(result, pageNumber, pageSize, fetchAll));
         }
 
         // GET: api/Application/5

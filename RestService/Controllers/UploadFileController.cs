@@ -7,6 +7,7 @@ using MobileService.Common;
 
 namespace MobileService.Controllers
 {
+    [Authorize]
     public class UploadFileController : BaseController
     {
         IUploadFileRepository objUploadFileRepository;
