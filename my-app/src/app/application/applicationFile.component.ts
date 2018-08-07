@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationFile } from '../applicationFile';
 import { ApplicationService } from '../application.service';
-import { Location } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { appendFile } from 'fs';
 
 @Component({
   selector: 'app-applicationFile',

@@ -20,7 +20,7 @@ namespace MobileService.Controllers
 
         // GET: api/Client
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int clientId, int appId, int status, int pageNumber = 1, int pageSize = 10, bool fetchAll = false)
+        public async Task<IHttpActionResult> Get(int clientId, int appId, int status, int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
             var appIds = new List<int>();
             if (clientId == 0)
@@ -33,14 +33,8 @@ namespace MobileService.Controllers
                     appIds = GenericPrincipalExtensions.Applications(User, clientId);
             }
 
-            var result = _objRunDetailRepository.FindAllActive().Where(x=> appIds.Contains(x.ApplicationId) && (x.RunNumberStatusId == status || status == -1)).OrderByDescending(x => x.CreatedAt);
+            var result = _objRunDetailRepository.FindAll().Where(x=> appIds.Contains(x.ApplicationId) && (x.RunNumberStatusId == status || status == -1)).OrderBy(sortField + " " + sortOrder);
             return Ok(await CreatePageResult<RunDetail>(result,pageNumber,pageSize, fetchAll));
-        }
-
-        [HttpGet]
-        public IHttpActionResult RunStatus()
-        {
-            return Ok(Enum.GetNames(typeof(RunNumberStatusType)));
         }
 
         protected override void Dispose(bool disposing)

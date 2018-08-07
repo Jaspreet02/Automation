@@ -26,15 +26,14 @@ export class FileTransferComponent implements OnInit {
 
   sortO: string;
 
-  newUser: boolean;
-
   selectedFileTransfer: FileTransfer;
 
 
   constructor(private router: Router, private fileTransferService: FileTransferService,private masterService: MasterService) { }
 
-  ngOnInit() {
-    this.getFileTransfers();
+  ngOnInit() {    
+    this.masterService.getQueueTypes().subscribe(c=> { this.QueueTypes = c ;
+    this.getFileTransfers() });
   }
 
   GetQueueTypebyId(id) {
@@ -42,32 +41,17 @@ export class FileTransferComponent implements OnInit {
   };
 
   showDialogToAdd() {
-    this.newUser = true;
-    this.selectedFileTransfer = new FileTransfer();
     this.router.navigate(['/fileTransfer']);
   }
 
-  delete() {
-    this.fileTransferService.deleteFileTrasnfer(this.selectedFileTransfer).subscribe();
-    const index = this.findSelectedUserIndex();
-    //this.FileTransfers = this.FileTransfers.filter((i) => i !== index);
-    this.selectedFileTransfer = null;
-  }
-
-  findSelectedUserIndex(): number {
-    return this.FileTransfers.indexOf(this.selectedFileTransfer);
-  }
-
   onSelect(): void {
-    this.newUser = false;
     this.router.navigate(['/fileTransfer/' + this.selectedFileTransfer.FileTransferSettingId]);
   }
 
   getFileTransfers(): void {
-    this.masterService.getQueueTypes().subscribe(c=> { this.QueueTypes = c ;
         this.fileTransferService
           .getFileTransfers(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-          .subscribe(x => (this.FileTransfers = x.Result, this._total = x.Count));});
+          .subscribe(x => (this.FileTransfers = x.Result, this._total = x.Count));
   }
 
   paginate(event) {

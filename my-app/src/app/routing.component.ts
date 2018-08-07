@@ -15,6 +15,9 @@ import { ComponentExeComponent } from './componentExe/componentExe.component';
 import { ComponentExeDetailComponent } from './componentExe/componentExeDetail.component';
 import { ApplicationComponentComponent } from './applicationComponent/applicationComponent.component';
 import { ApplicationComponentDetailComponent } from './applicationComponent/applicationComponentDetail.component';
+import { ComponentInputLocationComponent } from './applicationComponent/componentInputLocation.component';
+import { ComponentOutputLocationComponent } from './applicationComponent/componentOutputLocation.component';
+import { RunDetailComponent } from './Dashboard/runDetail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -37,7 +40,10 @@ const routes: Routes = [
   { path: 'componentExe', component: ComponentExeDetailComponent },
   { path: 'applicationComponents', component: ApplicationComponentComponent },
   { path: 'applicationComponent/:id', component: ApplicationComponentDetailComponent },
-  { path: 'applicationComponent', component: ApplicationComponentDetailComponent }
+  { path: 'applicationComponent', component: ApplicationComponentDetailComponent },
+  { path: 'inputLocations', component: ComponentInputLocationComponent},
+  { path: 'outputLocations', component: ComponentOutputLocationComponent},
+  { path: 'runDetails', component: RunDetailComponent}
 ];
 
 @NgModule({

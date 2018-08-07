@@ -1,0 +1,28 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+  <p-dataTable [value]="RunDetails" [responsive]="true" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)"
+    selectionMode="single" [(selection)]="selectedRunDetail" (onRowSelect)="onSelect()">
+    <p-header>Run Details</p-header>
+    <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
+    <p-column field="ApplicationId" header="Application" [sortable]="true">
+      <ng-template let-item="rowData" pTemplate type="body">
+        {{ GetApplicationbyId(item.ApplicationId) }}
+      </ng-template>
+    </p-column>
+    <p-column field="RunNumber" header="RunNumber" [sortable]="true"></p-column>
+    <p-column field="RunNumberStatusId" header="Status" [sortable]="true">
+        <ng-template let-item="rowData" pTemplate type="body">
+            {{ GetRunNumberStatusbyId(item.RunNumberStatusId) }}
+          </ng-template>
+    </p-column>
+    <p-column field="CreatedAt" header="Download At" [sortable]="true">
+        <ng-template let-item="rowData" pTemplate="body">
+            {{item.CreatedAt | date:'MM/dd/yyyy HH:mm'}}
+        </ng-template> 
+    </p-column>
+  </p-dataTable>
+  <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
+</div>

@@ -1,0 +1,54 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <p-dataTable [value]="ComponentInputLocations" [responsive]="true" selectionMode="single" [(selection)]="ComponentInputLocation"
+        (onRowSelect)="onSelect()">
+        <p-header>Input Locations</p-header>
+        <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
+        <p-column field="FileMask" header="File Mask"></p-column>
+        <p-column field="InputLocation" header="Location"></p-column>
+        <p-column field="Status" header="Status"></p-column>
+    </p-dataTable>
+    <p-footer>
+        <div class="ui-helper-clearfix" style="width:100%">
+            <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+        </div>
+    </p-footer>
+
+    <p-dialog header="Input Location" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+        <div class="ui-g ui-fluid" *ngIf="ComponentInputLocation">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label>File Mask</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="fileMask" [(ngModel)]="ComponentInputLocation.FileMask" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label>Location</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="location" [(ngModel)]="ComponentInputLocation.InputLocation" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label>Status</label>
+                </div>
+                <div class="ui-g-8">
+                    <p-inputSwitch onLabel="true" offLabel="false" [(ngModel)]="ComponentInputLocation.Status"></p-inputSwitch>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete"></button>
+                <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>

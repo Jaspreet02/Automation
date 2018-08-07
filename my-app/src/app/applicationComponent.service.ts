@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { ApplicationComponent } from './ApplicationComponent';
+import { ComponentInputLocation } from './componentInputLocation';
+import { ComponentOutputLocation } from './componentOutputLocation';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,9 +20,9 @@ export class ApplicationComponentService {
 
   constructor(private http: HttpClient) { }
 
-  getApplicationComponents(applicationId: number,pageNumber: number, pageSize: number, sortField: string, sortOrder: string, fetchAll: boolean = false): Observable<PagedResponse<ApplicationComponent>> {
+  getApplicationComponents(applicationId: number, pageNumber: number, pageSize: number, sortField: string, sortOrder: string, fetchAll: boolean = false): Observable<PagedResponse<ApplicationComponent>> {
     // return of(Users);
-    return this.http.get<PagedResponse<ApplicationComponent>>(this.ApplicationComponentUrl + '/GetApplication?applicationId=' + applicationId +'&pageNumber=' + pageNumber + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortOrder=' + sortOrder + '&fetchAll=' + fetchAll);
+    return this.http.get<PagedResponse<ApplicationComponent>>(this.ApplicationComponentUrl + '/GetApplication?applicationId=' + applicationId + '&pageNumber=' + pageNumber + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortOrder=' + sortOrder + '&fetchAll=' + fetchAll);
   }
 
   /** POST: add a new user to the server */
@@ -46,6 +48,44 @@ export class ApplicationComponentService {
   updateApplicationComponent(componentExe: ApplicationComponent): Observable<any> {
     const url = `${this.ApplicationComponentUrl}/Put/${componentExe.ApplicationComponentId}`;
     return this.http.put(url, componentExe, httpOptions);
+  }
+
+  inputLocations(applicationId: number, componentId: number): Observable<ComponentInputLocation[]> {
+    // return of(Users);
+    return this.http.get<ComponentInputLocation[]>(this.ApplicationComponentUrl + '/InputLocations?appId=' + applicationId + '&compId=' + componentId);
+  }
+
+  /** POST: add a new user to the server */
+  addInputLocation(entity: ComponentInputLocation): Observable<ComponentInputLocation> {
+    const url = `${this.ApplicationComponentUrl}/AddInputLocation`;
+    return this.http.post<ComponentInputLocation>(url, entity, httpOptions);
+  }
+
+  /** DELETE: delete the user from the server */
+  deleteInputLocation(entity: ComponentInputLocation | number): Observable<ComponentInputLocation> {
+    const id = typeof entity === 'number' ? entity : entity.ComponentInputLocationId;
+    const url = `${this.ApplicationComponentUrl}/DeleteInputLocation/${id}`;
+
+    return this.http.delete<ComponentInputLocation>(url, httpOptions);
+  }
+
+  outputLocations(applicationId: number, componentId: number): Observable<ComponentOutputLocation[]> {
+    // return of(Users);
+    return this.http.get<ComponentOutputLocation[]>(this.ApplicationComponentUrl + '/OutputLocations?appId=' + applicationId + '&compId=' + componentId);
+  }
+
+  /** POST: add a new user to the server */
+  addOutputLocation(entity: ComponentOutputLocation): Observable<ComponentOutputLocation> {
+    const url = `${this.ApplicationComponentUrl}/AddOutputLocation`;
+    return this.http.post<ComponentOutputLocation>(url, entity, httpOptions);
+  }
+
+  /** DELETE: delete the user from the server */
+  deleteOutputLocation(entity: ComponentOutputLocation | number): Observable<ComponentOutputLocation> {
+    const id = typeof entity === 'number' ? entity : entity.ComponentOutputLocationId;
+    const url = `${this.ApplicationComponentUrl}/DeleteOutputLocation/${id}`;
+
+    return this.http.delete<ComponentOutputLocation>(url, httpOptions);
   }
 }
 

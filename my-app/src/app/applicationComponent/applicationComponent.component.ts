@@ -38,7 +38,9 @@ export class ApplicationComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getApplicationComponents();
+    this.componentExeService.getComponentExes(0, 0, 'CreatedAt', 'desc', true).subscribe(c => {
+    this.components = c.Result;
+    this.getApplicationComponents()});
   }
 
   GetComponentbyId(id) {
@@ -46,12 +48,9 @@ export class ApplicationComponentComponent implements OnInit {
    };
 
   getApplicationComponents(): void {
-    this.componentExeService.getComponentExes(0, 0, 'CreatedAt', 'desc', true).subscribe(c => {
-    this.components = c.Result;
       this.applicationComponentService
         .getApplicationComponents(this.ApplicationId, this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
         .subscribe(x => (this.ApplicationComponents = x.Result, this._total = x.Count));
-    });
   }
 
   showDialogToAdd() {

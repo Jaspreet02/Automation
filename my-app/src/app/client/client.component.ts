@@ -23,8 +23,6 @@ export class ClientComponent implements OnInit {
 
   sortO: string;
 
-  newUser: boolean;
-
   selectedClient: Client;
 
 
@@ -35,24 +33,10 @@ export class ClientComponent implements OnInit {
   }
 
   showDialogToAdd() {
-    this.newUser = true;
-    this.selectedClient = new Client();
     this.router.navigate(['/client']);
   }
 
-  delete() {
-    this.clientService.deleteClient(this.selectedClient).subscribe();
-    const index = this.findSelectedUserIndex();
-    this.Clients = this.Clients.filter((val, i) => i !== index);
-    this.selectedClient = null;
-  }
-
-  findSelectedUserIndex(): number {
-    return this.Clients.indexOf(this.selectedClient);
-  }
-
   onSelect(): void {
-    this.newUser = false;
     this.router.navigate(['/client/' + this.selectedClient.ClientId]);
   }
 

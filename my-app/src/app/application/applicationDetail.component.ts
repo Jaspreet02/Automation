@@ -1,13 +1,8 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Application } from '../application';
 import { ApplicationService } from '../application.service';
 import { Location } from '@angular/common';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { AppPage } from '../../../e2e/app.po';
-import { NumberValueAccessor } from '@angular/forms/src/directives/number_value_accessor';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
-import { timingSafeEqual } from 'crypto';
-import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
@@ -48,9 +43,7 @@ export class ApplicationDetailComponent implements OnInit {
             else {
                 this.newApplication = true;
             }
-
         });
-
     }
 
     ngOnInit() {
@@ -109,11 +102,11 @@ export class ApplicationDetailComponent implements OnInit {
         if (this.newApplication) {
             this.selectedApplication.ClientId = this.client.ClientId;
             this.selectedApplication.FileTransferSettingId = this.fileTransfer.FileTransferSettingId;
-            this.applicationService.addApplication(this.selectedApplication).subscribe(x => { this.selectedApplication = null; this.router.navigate(['/applications']); });
+            this.applicationService.addApplication(this.selectedApplication).subscribe(() => { this.selectedApplication = null; this.router.navigate(['/applications']); });
         } else {
             this.selectedApplication.ClientId = this.client.ClientId;
             this.selectedApplication.FileTransferSettingId = this.fileTransfer.FileTransferSettingId;
-             this.applicationService.updateApplication(this.selectedApplication).subscribe(x => { this.selectedApplication = null; this.router.navigate(['/applications']); });
+             this.applicationService.updateApplication(this.selectedApplication).subscribe(() => { this.selectedApplication = null; this.router.navigate(['/applications']); });
         }
     }
 

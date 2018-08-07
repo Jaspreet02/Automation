@@ -22,4 +22,9 @@ export class MasterService {
     return this.http.get<any>(this.MasterUrl + '/QueueType');
   }
 
+  getRunNumerStatus(): Observable<any> {
+    // return of(Users);
+    return this.http.get<any>(this.MasterUrl + '/RunNumberStatus');
+  }
+
 }

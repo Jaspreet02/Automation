@@ -24,8 +24,6 @@ export class ComponentExeComponent implements OnInit {
 
   sortO: string;
 
-  newUser: boolean;
-
   displayDialog: boolean;
 
   selectedComponentExe: ComponentExe;
@@ -45,7 +43,6 @@ export class ComponentExeComponent implements OnInit {
   }
 
   showDialogToAdd() {
-    this.newUser = true;
     this.selectedComponentExe = new ComponentExe();
     this.router.navigate(['/componentExe']);
   }
@@ -70,7 +67,6 @@ export class ComponentExeComponent implements OnInit {
   }
 
   onSelect(): void {
-    this.newUser = false;
     this.router.navigate(['/componentExe/' + this.selectedComponentExe.ComponentId]);
   }
 

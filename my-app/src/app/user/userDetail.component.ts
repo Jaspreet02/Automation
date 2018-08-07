@@ -1,13 +1,8 @@
-import { Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Location } from '@angular/common';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { AppPage } from '../../../e2e/app.po';
-import { NumberValueAccessor } from '@angular/forms/src/directives/number_value_accessor';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
-import { timingSafeEqual } from 'crypto';
-import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -78,10 +73,10 @@ export class UserDetailComponent implements OnInit {
   save() {
     if (this.newUser) {
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.addUser(this.selectedUser).subscribe(x => { this.selectedUser = null; this.router.navigate(['/users']); });
+      this.userService.addUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/users']); });
     } else {
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.updateUser(this.selectedUser).subscribe(x => { this.selectedUser = null; this.router.navigate(['/users']); });
+      this.userService.updateUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/users']); });
     }
   }
 

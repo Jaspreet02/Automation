@@ -27,15 +27,14 @@ export class ApplicationComponent implements OnInit {
 
   sortO: string;
 
-  newUser: boolean;
-
   selectedApplication: Application;
-
 
   constructor(private router: Router, private applicationService: ApplicationService, private clientService: ClientService) { }
 
   ngOnInit() {
-    this.getApplications();
+    this.clientService
+      .getClients(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc',true)
+      .subscribe(x => { this.Clients = x.Result ; this.getApplications()});
   }
 
   GetClientbyId(id) {
@@ -43,34 +42,17 @@ export class ApplicationComponent implements OnInit {
   };
 
   showDialogToAdd() {
-    this.newUser = true;
-    this.selectedApplication = new Application();
     this.router.navigate(['/application']);
   }
 
-  delete() {
-    this.applicationService.deleteApplication(this.selectedApplication).subscribe();
-    const index = this.findSelectedUserIndex();
-    this.Applications = this.Applications.filter((val, i) => i !== index);
-    this.selectedApplication = null;
-  }
-
-  findSelectedUserIndex(): number {
-    return this.Applications.indexOf(this.selectedApplication);
-  }
-
   onSelect(): void {
-    this.newUser = false;
     this.router.navigate(['/application/' + this.selectedApplication.ApplicationId]);
   }
 
   getApplications(): void {
-    this.clientService
-      .getClients(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc',true)
-      .subscribe(x => { this.Clients = x.Result ;
         this.applicationService
           .getApplications(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-          .subscribe(x => (this.Applications = x.Result, this._total = x.Count));});
+          .subscribe(x => (this.Applications = x.Result, this._total = x.Count));
   }
 
   paginate(event) {

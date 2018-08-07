@@ -1,13 +1,8 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 import { Location } from '@angular/common';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { AppPage } from '../../../e2e/app.po';
-import { NumberValueAccessor } from '@angular/forms/src/directives/number_value_accessor';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
-import { timingSafeEqual } from 'crypto';
-import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -79,10 +74,10 @@ export class ClientDetailComponent implements OnInit {
     save() {
         if (this.newClient) {
             this.selectedClient.ProofFormat = this.proofFormat.Value;
-            this.clientService.addClient(this.selectedClient).subscribe(x => { this.selectedClient = null; this.router.navigate(['/clients']); });
+            this.clientService.addClient(this.selectedClient).subscribe(() => { this.selectedClient = null; this.router.navigate(['/clients']); });
         } else {
             this.selectedClient.ProofFormat = this.proofFormat.Value;
-            this.clientService.updateClient(this.selectedClient).subscribe(x => { this.selectedClient = null; this.router.navigate(['/clients']); });
+            this.clientService.updateClient(this.selectedClient).subscribe(() => { this.selectedClient = null; this.router.navigate(['/clients']); });
         }
     }
 

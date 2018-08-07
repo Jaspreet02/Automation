@@ -15,6 +15,12 @@
     <p-column field="ComponentOrder" header="Order" [sortable]="true"></p-column>
     <p-column field="IsOptional" header="Optional" [sortable]="true"></p-column>
     <p-column field="Status" header="Status" [sortable]="true"></p-column>
+    <p-column field="ApplicationComponentId" header="Action">
+      <ng-template let-item="rowData" pTemplate type="body">
+          <a style="color:blue;" [routerLink]="['/inputLocations']" [queryParams]="{applicationId:item.ApplicationId,componentId:item.ComponentId}">Input</a> |
+          <a style="color:blue;" [routerLink]="['/outputLocations']" [queryParams]="{applicationId:item.ApplicationId,componentId:item.ComponentId}">Output Location</a>
+      </ng-template>
+    </p-column>
    </p-dataTable>
   <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
   <p-footer>
