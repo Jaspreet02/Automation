@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-componentExe',
   templateUrl: './componentExe.component.html',
-  styleUrls: ['./componentExe.component.css']
+  styleUrls:['./componentExe.component.css']
 })
 
 export class ComponentExeComponent implements OnInit {

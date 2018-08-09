@@ -15,7 +15,7 @@ const httpOptions = {
 
 export class FileTransferService {
 
-  private FileTransferUrl = 'http://localhost:5100/api/FileTransfer';  // URL to web api
+  private FileTransferUrl = 'http://127.0.0.1:8001/api/FileTransfer';  // URL to web api
 
   constructor(private http: HttpClient) { }
 

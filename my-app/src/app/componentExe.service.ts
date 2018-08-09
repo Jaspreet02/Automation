@@ -16,7 +16,7 @@ const httpOptions = {
 
 export class ComponentExeService {
 
-  private ComponentExeUrl = 'http://localhost:5100/api/Component';  // URL to web api
+  private ComponentExeUrl = 'http://127.0.0.1:8001/api/Component';  // URL to web api
 
   constructor(private http: HttpClient) { }
 

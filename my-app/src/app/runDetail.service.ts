@@ -15,7 +15,7 @@ const httpOptions = {
 
 export class RunDetailService {
 
-  private Url = 'http://localhost:5100/api/RunDetail';  // URL to web api
+  private Url = 'http://127.0.0.1:8001/api/RunDetail';  // URL to web api
 
   constructor(private http: HttpClient) { }
 

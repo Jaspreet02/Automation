@@ -13,7 +13,7 @@ const httpOptions = {
 
 export class MasterService {
 
-  private MasterUrl = 'http://localhost:5100/api/Master';  // URL to web api
+  private MasterUrl = 'http://127.0.0.1:8001/api/Master';  // URL to web api
 
   constructor(private http: HttpClient) { }
 

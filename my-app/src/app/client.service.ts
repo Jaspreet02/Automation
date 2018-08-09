@@ -15,7 +15,7 @@ const httpOptions = {
 
 export class ClientService {
 
-  private ClientUrl = 'http://localhost:5100/api/Client';  // URL to web api
+  private ClientUrl = 'http://127.0.0.1:8001/api/Client';  // URL to web api
 
   constructor(private http: HttpClient) { }
 

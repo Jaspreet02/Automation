@@ -16,7 +16,7 @@ const httpOptions = {
 
 export class ApplicationComponentService {
 
-  private ApplicationComponentUrl = 'http://localhost:5100/api/AppComponent';  // URL to web api
+  private ApplicationComponentUrl = 'http://127.0.0.1:8001/api/AppComponent';  // URL to web api
 
   constructor(private http: HttpClient) { }
 
