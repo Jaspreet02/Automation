@@ -40,8 +40,24 @@ namespace MobileService.Controllers
             {
                 appIds.Add(appId);
             }
-            var result = _objRunDetailRepository.FindAll().Where(x=> appIds.Contains(x.ApplicationId) && (x.RunNumberStatusId == status || status == -1)).OrderBy(sortField + " " + sortOrder);
+            var result = _objRunDetailRepository.FindAllActive().Where(x=> appIds.Contains(x.ApplicationId) && (x.RunNumberStatusId == status || status == -1)).OrderBy(sortField + " " + sortOrder);
             return Ok(await CreatePageResult<RunDetail>(result,pageNumber,pageSize, fetchAll));
+        }
+
+        [HttpGet]
+        public IHttpActionResult Count( int appId, int status)
+        {
+            var appIds = new List<int>();
+            if (appId == 0)
+            {
+                appIds = GenericPrincipalExtensions.Applications(User, null);
+            }
+            else
+            {
+                appIds.Add(appId);
+            }
+            var result = _objRunDetailRepository.FindAll().Where(x => appIds.Contains(x.ApplicationId) && (x.RunNumberStatusId == status || status == -1)).Count();
+            return Ok(result);
         }
 
         protected override void Dispose(bool disposing)
