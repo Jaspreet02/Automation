@@ -15,13 +15,18 @@
     <p-column field="Name" header="Name" [sortable]="true"></p-column>
     <p-column field="Code" header="Code" [sortable]="true"></p-column>
     <p-column field="IsBatch" header="Is Batch" [sortable]="true"></p-column>
-    <p-column field="InputPath" header="Input Path" [sortable]="true"></p-column>
+    <p-column field="InputPath" header="Input Path" [sortable]="true">
+      <ng-template let-item="rowData" pTemplate type="body">
+        <p [ngClass]="'old-car'">{{ item.InputPath }}</p>
+    </ng-template>
+    </p-column>
     <p-column field="Status" header="Status" [sortable]="true"></p-column>
     <p-column field="ApplicationId" header="Action">
-      <ng-template let-item="rowData" pTemplate type="body">
+      <ng-template let-index="rowIndex" let-item="rowData" pTemplate type="body">
           <a style="color:blue;" routerLink="/applicationFile/{{item.ApplicationId}}">Files</a> |
-          <a style="color:blue;" [routerLink]="['/applicationComponents']" [queryParams]="{applicationId:item.ApplicationId}">Components</a>
-      </ng-template>
+          <a style="color:blue;" [routerLink]="['/applicationComponents']" [queryParams]="{applicationId:item.ApplicationId}">Components</a> |
+          <a style="color:blue;" (click)="delete(item.ApplicationId,index)">Delete</a>
+        </ng-template>
     </p-column>
   </p-dataTable>
   <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
@@ -30,4 +35,10 @@
       <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
     </div>
   </p-footer>
+  <p-confirmDialog header="Confirmation" icon="fa fa-exclamation-triangle" width="425" #cd>
+    <p-footer>
+      <button type="button" pButton icon="fa fa-fw fa-times" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+  </p-confirmDialog>
 </div>

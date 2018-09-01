@@ -211,7 +211,7 @@ namespace BLW.Module.Standard.FileLauncher
             if (fileTransferSetting.Password !=null && !string.IsNullOrEmpty(fileTransferSetting.Password.Trim()))
             {
                 //TODO
-              // adaptorSettings.Password = clientService.DecodeFrom64(fileTransferSetting.Password);
+                adaptorSettings.Password = fileTransferSetting.Password ;//clientService.DecodeFrom64(fileTransferSetting.Password);
             }          
             int port = 0;
             int.TryParse(fileTransferSetting.Port, out port);

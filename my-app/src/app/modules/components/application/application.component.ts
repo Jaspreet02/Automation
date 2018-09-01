@@ -4,11 +4,13 @@ import { Application } from '../../../shared/models/application';
 import { Client } from '../../../shared/models/client';
 import { ApplicationService } from '../../../core/services/application.service';
 import { ClientService } from '../../../core/services/client.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
-  styleUrls: ['./application.component.css']
+  styleUrls: ['./application.component.css'],
+  providers: [ConfirmationService]
 })
 
 export class ApplicationComponent implements OnInit {
@@ -29,7 +31,7 @@ export class ApplicationComponent implements OnInit {
 
   selectedApplication: Application;
 
-  constructor(private router: Router, private applicationService: ApplicationService, private clientService: ClientService) { }
+  constructor(private router: Router,private confirmationService: ConfirmationService, private applicationService: ApplicationService, private clientService: ClientService) { }
 
   ngOnInit() {
     this.clientService
@@ -74,5 +76,20 @@ export class ApplicationComponent implements OnInit {
       this.sortO = event.order;
     }
     this.getApplications();
+  }
+
+  delete(applicationId, index) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete',
+      icon: 'fa fa-info-circle',
+      accept: () => {
+        this.applicationService.deleteApplication(applicationId).subscribe(x =>
+          this.Applications = this.Applications.filter((val, i) => i != index)
+        );
+      },
+      reject: () => {
+      }
+    });
   }
 }

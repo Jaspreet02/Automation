@@ -72,7 +72,7 @@
                 <td>{{car.StartDate}}</td>
                 <td>{{car.EndDate}}</td>
                 <td>{{GetComponentStatusbyId(car.ComponentStatusId)}}</td>
-                <td>{{car.Message}}</td>
+                <td [ngClass]="'old-car'">{{car.Message}}</td>
               </tr>
             </ng-template>
           </p-table>

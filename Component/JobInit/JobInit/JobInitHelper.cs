@@ -277,7 +277,7 @@ namespace JobInit
                 adaptorSettings.UserName = string.IsNullOrEmpty(fileTransferSetting.UserName) ? "" : fileTransferSetting.UserName.Trim();
                 if (!string.IsNullOrEmpty(fileTransferSetting.Password))
                 {
-                    //adaptorSettings.Password = clientService.DecodeFrom64(fileTransferSetting.Password);
+                    adaptorSettings.Password = fileTransferSetting.Password; //clientService.DecodeFrom64(fileTransferSetting.Password);
                 }
                 adaptorSettings.SourceLocation = app.InputPath;
                 int port = 0;

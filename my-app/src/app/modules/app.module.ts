@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DataTableModule, SharedModule, InputMaskModule, InputTextModule, PaginatorModule, DialogModule, ButtonModule, PanelModule, InputSwitchModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, InputMaskModule, InputTextModule, PaginatorModule, DialogModule, ButtonModule, PanelModule, InputSwitchModule,ConfirmDialogModule } from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 import {SliderModule} from 'primeng/slider';
 import {MultiSelectModule} from 'primeng/multiselect';
@@ -90,7 +90,8 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     InputSwitchModule,
     TableModule,
     MultiSelectModule,
-    SliderModule
+    SliderModule,
+    ConfirmDialogModule
   ],
   providers: [RunDetailService,UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, AuthGuard,
     {

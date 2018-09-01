@@ -52,20 +52,11 @@ namespace DbHander
         
         public bool Delete(int id)
         {
-                //Execute stored procedure as a function          
-                using (SqlConnection connection = new SqlConnection("ConnectionString"))
-                {
-                    connection.Open();
-                    using (var cmdProc = new SqlCommand("DeleteClient", connection))
-                    {
-                        cmdProc.CommandType = CommandType.StoredProcedure;
-                        cmdProc.Parameters.AddWithValue("@ID", id);
-                        cmdProc.ExecuteNonQuery();
-                    }
-                    connection.Close();
-                }
-                return true;
-          }
+            //Execute stored procedure as a function          
+            SqlParameter param = new SqlParameter("@clientId", id);
+            var result = objDataContext.Database.ExecuteSqlCommand("EXEC DeleteClient @clientId", param);
+            return true;
+        }
         
         public bool UpdateStatus(int id)
         {

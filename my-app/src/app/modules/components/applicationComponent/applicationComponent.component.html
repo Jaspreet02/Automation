@@ -16,9 +16,10 @@
     <p-column field="IsOptional" header="Optional" [sortable]="true"></p-column>
     <p-column field="Status" header="Status" [sortable]="true"></p-column>
     <p-column field="ApplicationComponentId" header="Action">
-      <ng-template let-item="rowData" pTemplate type="body">
+      <ng-template let-index="rowIndex" let-item="rowData" pTemplate type="body">
           <a style="color:blue;" [routerLink]="['/inputLocations']" [queryParams]="{applicationId:item.ApplicationId,componentId:item.ComponentId}">Input</a> |
-          <a style="color:blue;" [routerLink]="['/outputLocations']" [queryParams]="{applicationId:item.ApplicationId,componentId:item.ComponentId}">Output Location</a>
+          <a style="color:blue;" [routerLink]="['/outputLocations']" [queryParams]="{applicationId:item.ApplicationId,componentId:item.ComponentId}">Output Location</a> |
+          <a style="color:blue;" (click)="delete(item.ApplicationComponentId,index)">Delete</a>
       </ng-template>
     </p-column>
    </p-dataTable>
@@ -27,5 +28,11 @@
     <div class="ui-helper-clearfix" style="width:100%">
       <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
     </div>
-  </p-footer>
+  </p-footer>  
+  <p-confirmDialog header="Confirmation" icon="fa fa-exclamation-triangle" width="425" #cd>
+    <p-footer>
+      <button type="button" pButton icon="fa fa-fw fa-times" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+  </p-confirmDialog>
 </div>

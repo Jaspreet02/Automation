@@ -41,7 +41,8 @@ export class FileTransferDetailComponent implements OnInit {
     ngOnInit() {
         if (this.newFileTransfer) {
             this.selectedFileTransfer = new FileTransfer();
-            this.masterService.getQueueTypes().subscribe(x=> this.queueTypes = x);
+            this.masterService.getQueueTypes().subscribe(x=> {this.queueTypes = x;
+                this.queueType = this.queueTypes.find(s=> s.QueueTypeId == 4)});
          }
         else {
             this.getFileTransfer();

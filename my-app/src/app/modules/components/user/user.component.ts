@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../shared/models/user';
 import { UserService } from '../../../core/services/user.service';
+import { ConfirmationService } from 'primeng/api';
+import { Alert } from '../../../../../node_modules/@types/selenium-webdriver';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  providers: [ConfirmationService]
 })
 
 export class UserComponent implements OnInit {
@@ -21,11 +24,11 @@ export class UserComponent implements OnInit {
 
   sortF: string = 'CreatedAt';
 
-  sortO: string ;
+  sortO: string;
 
   selectedUser: User;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private confirmationService: ConfirmationService, private userService: UserService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -41,7 +44,7 @@ export class UserComponent implements OnInit {
 
   getUsers(): void {
     this.userService
-      .getUsers(this.pageNumber, this.pageSize,this.sortF,this.sortO == '1' ? 'asc' : 'desc')
+      .getUsers(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
       .subscribe(x => (this.Users = x.Result, this._total = x.Count));
   }
 
@@ -64,5 +67,20 @@ export class UserComponent implements OnInit {
       this.sortO = event.order;
     }
     this.getUsers();
+  }
+
+  delete(userId, index) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete',
+      icon: 'fa fa-info-circle',
+      accept: () => {
+        this.userService.deleteUser(userId).subscribe(x =>
+          this.Users = this.Users.filter((val, i) => i != index)
+        );
+      },
+      reject: () => {
+      }
+    });
   }
 }

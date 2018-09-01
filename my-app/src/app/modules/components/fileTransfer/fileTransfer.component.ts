@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { FileTransfer } from '../../../shared/models/fileTransfer';
 import { FileTransferService } from '../../../core/services/fileTransfer.service';
 import { MasterService } from '../../../core/services/master.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-fileTransfer',
   templateUrl: './fileTransfer.component.html',
-  styleUrls: ['./fileTransfer.component.css']
+  styleUrls: ['./fileTransfer.component.css'],
+  providers: [ConfirmationService]
 })
 
 export class FileTransferComponent implements OnInit {
@@ -29,7 +31,7 @@ export class FileTransferComponent implements OnInit {
   selectedFileTransfer: FileTransfer;
 
 
-  constructor(private router: Router, private fileTransferService: FileTransferService,private masterService: MasterService) { }
+  constructor(private router: Router,private confirmationService: ConfirmationService, private fileTransferService: FileTransferService,private masterService: MasterService) { }
 
   ngOnInit() {    
     this.masterService.getQueueTypes().subscribe(c=> { this.QueueTypes = c ;
@@ -73,5 +75,20 @@ export class FileTransferComponent implements OnInit {
       this.sortO = event.order;
     }
     this.getFileTransfers();
+  }
+
+  delete(fileId, index) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete',
+      icon: 'fa fa-info-circle',
+      accept: () => {
+        this.fileTransferService.deleteFileTrasnfer(fileId).subscribe(x =>
+          this.FileTransfers = this.FileTransfers.filter((val, i) => i != index)
+        );
+      },
+      reject: () => {
+      }
+    });
   }
 }

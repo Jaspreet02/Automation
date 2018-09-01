@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DbHander
 {
@@ -57,35 +58,8 @@ namespace DbHander
 
         public bool Delete(int id)
         {
-                var objAppComp = objDataContext.ApplicationComponents.Where(x => x.ApplicationId == id);
-                var compId = objAppComp.Select(x => x.ApplicationComponentId).ToList();
-                if (compId != null)
-                {
-                    foreach (var item in compId)
-                    {
-                        var objConfigFiles = objDataContext.ComponentConfigs.Where(x => x.ApplicationComponentId == item);
-
-                        if (objConfigFiles != null)
-                        {
-                            foreach (var file in objConfigFiles)
-                            {
-                                objDataContext.ComponentConfigs.Remove(file);
-                            }
-                        }
-                    }
-                }
-                if (objAppComp != null)
-                {
-                    foreach (var item in objAppComp)
-                    {
-                        objDataContext.ApplicationComponents.Remove(item);
-                    }
-                }
-
-                Application dbEntity = objDataContext.Applications.Where(x => x.ApplicationId == id).Select(x => x).SingleOrDefault();
-                objDataContext.Applications.Remove(dbEntity);
-                objDataContext.SaveChanges();
-           
+            SqlParameter param = new SqlParameter("@applicationId", id);
+            var result = objDataContext.Database.ExecuteSqlCommand("EXEC DeleteApplication @applicationId", param);
             return true;
         }
        

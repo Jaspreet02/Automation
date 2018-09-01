@@ -15,8 +15,17 @@
         {{item.Gender == "M" ? "Male" : "Female"}}
       </ng-template>
     </p-column>
-    <p-column field="Email" header="Email" [sortable]="true"></p-column>
+    <p-column field="Email" header="Email" [sortable]="true">
+      <ng-template let-item="rowData" pTemplate type="body">
+        <p [ngClass]="'old-car'">{{ item.Email }}</p>
+    </ng-template>
+    </p-column>
     <p-column field="Status" header="Status" [sortable]="true"></p-column>
+    <p-column field="UserId" header="Action" [sortable]="true">
+      <ng-template let-index="rowIndex" let-item="rowData" pTemplate type="body">
+        <p-button style="text-align: center; width: 100%" (onClick)="delete(item.Id,index)" icon="fa fa-fw fa-close"></p-button>
+      </ng-template>
+    </p-column>
   </p-dataTable>
   <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
   <p-footer>
@@ -24,4 +33,10 @@
       <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
     </div>
   </p-footer>
+  <p-confirmDialog header="Confirmation" icon="fa fa-exclamation-triangle" width="425" #cd>
+    <p-footer>
+      <button type="button" pButton icon="fa fa-fw fa-times" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+  </p-confirmDialog>
 </div>

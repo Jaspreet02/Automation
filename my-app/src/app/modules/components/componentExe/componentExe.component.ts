@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { ComponentExe } from '../../../shared/models/componentExe';
 import { TriggerandStatusFile } from '../../../shared/models/TriggerandStatusFile';
 import { ComponentExeService } from '../../../core/services/componentExe.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-componentExe',
   templateUrl: './componentExe.component.html',
-  styleUrls:['./componentExe.component.css']
+  styleUrls:['./componentExe.component.css'],
+  providers: [ConfirmationService]
 })
 
 export class ComponentExeComponent implements OnInit {
@@ -30,7 +32,7 @@ export class ComponentExeComponent implements OnInit {
 
   triggerStatusFile: TriggerandStatusFile;
 
-  constructor(private router: Router, private componentExeService: ComponentExeService) { }
+  constructor(private router: Router,private confirmationService: ConfirmationService, private componentExeService: ComponentExeService) { }
 
   ngOnInit() {
     this.getComponentExes();
@@ -89,5 +91,20 @@ export class ComponentExeComponent implements OnInit {
       this.sortO = event.order;
     }
     this.getComponentExes();
+  }
+
+  delete(id, index) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete',
+      icon: 'fa fa-info-circle',
+      accept: () => {
+        this.componentExeService.deleteComponentExe(id).subscribe(x =>
+          this.ComponentExes = this.ComponentExes.filter((val, i) => i != index)
+        );
+      },
+      reject: () => {
+      }
+    });
   }
 }

@@ -4,11 +4,13 @@ import { ComponentExe } from '../../../shared/models/componentExe';
 import { ApplicationComponent } from '../../../shared/models/applicationComponent';
 import { ApplicationComponentService } from '../../../core/services/applicationComponent.service';
 import { ComponentExeService } from '../../../core/services/componentExe.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-applicationComponent',
   templateUrl: './applicationComponent.component.html',
-  styleUrls: ['./applicationComponent.component.css']
+  styleUrls: ['./applicationComponent.component.css'],
+  providers: [ConfirmationService]
 })
 
 export class ApplicationComponentComponent implements OnInit {
@@ -31,7 +33,7 @@ export class ApplicationComponentComponent implements OnInit {
 
   selectedApplicationComponent: ApplicationComponent;
 
-  constructor(private router: Router, private route: ActivatedRoute, private applicationComponentService: ApplicationComponentService, private componentExeService: ComponentExeService) {
+  constructor(private router: Router,private confirmationService: ConfirmationService, private route: ActivatedRoute, private applicationComponentService: ApplicationComponentService, private componentExeService: ComponentExeService) {
     this.route.queryParams.subscribe(res => {
         this.ApplicationId = res['applicationId'];
     });
@@ -80,5 +82,20 @@ export class ApplicationComponentComponent implements OnInit {
       this.sortO = event.order;
     }
     this.getApplicationComponents();
+  }
+
+  delete(id, index) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete',
+      icon: 'fa fa-info-circle',
+      accept: () => {
+        this.applicationComponentService.deleteApplicationComponent(id).subscribe(x =>
+          this.ApplicationComponents = this.ApplicationComponents.filter((val, i) => i != index)
+        );
+      },
+      reject: () => {
+      }
+    });
   }
 }

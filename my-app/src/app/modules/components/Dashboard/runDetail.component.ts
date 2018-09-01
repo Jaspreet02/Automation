@@ -98,13 +98,11 @@ export class RunDetailComponent implements OnInit {
   }
 
   BindDropdown() {
+    debugger;
     let result = [];
     for (let index = 0; index < this.Clients.length; index++) {
-      let subItem = [];
       let tempApplication = this.Applications.filter(x => x.ClientId == this.Clients[index].ClientId);
-      if (tempApplication.length == 0) {
-        continue;
-      }
+      let subItem = [];
       for (let subIndex = 0; subIndex < tempApplication.length; subIndex++) {
         subItem[subIndex] = { label: tempApplication[subIndex].Name, value: tempApplication[subIndex].ApplicationId }
       }
@@ -148,10 +146,10 @@ export class RunDetailComponent implements OnInit {
       });
   }
 
-  getRunDetails(): void {   
-          this.runDetailService
-            .getRunDetails(0, this.selectedApplication != null ? this.selectedApplication : 0, this.RunNumberStatus != null ? this.RunNumberStatus.Id : -1, this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-            .subscribe(x => (this.RunDetails = x.Result, this._total = x.Count));
+  getRunDetails(): void {
+    this.runDetailService
+      .getRunDetails(0, this.selectedApplication != null ? this.selectedApplication : 0, this.RunNumberStatus != null ? this.RunNumberStatus.Id : -1, this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
+      .subscribe(x => (this.RunDetails = x.Result, this._total = x.Count));
   }
 
   paginate(event) {

@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Client } from '../../../shared/models/client';
 import { ClientService } from '../../../core/services/client.service';
+import { ConfirmationService } from 'primeng/api';
+import { Alert } from '../../../../../node_modules/@types/selenium-webdriver';
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrls: ['./client.component.css']
+  styleUrls: ['./client.component.css'],
+  providers: [ConfirmationService]
 })
 
 export class ClientComponent implements OnInit {
@@ -26,7 +29,7 @@ export class ClientComponent implements OnInit {
   selectedClient: Client;
 
 
-  constructor(private router: Router, private clientService: ClientService) { }
+  constructor(private router: Router,private confirmationService: ConfirmationService, private clientService: ClientService) { }
 
   ngOnInit() {
     this.getClients();
@@ -65,5 +68,20 @@ export class ClientComponent implements OnInit {
       this.sortO = event.order;
     }
     this.getClients();
+  }
+
+  delete(clientId, index) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete',
+      icon: 'fa fa-info-circle',
+      accept: () => {
+        this.clientService.deleteClient(clientId).subscribe(x =>
+          this.Clients = this.Clients.filter((val, i) => i != index)
+        );
+      },
+      reject: () => {
+      }
+    });
   }
 }

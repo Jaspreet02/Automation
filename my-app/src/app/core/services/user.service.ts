@@ -50,8 +50,8 @@ export class UserService {
   }
 
   /** DELETE: delete the user from the server */
-  deleteUser (user: User | number): Observable<User> {
-    const id = typeof user === 'number' ? user : user.Id;
+  deleteUser (user: User | string): Observable<User> {
+    const id = typeof user === 'string' ? user : user.Id;
     const url = `${this.userUrl}/Delete/${id}`;
 
     return this.http.delete<User>(url, httpOptions);

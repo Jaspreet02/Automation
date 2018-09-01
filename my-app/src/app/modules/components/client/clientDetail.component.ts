@@ -47,6 +47,7 @@ export class ClientDetailComponent implements OnInit {
     ngOnInit() {
         if (this.newClient) {
             this.selectedClient = new Client();
+            this.proofFormat = this.proofFormats.find(g => g.Value == null);
         }
         else {
             this.getClient();
