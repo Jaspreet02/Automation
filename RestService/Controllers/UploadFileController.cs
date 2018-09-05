@@ -19,7 +19,7 @@ namespace MobileService.Controllers
 
         // GET: api/Application
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int pageNumber = 1, int pageSize = 10, bool fetchAll = false)
+        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
             var appIds = GenericPrincipalExtensions.Applications(User, null);
             var result = objUploadFileRepository.FindAll().Where(x=> appIds.Contains(x.ApplicationId)).OrderByDescending(x => x.CreatedAt);

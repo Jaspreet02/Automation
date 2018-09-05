@@ -17,6 +17,8 @@ import { ApplicationComponentDetailComponent } from './components/applicationCom
 import { ComponentInputLocationComponent } from './components/applicationComponent/componentInputLocation.component';
 import { ComponentOutputLocationComponent } from './components/applicationComponent/componentOutputLocation.component';
 import { RunDetailComponent } from './components/Dashboard/runDetail.component';
+import { UploadFileComponent } from './components/uploadFile/uploadFile.component';
+import { UploadFileDetailComponent } from './components/uploadFile/uploadFileDetail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -42,7 +44,10 @@ const routes: Routes = [
   { path: 'applicationComponent', component: ApplicationComponentDetailComponent },
   { path: 'inputLocations', component: ComponentInputLocationComponent},
   { path: 'outputLocations', component: ComponentOutputLocationComponent},
-  { path: 'runDetails', component: RunDetailComponent}
+  { path: 'runDetails', component: RunDetailComponent},
+  { path: 'uploadFiles', component: UploadFileComponent},
+  { path: 'uploadFile/:id', component: UploadFileDetailComponent },
+  { path: 'uploadFile', component: UploadFileDetailComponent },
 ];
 
 @NgModule({

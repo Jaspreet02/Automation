@@ -1,0 +1,222 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+    <div *ngIf="selectedUploadFile">
+        <form [formGroup]="uploadFileform" (ngSubmit)="save()">
+            <p-panel header="Application Component">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Application *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="application" name="application" formControlName="application" [options]="applications" [(ngModel)]="application" optionLabel="Name"
+                                placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['application'].valid&&uploadFileform.controls['application'].dirty">
+                                <i class="fa fa-close"></i>
+                                Application is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Component *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="component" name="component" formControlName="component" [options]="components" [(ngModel)]="component" optionLabel="Name"
+                                placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['component'].valid&&uploadFileform.controls['component'].dirty">
+                                <i class="fa fa-close"></i>
+                                Component is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="name" [(ngModel)]="selectedUploadFile.Name" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['name'].valid&&uploadFileform.controls['name'].dirty">
+                                <i class="fa fa-close"></i>
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Input Path *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="fileInputPath" [(ngModel)]="selectedUploadFile.FileInputPath" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['fileInputPath'].valid&&uploadFileform.controls['fileInputPath'].dirty">
+                                <i class="fa fa-close"></i>
+                                Input Path is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            File Mask *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="inputFileMask" [(ngModel)]="selectedUploadFile.InputFileMask" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['inputFileMask'].valid&&uploadFileform.controls['inputFileMask'].dirty">
+                                <i class="fa fa-close"></i>
+                                Input Path is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Is Archive *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                                <p-inputSwitch formControlName="isArchiveOutputRequired" onLabel="true" offLabel="false" [(ngModel)]="selectedUploadFile.IsArchiveOutputRequired"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['isArchiveOutputRequired'].valid&&uploadFileform.controls['isArchiveOutputRequired'].dirty">
+                                <i class="fa fa-close"></i>
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="(selectedUploadFile.IsArchiveOutputRequired)">
+                        <div class="ui-grid-col-2">
+                            Archive Path *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="archiveOutputPath" [(ngModel)]="selectedUploadFile.ArchiveOutputPath" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['archiveOutputPath'].valid&&uploadFileform.controls['archiveOutputPath'].dirty">
+                                <i class="fa fa-close"></i>
+                                Archive Path is required
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="ui-grid-row" *ngIf="(selectedUploadFile.IsArchiveOutputRequired)">
+                        <div class="ui-grid-col-2">
+                            Archive File Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="archiveFileExpression" [(ngModel)]="selectedUploadFile.ArchiveFileExpression" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['archiveFileExpression'].valid&&uploadFileform.controls['archiveFileExpression'].dirty">
+                                <i class="fa fa-close"></i>
+                                Archive File Name is required
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="ui-grid-row" *ngIf="(selectedUploadFile.IsArchiveOutputRequired)">
+                        <div class="ui-grid-col-2">
+                            File Transfer *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="archiveFileTransferSettingId" name="archiveFileTransferSettingId" formControlName="archiveFileTransferSettingId" [options]="fileTransfers" [(ngModel)]="archiveFileTransfer" optionLabel="Name" placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['archiveFileTransferSettingId'].valid&&uploadFileform.controls['archiveFileTransferSettingId'].dirty">
+                                <i class="fa fa-close"></i>
+                                This Field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Is Move *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                                <p-inputSwitch formControlName="isMoveFileRequired" onLabel="true" offLabel="false" [(ngModel)]="selectedUploadFile.IsMoveFileRequired"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['isMoveFileRequired'].valid&&uploadFileform.controls['isMoveFileRequired'].dirty">
+                                <i class="fa fa-close"></i>
+                                This field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="(selectedUploadFile.IsMoveFileRequired)">
+                        <div class="ui-grid-col-2">
+                            Move Path *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="moveFilePath" [(ngModel)]="selectedUploadFile.MoveFilePath" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['moveFilePath'].valid&&uploadFileform.controls['moveFilePath'].dirty">
+                                <i class="fa fa-close"></i>
+                                Move Path is required
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="ui-grid-row" *ngIf="(selectedUploadFile.IsMoveFileRequired)">
+                        <div class="ui-grid-col-2">
+                            Move File Name *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="moveFileExpression" [(ngModel)]="selectedUploadFile.MoveFileExpression" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['moveFileExpression'].valid&&uploadFileform.controls['moveFileExpression'].dirty">
+                                <i class="fa fa-close"></i>
+                                Move File Name is required
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="ui-grid-row" *ngIf="(selectedUploadFile.IsMoveFileRequired)">
+                        <div class="ui-grid-col-2">
+                           Move File Transfer *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="moveFileTransferSettingId" name="moveFileTransferSettingId" formControlName="moveFileTransferSettingId" [options]="fileTransfers" [(ngModel)]="moveFileTransfer" optionLabel="Name" placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['moveFileTransferSettingId'].valid&&uploadFileform.controls['moveFileTransferSettingId'].dirty">
+                                <i class="fa fa-close"></i>
+                                This Field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-inputSwitch formControlName="status" onLabel="true" offLabel="false" [(ngModel)]="selectedUploadFile.Status"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!uploadFileform.controls['status'].valid&&uploadFileform.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!uploadFileform.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>

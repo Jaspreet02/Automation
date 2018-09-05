@@ -148,7 +148,7 @@ namespace Uploader
             if (fileTransferSetting.Password != null && !string.IsNullOrEmpty(fileTransferSetting.Password.Trim()))
             {
                 //TODO
-                // adaptorSettings.Password = clientService.DecodeFrom64(fileTransferSetting.Password);l n ,m;
+                adaptorSettings.Password = fileTransferSetting.Password;
             }
 
             adaptorSettings.DestinationLocation = outputPath;

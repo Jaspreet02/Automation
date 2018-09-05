@@ -15,6 +15,8 @@ import { ConfirmationService } from 'primeng/api';
 
 export class ApplicationComponent implements OnInit {
 
+  userType: string = 'admin';
+
   Applications: Application[];
 
   Clients: Client[];

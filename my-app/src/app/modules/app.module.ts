@@ -27,6 +27,8 @@ import { ApplicationComponentDetailComponent } from './components/applicationCom
 import { ComponentInputLocationComponent } from './components/applicationComponent/componentInputLocation.component';
 import { ComponentOutputLocationComponent } from './components/applicationComponent/componentOutputLocation.component';
 import { RunDetailComponent } from './components/Dashboard/runDetail.component';
+import { UploadFileComponent } from './components/uploadFile/uploadFile.component';
+import { UploadFileDetailComponent } from './components/uploadFile/uploadFileDetail.component';
 
 import { UserService } from '../core/services/user.service';
 import { ClientService } from '../core/services/client.service';
@@ -36,6 +38,7 @@ import { ComponentExeService } from '../core/services/componentExe.service';
 import { ApplicationComponentService } from '../core/services/applicationComponent.service';
 import { RunDetailService } from '../core/services/runDetail.service';
 import { MasterService } from '../core/services/master.service';
+import { UploadFileService } from '../core/services/uploadFile.service';
 
 import { AppHeaderComponent } from '../core/header/app-header/app-header.component';
 import { AdminHeaderComponent } from '../core/header/admin-header/admin-header.component';
@@ -66,6 +69,8 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     ComponentInputLocationComponent,
     ComponentOutputLocationComponent,
     RunDetailComponent,
+    UploadFileComponent,
+    UploadFileDetailComponent,
     AppHeaderComponent,
     AdminHeaderComponent,
     UserHeaderComponent,
@@ -93,7 +98,7 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     SliderModule,
     ConfirmDialogModule
   ],
-  providers: [RunDetailService,UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, AuthGuard,
+  providers: [RunDetailService,UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, UploadFileService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

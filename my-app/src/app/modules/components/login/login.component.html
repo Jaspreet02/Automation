@@ -2,36 +2,25 @@
 <br/>
 <br/>
 <div class="container body-content">    
-        <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+        <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value,Password.value)" style="text-align: center">
             <p-panel header="Login">
                 <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-2">
-                            User Name *:
-                        </div>
-                        <div class="ui-grid-col-6">
+                        <div class="ui-grid-col-12">
                             <input pInputText type="text" #UserName ngModel name="UserName" placeholder="Username" required>
                         </div>
                     </div>
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-2">
-                            Password *:
-                        </div>
-                        <div class="ui-grid-col-6">
+                        <div class="ui-grid-col-12">
                             <input  pInputText type="password" #Password ngModel name="Password" placeholder="Password" required>
                         </div>
                     </div>
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-2"></div>
-                        <div class="ui-grid-col-3">
-                            <button pButton type="submit" label="Submit" [disabled]="!loginForm.valid"></button>
-                        </div>
-                        <div class="ui-grid-col-3">
-                            <button pButton label="Cancel" type="button" class="ui-button-warning"></button>
+                        <div class="ui-grid-col-12">
+                            <button pButton type="submit" label="Login" [disabled]="!loginForm.valid"></button>
                         </div>
                     </div>
                     <div class="ui-grid-row">
-                      <div class="ui-grid-col-2"></div>
                         <div *ngIf="isLoginError" class="ui-message ui-messages-error ui-corner-all">
                             <i class="fa fa-close"></i>
                              Incorrect username or password

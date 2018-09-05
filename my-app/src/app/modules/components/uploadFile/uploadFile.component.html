@@ -1,0 +1,36 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br/>
+<div class="container body-content">
+  <p-dataTable [value]="UploadFiles" [responsive]="true" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" selectionMode="single"
+    [(selection)]="selectedUploadFile" (onRowSelect)="onSelect()">
+    <p-header>File Transfer</p-header>
+    <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
+    <p-column field="Name" header="Name" [sortable]="true"></p-column>
+    <p-column field="FileInputPath" header="Input Path" [sortable]="true">
+      <ng-template let-item="rowData" pTemplate type="body">
+          <p [ngClass]="'old-car'">{{ item.FileInputPath }}</p>
+      </ng-template>
+  </p-column>
+    <p-column field="InputFileMask" header="File Mask" [sortable]="true"></p-column>
+    <p-column field="Status" header="Status" [sortable]="true"></p-column>
+    <p-column field="UploadFileId" header="Action" [sortable]="true">
+      <ng-template let-index="rowIndex" let-item="rowData" pTemplate type="body">
+        <p-button style="text-align: center; width: 100%" (onClick)="delete(item.UploadFileId,index)" icon="fa fa-fw fa-close"></p-button>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+  <p-paginator rows="5" totalRecords="{{ _total }}" pageLinkSize="3" [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)"></p-paginator>
+  <p-footer>
+    <div class="ui-helper-clearfix" style="width:100%">
+      <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+    </div>
+  </p-footer>
+  <p-confirmDialog header="Confirmation" icon="fa fa-exclamation-triangle" width="425" #cd>
+    <p-footer>
+      <button type="button" pButton icon="fa fa-fw fa-times" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="fa fa-fw fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+  </p-confirmDialog>
+</div>
