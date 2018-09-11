@@ -102,11 +102,11 @@ export class ApplicationDetailComponent implements OnInit {
         if (this.newApplication) {
             this.selectedApplication.ClientId = this.client.ClientId;
             this.selectedApplication.FileTransferSettingId = this.fileTransfer.FileTransferSettingId;
-            this.applicationService.addApplication(this.selectedApplication).subscribe(() => { this.selectedApplication = null; this.router.navigate(['/applications']); });
+            this.applicationService.addApplication(this.selectedApplication).subscribe(() => { this.selectedApplication = null; this.router.navigate(['/' + localStorage.getItem('role') + '/applications']); });
         } else {
             this.selectedApplication.ClientId = this.client.ClientId;
             this.selectedApplication.FileTransferSettingId = this.fileTransfer.FileTransferSettingId;
-             this.applicationService.updateApplication(this.selectedApplication).subscribe(() => { this.selectedApplication = null; this.router.navigate(['/applications']); });
+             this.applicationService.updateApplication(this.selectedApplication).subscribe(() => { this.selectedApplication = null; this.router.navigate(['/' + localStorage.getItem('role') + '/applications']); });
         }
     }
 

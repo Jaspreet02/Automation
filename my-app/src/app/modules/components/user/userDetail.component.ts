@@ -73,10 +73,10 @@ export class UserDetailComponent implements OnInit {
   save() {
     if (this.newUser) {
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.addUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/users']); });
+      this.userService.addUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/' + localStorage.getItem('role') + '/users']); });
     } else {
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.updateUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/users']); });
+      this.userService.updateUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/' + localStorage.getItem('role') + '/users']); });
     }
   }
 

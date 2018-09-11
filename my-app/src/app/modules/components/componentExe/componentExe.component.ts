@@ -46,7 +46,7 @@ export class ComponentExeComponent implements OnInit {
 
   showDialogToAdd() {
     this.selectedComponentExe = new ComponentExe();
-    this.router.navigate(['/componentExe']);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/componentExe']);
   }
 
   showDialogToAddTriggerFile(id, item) {
@@ -69,7 +69,7 @@ export class ComponentExeComponent implements OnInit {
   }
 
   onSelect(): void {
-    this.router.navigate(['/componentExe/' + this.selectedComponentExe.ComponentId]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/componentExe/' + this.selectedComponentExe.ComponentId]);
   }
 
   paginate(event) {

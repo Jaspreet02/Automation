@@ -13,6 +13,7 @@ namespace MobileService.Controllers
 
         [AllowAnonymous]
         [Route("api/account/confirmemail", Name = "ConfirmEmail")]
+        [HttpGet]
         public async Task<IHttpActionResult> ConfirmEmail(ConfirmEmailBindingModel model)
         {
             var user = await this.UserManager.FindByIdAsync(model.UserId);

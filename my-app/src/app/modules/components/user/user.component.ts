@@ -35,11 +35,11 @@ export class UserComponent implements OnInit {
   }
 
   showDialogToAdd() {
-    this.router.navigate(['/user']);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/user']);
   }
 
   onSelect(): void {
-    this.router.navigate(['/user/' + this.selectedUser.Id]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/user/' + this.selectedUser.Id]);
   }
 
   getUsers(): void {

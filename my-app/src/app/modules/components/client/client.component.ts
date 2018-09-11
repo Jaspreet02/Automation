@@ -36,11 +36,11 @@ export class ClientComponent implements OnInit {
   }
 
   showDialogToAdd() {
-    this.router.navigate(['/client']);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/client']);
   }
 
   onSelect(): void {
-    this.router.navigate(['/client/' + this.selectedClient.ClientId]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/client/' + this.selectedClient.ClientId]);
   }
 
   getClients(): void {

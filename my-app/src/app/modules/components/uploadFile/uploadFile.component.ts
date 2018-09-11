@@ -35,11 +35,11 @@ export class UploadFileComponent implements OnInit {
   }
 
   showDialogToAdd() {
-    this.router.navigate(['/uploadFile']);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/uploadFile']);
   }
 
   onSelect(): void {
-    this.router.navigate(['/uploadFile/' + this.selectedUploadFile.UploadFileId]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/uploadFile/' + this.selectedUploadFile.UploadFileId]);
   }
 
   gets(): void {

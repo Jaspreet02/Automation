@@ -75,10 +75,10 @@ export class ClientDetailComponent implements OnInit {
     save() {
         if (this.newClient) {
             this.selectedClient.ProofFormat = this.proofFormat.Value;
-            this.clientService.addClient(this.selectedClient).subscribe(() => { this.selectedClient = null; this.router.navigate(['/clients']); });
+            this.clientService.addClient(this.selectedClient).subscribe(() => { this.selectedClient = null; this.router.navigate(['/' + localStorage.getItem('role') + '/clients']); });
         } else {
             this.selectedClient.ProofFormat = this.proofFormat.Value;
-            this.clientService.updateClient(this.selectedClient).subscribe(() => { this.selectedClient = null; this.router.navigate(['/clients']); });
+            this.clientService.updateClient(this.selectedClient).subscribe(() => { this.selectedClient = null; this.router.navigate(['/' + localStorage.getItem('role') + '/clients']); });
         }
     }
 

@@ -46,13 +46,17 @@ export class ApplicationComponent implements OnInit {
   };
 
   showDialogToAdd() {
-    this.router.navigate(['/application']);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/application']);
   }
+
+  get role(): any {
+    return localStorage.getItem('role');
+}
 
   onSelect(): void {
-    this.router.navigate(['/application/' + this.selectedApplication.ApplicationId]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/application/' + this.selectedApplication.ApplicationId]);
   }
-
+  
   getApplications(): void {
         this.applicationService
           .getApplications(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')

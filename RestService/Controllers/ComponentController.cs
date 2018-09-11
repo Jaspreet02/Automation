@@ -1,7 +1,5 @@
 ﻿using DbHander;
-using Microsoft.AspNet.Identity;
 using MobileService.Common;
-using MobileService.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;

@@ -92,10 +92,10 @@ export class FileTransferDetailComponent implements OnInit {
     save() {
         if (this.newFileTransfer) {
             this.selectedFileTransfer.QueueTypeId = this.queueType.QueueTypeId;
-            this.fileTransferService.addFileTransfer(this.selectedFileTransfer).subscribe(x => { this.selectedFileTransfer = null; this.router.navigate(['/fileTransfers']); });
+            this.fileTransferService.addFileTransfer(this.selectedFileTransfer).subscribe(x => { this.selectedFileTransfer = null; this.router.navigate(['/' + localStorage.getItem('role') + '/fileTransfers']); });
         } else {
             this.selectedFileTransfer.QueueTypeId = this.queueType.QueueTypeId;
-            this.fileTransferService.updateFileTransfer(this.selectedFileTransfer).subscribe(x => { this.selectedFileTransfer = null; this.router.navigate(['/fileTransfers']); });
+            this.fileTransferService.updateFileTransfer(this.selectedFileTransfer).subscribe(x => { this.selectedFileTransfer = null; this.router.navigate(['/' + localStorage.getItem('role') + '/fileTransfers']); });
         }
     }
 

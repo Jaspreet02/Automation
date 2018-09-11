@@ -56,12 +56,16 @@ export class ApplicationComponentComponent implements OnInit {
   }
 
   showDialogToAdd() {
-    this.router.navigate(['/applicationComponent',{applicationId:this.ApplicationId,maxValue:this._total + 1}]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/applicationComponent',{applicationId:this.ApplicationId,maxValue:this._total + 1}]);
   }
 
   onSelect(): void {
-    this.router.navigate(['/applicationComponent/' + this.selectedApplicationComponent.ApplicationComponentId, {applicationId: this.ApplicationId,maxValue:this._total + 1}]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/applicationComponent/' + this.selectedApplicationComponent.ApplicationComponentId, {applicationId: this.ApplicationId,maxValue:this._total + 1}]);
   }
+
+  get role(): any {
+    return localStorage.getItem('role');
+}
 
   paginate(event) {
     this.pageNumber = event.page;

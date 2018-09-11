@@ -43,11 +43,11 @@ export class FileTransferComponent implements OnInit {
   };
 
   showDialogToAdd() {
-    this.router.navigate(['/fileTransfer']);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/fileTransfer']);
   }
 
   onSelect(): void {
-    this.router.navigate(['/fileTransfer/' + this.selectedFileTransfer.FileTransferSettingId]);
+    this.router.navigate(['/' + localStorage.getItem('role') + '/fileTransfer/' + this.selectedFileTransfer.FileTransferSettingId]);
   }
 
   getFileTransfers(): void {

@@ -57,9 +57,9 @@ export class ComponentExeDetailComponent implements OnInit {
 
     save() {
         if (this.newComponent) {
-             this.componentService.addComponentExe(this.selectedComponentExe).subscribe(() => { this.selectedComponentExe = null; this.router.navigate(['/componentExes']); });
+             this.componentService.addComponentExe(this.selectedComponentExe).subscribe(() => { this.selectedComponentExe = null; this.router.navigate(['/' + localStorage.getItem('role') + '/componentExes']); });
         } else {
-            this.componentService.updateComponentExe(this.selectedComponentExe).subscribe(() => { this.selectedComponentExe = null; this.router.navigate(['/componentExes']); });
+            this.componentService.updateComponentExe(this.selectedComponentExe).subscribe(() => { this.selectedComponentExe = null; this.router.navigate(['/' + localStorage.getItem('role') + '/componentExes']); });
         }
     }
 
