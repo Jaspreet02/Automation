@@ -48,6 +48,7 @@ import { SuperHeaderComponent } from '../core/header/super-header/super-header.c
 import { RoutingModule } from './routing.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { AuthInterceptor } from '../core/guards/auth.interceptor';
+import { CodeValidator } from '../shared/directives/code.directive';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,7 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     SliderModule,
     ConfirmDialogModule
   ],
-  providers: [RunDetailService,UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, UploadFileService, AuthGuard,
+  providers: [RunDetailService,UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, UploadFileService, AuthGuard,CodeValidator,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

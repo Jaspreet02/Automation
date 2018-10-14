@@ -63,6 +63,11 @@ namespace DbHander
             throw new NotImplementedException();
         }
 
+        public bool IsShortNameExist(string name)
+        {
+           return objDataContext.Clients.Any(x => name == x.Code);
+        }
+
         #region IDisposable Support
 
         private bool disposedValue = false; // To detect redundant calls
@@ -98,6 +103,7 @@ namespace DbHander
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
+
 
         #endregion
 

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Client } from '../../../shared/models/client';
 import { ClientService } from '../../../core/services/client.service';
+import { CodeValidator } from '../../../shared/directives/code.directive';
 
 @Component({
     selector: 'app-clientDetail',
@@ -25,7 +26,7 @@ export class ClientDetailComponent implements OnInit {
 
     clientform: FormGroup;
 
-    constructor(private clientService: ClientService,
+    constructor(private clientService: ClientService,public Validator: CodeValidator,
         private location: Location, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) {
         this.route.params.subscribe(res => {
             if (res['id']) {
@@ -54,7 +55,7 @@ export class ClientDetailComponent implements OnInit {
         }
         this.clientform = this.fb.group({
             'name': new FormControl('', Validators.required),
-            'code': new FormControl('', Validators.required),
+            'code': new FormControl('', Validators.compose([Validators.required,Validators.minLength(3),Validators.maxLength(3)]),this.Validator.checkUsername.bind(this.Validator)),
             'contact': new FormControl('', Validators.required),
             'emailAddress': new FormControl('', Validators.compose([Validators.required, Validators.email])),
             'proofFormat': new FormControl('', Validators.required),
@@ -86,7 +87,6 @@ export class ClientDetailComponent implements OnInit {
         this.selectedClient = null;
         this.location.back();
     }
-
 }
 
 interface SelectedItem {

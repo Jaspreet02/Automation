@@ -66,6 +66,13 @@ namespace MobileService.Controllers
             return Ok(_objclientRepository.Delete(id));
         }
 
+
+        [HttpGet]
+        public IHttpActionResult IsNameExist(string name)
+        {
+            return Ok(_objclientRepository.IsShortNameExist(name));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

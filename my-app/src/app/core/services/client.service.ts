@@ -49,6 +49,10 @@ export class ClientService {
     return this.http.put(url, client, httpOptions);
   }
 
+  isNameExist(name: string): Observable<any>{
+    return this.http.get<Client>(this.ClientUrl + '/IsNameExist?name=' + name);
+  }
+
 }
 
 export interface PagedResponse<T> {
