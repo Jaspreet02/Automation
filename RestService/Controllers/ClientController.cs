@@ -68,9 +68,9 @@ namespace MobileService.Controllers
 
 
         [HttpGet]
-        public IHttpActionResult IsNameExist(string name)
+        public IHttpActionResult CodeExistList(int clientId)
         {
-            return Ok(_objclientRepository.IsShortNameExist(name));
+            return Ok(_objclientRepository.CodeExistList(clientId));
         }
 
         protected override void Dispose(bool disposing)

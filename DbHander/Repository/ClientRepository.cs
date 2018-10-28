@@ -63,9 +63,9 @@ namespace DbHander
             throw new NotImplementedException();
         }
 
-        public bool IsShortNameExist(string name)
+        public string[] CodeExistList(int clientId)
         {
-           return objDataContext.Clients.Any(x => name == x.Code);
+           return objDataContext.Clients.Where(x => x.ClientId != clientId).Select(x=> x.Code).ToArray();
         }
 
         #region IDisposable Support

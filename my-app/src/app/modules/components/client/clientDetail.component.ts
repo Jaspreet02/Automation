@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormControl, FormGroup, FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Client } from '../../../shared/models/client';
 import { ClientService } from '../../../core/services/client.service';
-import { CodeValidator } from '../../../shared/directives/code.directive';
+import { ReturnStatement } from '@angular/compiler';
 
 @Component({
     selector: 'app-clientDetail',
@@ -24,9 +24,13 @@ export class ClientDetailComponent implements OnInit {
 
     proofFormat: SelectedItem;
 
+    debouncer: any;
+
     clientform: FormGroup;
 
-    constructor(private clientService: ClientService,public Validator: CodeValidator,
+    existingTags = [];
+
+    constructor(private clientService: ClientService,
         private location: Location, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) {
         this.route.params.subscribe(res => {
             if (res['id']) {
@@ -55,12 +59,12 @@ export class ClientDetailComponent implements OnInit {
         }
         this.clientform = this.fb.group({
             'name': new FormControl('', Validators.required),
-            'code': new FormControl('', Validators.compose([Validators.required,Validators.minLength(3),Validators.maxLength(3)]),this.Validator.checkUsername.bind(this.Validator)),
+            'code': new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(3), this.validCode()])),
             'contact': new FormControl('', Validators.required),
             'emailAddress': new FormControl('', Validators.compose([Validators.required, Validators.email])),
             'proofFormat': new FormControl('', Validators.required),
             'proofPassword': new FormControl(''),
-            'proofName':new FormControl(''),
+            'proofName': new FormControl(''),
             'status': new FormControl('')
         });
     }
@@ -70,7 +74,11 @@ export class ClientDetailComponent implements OnInit {
             .subscribe(x => {
                 this.selectedClient = x;
                 this.proofFormat = this.proofFormats.find(g => g.Value == this.selectedClient.ProofFormat);
-             });
+            });
+
+        this.clientService.IsNameExist(parseInt(this.clientId)).subscribe((res) => {
+            this.existingTags = res;
+        });
     }
 
     save() {
@@ -86,6 +94,26 @@ export class ClientDetailComponent implements OnInit {
     cancel() {
         this.selectedClient = null;
         this.location.back();
+    }
+
+    private validCode(): ValidatorFn {
+
+        return (control: AbstractControl): { [key: string]: boolean } => {
+
+            if (control.value.length == 3) {
+                if (this.existingTags.includes(control.value)) {
+                    return { 'validCode': true };
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return null;
+            }
+
+        }
+
     }
 }
 
