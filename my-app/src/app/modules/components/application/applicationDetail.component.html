@@ -55,7 +55,10 @@
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!applicationform.controls['code'].valid&&applicationform.controls['code'].dirty">
                                 <i class="fa fa-close"></i>
-                                Code is required
+                                <span *ngIf="applicationform.controls['code'].errors['required']">Code is required</span>
+                                <span *ngIf="applicationform.controls['code'].errors['minlength']">Not Less than three character</span>
+                                <span *ngIf="applicationform.controls['code'].errors['maxlength']">Not More than three character</span>
+                                <span *ngIf="applicationform.controls['code'].errors['validCode']">Code already exist</span>
                             </div>
                         </div>
                     </div>

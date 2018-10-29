@@ -24,8 +24,6 @@ export class ClientDetailComponent implements OnInit {
 
     proofFormat: SelectedItem;
 
-    debouncer: any;
-
     clientform: FormGroup;
 
     existingTags = [];
@@ -76,7 +74,7 @@ export class ClientDetailComponent implements OnInit {
                 this.proofFormat = this.proofFormats.find(g => g.Value == this.selectedClient.ProofFormat);
             });
 
-        this.clientService.IsNameExist(parseInt(this.clientId)).subscribe((res) => {
+        this.clientService.CodeExistList(parseInt(this.clientId)).subscribe((res) => {
             this.existingTags = res;
         });
     }
@@ -111,9 +109,7 @@ export class ClientDetailComponent implements OnInit {
             else {
                 return null;
             }
-
         }
-
     }
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormControl, FormGroup, FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Application } from '../../../shared/models/application';
 import { Client } from '../../../shared/models/client';
 import { FileTransfer } from '../../../shared/models/fileTransfer';
@@ -33,6 +33,8 @@ export class ApplicationDetailComponent implements OnInit {
 
     applicationform: FormGroup;
 
+    existingTags = [];
+
     constructor(private applicationService: ApplicationService, private clientService: ClientService, private fileTransferService: FileTransferService,
         private location: Location, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) {
         this.route.params.subscribe(res => {
@@ -59,7 +61,7 @@ export class ApplicationDetailComponent implements OnInit {
             'client': new FormControl('', Validators.required),
             'fileTransfer': new FormControl('', Validators.required),
             'name': new FormControl('', Validators.required),
-            'code': new FormControl('', Validators.required),
+            'code': new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(3), this.validCode()])),
             'hotFolder': new FormControl('', Validators.required),
             'archivePath': new FormControl('', Validators.required),
             'archiveFileName': new FormControl(''),
@@ -96,6 +98,10 @@ export class ApplicationDetailComponent implements OnInit {
                 this.client = this.clients.find(f=> f.ClientId == this.selectedApplication.ClientId);
                this.fileTransfer = this.fileTransfers.find(f=> f.FileTransferSettingId == this.selectedApplication.FileTransferSettingId);
             });});});
+
+            this.applicationService.CodeExistList(parseInt(this.ApplicationId)).subscribe((res) => {
+                this.existingTags = res;
+            });
      }   
 
     save() {
@@ -113,6 +119,24 @@ export class ApplicationDetailComponent implements OnInit {
     cancel() {
         this.selectedApplication = null;
         this.location.back();
+    }
+
+    private validCode(): ValidatorFn {
+
+        return (control: AbstractControl): { [key: string]: boolean } => {
+
+            if (control.value.length == 3) {
+                if (this.existingTags.includes(control.value)) {
+                    return { 'validCode': true };
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return null;
+            }
+        }
     }
 
 }

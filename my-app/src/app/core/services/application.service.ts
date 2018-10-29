@@ -66,6 +66,10 @@ export class ApplicationService {
     return this.http.delete<ApplicationFile>(url, httpOptions);
   }
 
+  CodeExistList(applicationId: number): Observable<any>{
+    return this.http.get<string[]>(this.ApplicationUrl + '/CodeExistList?applicationId=' + applicationId);
+  }
+
 }
 
 export interface PagedResponse<T> {

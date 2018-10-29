@@ -90,6 +90,12 @@ namespace MobileService.Controllers
             return Ok(objApplicationFileRepository.Delete(applicationFileId));
         }
 
+        [HttpGet]
+        public IHttpActionResult CodeExistList(int applicationId)
+        {
+            return Ok(objApplicationRepository.CodeExistList(applicationId));
+        }
+
         protected override void Dispose(bool disposing)
         {
             objApplicationRepository.Dispose();

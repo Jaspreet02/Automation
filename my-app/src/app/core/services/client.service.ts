@@ -49,8 +49,8 @@ export class ClientService {
     return this.http.put(url, client, httpOptions);
   }
 
-  IsNameExist(ClientId: number): Observable<any>{
-    return this.http.get<string[]>(this.ClientUrl + '/CodeExistList?clientId=' + ClientId);
+  CodeExistList(clientId: number): Observable<any>{
+    return this.http.get<string[]>(this.ClientUrl + '/CodeExistList?clientId=' + clientId);
   }
 
 }

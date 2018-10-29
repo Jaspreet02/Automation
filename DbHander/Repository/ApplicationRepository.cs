@@ -68,6 +68,11 @@ namespace DbHander
             throw new NotImplementedException();
         }
 
+        public string[] CodeExistList(int applicationId)
+        {
+            return objDataContext.Applications.Where(x => x.ApplicationId != applicationId).Select(x => x.Code).ToArray();
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
@@ -102,6 +107,7 @@ namespace DbHander
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
+        
         #endregion
 
 
