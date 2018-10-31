@@ -54,7 +54,7 @@ namespace MobileService.Controllers
             {
                 result = UserManager.AddToRole(value.Id, roleName);
                 var code = await UserManager.GenerateEmailConfirmationTokenAsync(value.Id);
-                var callbackUrl = Url.Link("ConfirmEmail", new { userId = value.Id, code = code });
+                var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new{ userId = value.Id, code = code }));
                 await UserManager.SendEmailAsync(value.Id,
                "Confirm your account",
                "Please confirm your account by clicking this link: <a href=\""

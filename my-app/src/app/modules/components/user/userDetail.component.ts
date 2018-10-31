@@ -24,6 +24,8 @@ export class UserDetailComponent implements OnInit {
   gender: SelectedItem;
 
   userform: FormGroup;
+
+  roles = ['superAdmin', 'admin', 'user'];
   
   constructor(private userService: UserService,
     private location: Location, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) {
@@ -72,8 +74,9 @@ export class UserDetailComponent implements OnInit {
 
   save() {
     if (this.newUser) {
+      const role = this.roles[this.roles.indexOf(localStorage.getItem('role')) + 1];
       this.selectedUser.Gender = this.gender.Value;
-      this.userService.addUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/' + localStorage.getItem('role') + '/users']); });
+      this.userService.addUser(this.selectedUser, role).subscribe(() => { this.selectedUser = null; this.router.navigate(['/' + localStorage.getItem('role') + '/users']); });
     } else {
       this.selectedUser.Gender = this.gender.Value;
       this.userService.updateUser(this.selectedUser).subscribe(() => { this.selectedUser = null; this.router.navigate(['/' + localStorage.getItem('role') + '/users']); });

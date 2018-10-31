@@ -23,7 +23,7 @@
                     <div class="ui-grid-row">
                         <div *ngIf="isLoginError" class="ui-message ui-messages-error ui-corner-all">
                             <i class="fa fa-close"></i>
-                             Incorrect username or password
+                             {{errorMessage}}
                          </div>
                     </div>
                 </div>

@@ -44,8 +44,8 @@ export class UserService {
     }
 
   /** POST: add a new user to the server */
-  addUser (user: User): Observable<User> {
-    const url = `${this.userUrl}/Post?roleName=admin`;
+  addUser (user: User, role : string): Observable<User> {
+    const url = `${this.userUrl}/Post?roleName=` + role;
     return this.http.post<User>(url, user, httpOptions);
   }
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -11,16 +13,20 @@ namespace MobileService.Controllers
 
         }
 
-        [AllowAnonymous]
-        [Route("api/account/confirmemail", Name = "ConfirmEmail")]
         [HttpGet]
-        public async Task<IHttpActionResult> ConfirmEmail(ConfirmEmailBindingModel model)
+        [AllowAnonymous]
+        [Route("api/Account/ConfirmEmail", Name = "ConfirmEmailRoute")]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
         {
-            var user = await this.UserManager.FindByIdAsync(model.UserId);
+            var user = await this.UserManager.FindByIdAsync(userId);
             if (user != null)
             {
-                var result = await this.UserManager.ConfirmEmailAsync(model.UserId, model.Code);
-                if (result.Succeeded) { return Ok(); }
+                var result = await this.UserManager.ConfirmEmailAsync(userId, code);
+                if (result.Succeeded) {
+                    string url = Request.RequestUri.GetLeftPart(UriPartial.Authority).Replace("8001","8002/");
+                    Uri uri = new Uri(url);
+                    return Redirect(uri);
+                }
                 else { return BadRequest(); }
             }
             else { return NotFound(); }

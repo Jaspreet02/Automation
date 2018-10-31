@@ -33,7 +33,12 @@ namespace MobileService
 
             if (user == null)
             {
-                context.SetError("invalid_grant", "The user name or password is incorrect.");
+                context.SetError("invalid_grant", "The username or password is incorrect.");
+                return;
+            }
+            else if (! user.EmailConfirmed)
+            {
+                context.SetError("invalid_grant", "Email not confirmed yet.");
                 return;
             }
 

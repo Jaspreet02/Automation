@@ -12,7 +12,7 @@ import { UserService } from '../../../core/services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  errorMessage : string;
   isLoginError : boolean = false;
   constructor(private userService : UserService,private router : Router) { }
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/' + data.role + '/runDetails']);
     },
     (err : HttpErrorResponse)=>{
-      console.log(err.message);
+      this.errorMessage = err.error.error_description;
       this.isLoginError = true;
     });
   }
