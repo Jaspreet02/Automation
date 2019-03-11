@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { User } from '../../shared/models/user';
+import { ChangePasswordBindingModel } from '../../shared/models/changePasswordBindingModel';
 
 
 const httpOptions = {
@@ -61,6 +62,12 @@ export class UserService {
   updateUser (user: User): Observable<any> {
     const url = `${this.userUrl}/Put/${user.Id}`;
     return this.http.put(url, user, httpOptions);
+  }
+
+  /** POST: add a new user to the server */
+  changePassword (entity: ChangePasswordBindingModel): Observable<any> {
+    const url = `http://127.0.0.1:8001/api/Account/ChangePassword`;
+    return this.http.post<ChangePasswordBindingModel>(url, entity, httpOptions);
   }
 
 }

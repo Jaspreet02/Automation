@@ -57,6 +57,8 @@ export class RunDetailComponent implements OnInit {
 
   selectedRunDetail: RunDetail;
 
+  loading: boolean;
+
   constructor(private router: Router, private componentService: ComponentExeService, private masterService: MasterService, private runDetailService: RunDetailService, private applicationService: ApplicationService, private clientService: ClientService) {
 
     this.RunNumberStatuses = [
@@ -78,6 +80,9 @@ export class RunDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.loading = true;
+
     this.clientService.getClients(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc', true)
       .subscribe(x => {
         this.Clients = x.Result;
@@ -98,7 +103,6 @@ export class RunDetailComponent implements OnInit {
   }
 
   BindDropdown() {
-    debugger;
     let result = [];
     for (let index = 0; index < this.Clients.length; index++) {
       let tempApplication = this.Applications.filter(x => x.ClientId == this.Clients[index].ClientId);
@@ -147,9 +151,10 @@ export class RunDetailComponent implements OnInit {
   }
 
   getRunDetails(): void {
+    this.loading = true;
     this.runDetailService
       .getRunDetails(0, this.selectedApplication != null ? this.selectedApplication : 0, this.RunNumberStatus != null ? this.RunNumberStatus.Id : -1, this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-      .subscribe(x => (this.RunDetails = x.Result, this._total = x.Count));
+      .subscribe(x => (this.RunDetails = x.Result, this._total = x.Count, this.loading = false));
   }
 
   paginate(event) {

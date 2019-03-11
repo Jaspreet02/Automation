@@ -22,6 +22,7 @@ import { UploadFileDetailComponent } from './components/uploadFile/uploadFileDet
 import { AdminHeaderComponent } from '../core/header/admin-header/admin-header.component';
 import { SuperHeaderComponent } from '../core/header/super-header/super-header.component';
 import { UserHeaderComponent } from '../core/header/user-header/user-header.component';
+import { UpdatePasswordComponent } from './components/user/updatePassword.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -52,7 +53,8 @@ const routes: Routes = [
     { path: 'uploadFile', component: UploadFileDetailComponent },
     { path: 'componentExes', component: ComponentExeComponent }, 
     { path: 'componentExe/:id', component: ComponentExeDetailComponent }, 
-    { path: 'componentExe', component: ComponentExeDetailComponent }
+    { path: 'componentExe', component: ComponentExeDetailComponent },
+    { path: 'changePassword', component: UpdatePasswordComponent }
   ]},
   { path: 'admin', component : AdminHeaderComponent,
     children : [
@@ -77,14 +79,13 @@ const routes: Routes = [
       { path: 'outputLocations', component: ComponentOutputLocationComponent},
       { path: 'uploadFiles', component: UploadFileComponent},
       { path: 'uploadFile/:id', component: UploadFileDetailComponent },
-      { path: 'uploadFile', component: UploadFileDetailComponent }
+      { path: 'uploadFile', component: UploadFileDetailComponent },
+      { path: 'changePassword', component: UpdatePasswordComponent }
     ]},
     { path: 'user', component : UserHeaderComponent,
       children : [
         { path: 'runDetails', component: RunDetailComponent},
-        { path: 'users', component: UserComponent },
-        { path: 'user/:id', component: UserDetailComponent },
-        { path: 'user', component: UserDetailComponent }
+        { path: 'changePassword', component: UpdatePasswordComponent }
       ]}
 ];
 

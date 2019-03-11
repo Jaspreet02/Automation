@@ -1,6 +1,6 @@
 <div class="container body-content">
   <p-table [columns]="cols" [value]="RunDetails" dataKey="RunDetailId" [responsive]="true" (sortFunction)="changeSort($event)"
-    [customSort]="true">
+    [customSort]="true" [loading]="loading">
     <ng-template pTemplate="caption">
       Run Details
     </ng-template>

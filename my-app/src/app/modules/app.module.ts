@@ -29,6 +29,7 @@ import { ComponentOutputLocationComponent } from './components/applicationCompon
 import { RunDetailComponent } from './components/Dashboard/runDetail.component';
 import { UploadFileComponent } from './components/uploadFile/uploadFile.component';
 import { UploadFileDetailComponent } from './components/uploadFile/uploadFileDetail.component';
+import { UpdatePasswordComponent } from './components/user/updatePassword.component';
 
 import { UserService } from '../core/services/user.service';
 import { ClientService } from '../core/services/client.service';
@@ -54,6 +55,7 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     AppComponent,
     UserComponent,
     UserDetailComponent,
+    UpdatePasswordComponent,
     LoginComponent,
     ClientComponent,
     ClientDetailComponent,
