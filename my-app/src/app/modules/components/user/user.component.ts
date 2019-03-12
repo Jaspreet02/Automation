@@ -28,6 +28,8 @@ export class UserComponent implements OnInit {
 
   selectedUser: User;
 
+  loading: boolean;
+
   constructor(private router: Router, private confirmationService: ConfirmationService, private userService: UserService) { }
 
   ngOnInit() {
@@ -43,9 +45,10 @@ export class UserComponent implements OnInit {
   }
 
   getUsers(): void {
+    this.loading = true;
     this.userService
       .getUsers(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-      .subscribe(x => (this.Users = x.Result, this._total = x.Count));
+      .subscribe(x => (this.Users = x.Result, this._total = x.Count, this.loading = false));
   }
 
   paginate(event) {

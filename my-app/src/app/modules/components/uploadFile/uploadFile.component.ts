@@ -27,6 +27,8 @@ export class UploadFileComponent implements OnInit {
 
   selectedUploadFile: UploadFile;
 
+  loading: boolean;
+
 
   constructor(private router: Router,private confirmationService: ConfirmationService, private service: UploadFileService) { }
 
@@ -43,9 +45,10 @@ export class UploadFileComponent implements OnInit {
   }
 
   gets(): void {
+    this.loading = true;
         this.service
           .gets(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-          .subscribe(x => (this.UploadFiles = x.Result, this._total = x.Count));
+          .subscribe(x => (this.UploadFiles = x.Result, this._total = x.Count, this.loading = false));
   }
 
   paginate(event) {

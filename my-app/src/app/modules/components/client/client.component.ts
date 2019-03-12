@@ -28,6 +28,7 @@ export class ClientComponent implements OnInit {
 
   selectedClient: Client;
 
+  loading: boolean;
 
   constructor(private router: Router,private confirmationService: ConfirmationService, private clientService: ClientService) { }
 
@@ -44,9 +45,10 @@ export class ClientComponent implements OnInit {
   }
 
   getClients(): void {
+    this.loading = true;
     this.clientService
       .getClients(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-      .subscribe(x => (this.Clients = x.Result, this._total = x.Count));
+      .subscribe(x => (this.Clients = x.Result, this._total = x.Count, this.loading = false));
   }
 
   paginate(event) {

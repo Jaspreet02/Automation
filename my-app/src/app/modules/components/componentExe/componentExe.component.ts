@@ -31,6 +31,8 @@ export class ComponentExeComponent implements OnInit {
   selectedComponentExe: ComponentExe;
 
   triggerStatusFile: TriggerandStatusFile;
+  
+  loading: boolean;
 
   constructor(private router: Router,private confirmationService: ConfirmationService, private componentExeService: ComponentExeService) { }
 
@@ -39,9 +41,10 @@ export class ComponentExeComponent implements OnInit {
   }
 
   getComponentExes(): void {
+    this.loading = true;
     this.componentExeService
       .getComponentExes(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-      .subscribe(x => (this.ComponentExes = x.Result, this._total = x.Count));
+      .subscribe(x => (this.ComponentExes = x.Result, this._total = x.Count , this.loading = false));
   }
 
   showDialogToAdd() {

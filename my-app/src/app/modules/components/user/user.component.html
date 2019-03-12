@@ -1,6 +1,6 @@
 <div class="container body-content">
   <p-dataTable [value]="Users" [responsive]="true" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" selectionMode="single"
-    [(selection)]="selectedUser" (onRowSelect)="onSelect()">
+    [(selection)]="selectedUser" (onRowSelect)="onSelect()" [loading]="loading">
     <p-header>Users</p-header>
     <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
     <p-column field="FirstName" header="First Name" [sortable]="true"></p-column>

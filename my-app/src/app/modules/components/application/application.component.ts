@@ -33,6 +33,8 @@ export class ApplicationComponent implements OnInit {
 
   selectedApplication: Application;
 
+  loading: boolean;
+
   constructor(private router: Router,private confirmationService: ConfirmationService, private applicationService: ApplicationService, private clientService: ClientService) { }
 
   ngOnInit() {
@@ -58,9 +60,10 @@ export class ApplicationComponent implements OnInit {
   }
   
   getApplications(): void {
+    this.loading = true;
         this.applicationService
           .getApplications(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-          .subscribe(x => (this.Applications = x.Result, this._total = x.Count));
+          .subscribe(x => (this.Applications = x.Result, this._total = x.Count, this.loading = false));
   }
 
   paginate(event) {
