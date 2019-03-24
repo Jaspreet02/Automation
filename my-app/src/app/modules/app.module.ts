@@ -8,6 +8,7 @@ import {SliderModule} from 'primeng/slider';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {SpinnerModule} from 'primeng/spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {EditorModule} from 'primeng/editor';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
@@ -30,6 +31,8 @@ import { RunDetailComponent } from './components/Dashboard/runDetail.component';
 import { UploadFileComponent } from './components/uploadFile/uploadFile.component';
 import { UploadFileDetailComponent } from './components/uploadFile/uploadFileDetail.component';
 import { UpdatePasswordComponent } from './components/user/updatePassword.component';
+import { EmailTemplateComponent } from './components/Email/emailTemplate.component';
+import { EmailTemplateDetailComponent } from './components/Email/emailTemplateDetail.component';
 
 import { UserService } from '../core/services/user.service';
 import { ClientService } from '../core/services/client.service';
@@ -40,6 +43,7 @@ import { ApplicationComponentService } from '../core/services/applicationCompone
 import { RunDetailService } from '../core/services/runDetail.service';
 import { MasterService } from '../core/services/master.service';
 import { UploadFileService } from '../core/services/uploadFile.service';
+import { EmailTemplateService } from '../core/services/emailTemplate.service';
 
 import { AppHeaderComponent } from '../core/header/app-header/app-header.component';
 import { AdminHeaderComponent } from '../core/header/admin-header/admin-header.component';
@@ -73,6 +77,8 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     RunDetailComponent,
     UploadFileComponent,
     UploadFileDetailComponent,
+    EmailTemplateComponent,
+    EmailTemplateDetailComponent,
     AppHeaderComponent,
     AdminHeaderComponent,
     UserHeaderComponent,
@@ -98,9 +104,10 @@ import { AuthInterceptor } from '../core/guards/auth.interceptor';
     TableModule,
     MultiSelectModule,
     SliderModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    EditorModule
   ],
-  providers: [RunDetailService,UserService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, UploadFileService, AuthGuard,
+  providers: [RunDetailService,UserService,EmailTemplateService, ClientService, ApplicationService, FileTransferService,ComponentExeService,ApplicationComponentService, MasterService, UploadFileService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -1,0 +1,104 @@
+<div class="container body-content">
+    <div *ngIf="selectedEmailTemplate">
+        <form [formGroup]="emailTemplateForm" (ngSubmit)="save()">
+            <p-panel header="Email Template">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Client *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="client" name="client" formControlName="client" [options]="clients" [(ngModel)]="client" optionLabel="Name" placeholder="Select Client"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['client'].valid&&emailTemplateForm.controls['client'].dirty">
+                                <i class="fa fa-close"></i>
+                                Client is required
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Application *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="application" name="application" formControlName="application" [options]="applications" [(ngModel)]="application" optionLabel="Name" placeholder="Select Application"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['application'].valid&&emailTemplateForm.controls['application'].dirty">
+                                <i class="fa fa-close"></i>
+                                Application is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Component *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="component" name="component" formControlName="component" [options]="components" [(ngModel)]="component" optionLabel="Name" placeholder="Select Component"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['component'].valid&&emailTemplateForm.controls['component'].dirty">
+                                <i class="fa fa-close"></i>
+                                Component is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Subject *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="text" formControlName="subject" [(ngModel)]="selectedEmailTemplate.Subject" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['subject'].valid&&emailTemplateForm.controls['subject'].dirty">
+                                <i class="fa fa-close"></i>
+                                Subject is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Body *:
+                        </div>
+                        <div class="ui-grid-col-6">                            
+                            <p-editor formControlName="body" [(ngModel)]="selectedEmailTemplate.Body" placeholder="Required" [style]="{'height':'320px'}"></p-editor>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['body'].valid&&emailTemplateForm.controls['body'].dirty">
+                                <i class="fa fa-close"></i>
+                                Body is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Status *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                                <p-inputSwitch formControlName="status" onLabel="true" offLabel="false" [(ngModel)]="selectedEmailTemplate.Status"></p-inputSwitch>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['status'].valid&&emailTemplateForm.controls['status'].dirty">
+                                <i class="fa fa-close"></i>
+                                Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2"></div>
+                        <div class="ui-grid-col-3">
+                            <button pButton type="submit" label="Submit" [disabled]="!emailTemplateForm.valid"></button>
+                        </div>
+                        <div class="ui-grid-col-3">
+                            <button pButton label="Cancel" type="button" class="ui-button-warning" (click)="cancel()"></button>
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>

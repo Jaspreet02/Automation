@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using BLW.Lib.Log;
-using DbHander.EmailService;
 using DbHander;
 
 namespace JobInit
 {
     public class SendInputEmail
     {
-        EmailService emailService = null;    
-
+        IEmailTrackingRepository _emailTrackingRepository = null;
+        IEmailTemplateRepository _emailTemplateRepository = null;
         public SendInputEmail()
         {
-            emailService = new EmailService();
+            _emailTrackingRepository = new EmailTrackingRepository();
+            _emailTemplateRepository = new EmailTemplateRepository();
         }
 
         public void SendInputFileEmail(Application info,Int32 runNumberID, List<string> emailList)
@@ -20,12 +20,19 @@ namespace JobInit
             try
             {
                 SingletonLogger.Instance.Debug("Fetching email template for TOKEN = " + "DOWNLOAD_FILE");
-                EmailTemplate template = emailService.GetEmailTemplate(info.ClientId, info.ApplicationId, -1, "{{DOWNLOAD_FILE}}", -1, null, -1);
-               
+                EmailTemplate template = _emailTemplateRepository.EmailTemplate(x => x.ClientId == info.ClientId && x.ApplicationId == info.ApplicationId && x.EmailToken == "{{DOWNLOAD_FILE}}");
                 if (template != null)
                 {
                     SingletonLogger.Instance.Debug("templateID  = " + template.EmailTemplateId + " runId " + runNumberID);
-                    EmailTracking tracking = emailService.ConvertToTracking(template, runNumberID, EmailStatusType.Ready);
+                    EmailTracking tracking = new EmailTracking()
+                    {
+                        RunNumberId = runNumberID,
+                        FromEmailId = template.EmailFromSmtpId.ToString(),
+                        EmailTemplateId = template.EmailTemplateId,
+                        Subjects = template.Subject,
+                        Body = template.Body,
+                        EmailStatus = (int)EmailStatusType.Ready
+                    };
                     SingletonLogger.Instance.Debug("trackingID  = " + tracking.EmailTrackingId);
                     if (tracking != null)
                     {
@@ -35,7 +42,7 @@ namespace JobInit
                         tracking.Body = tracking.Body.Replace("{{FILE_NAME}}", CreateTable(emailList));
                         tracking.Subjects = tracking.Subjects.Replace("{{APPLICATION_NAME}}", info.Name);
                         tracking.Body = tracking.Body.Replace("{{APPLICATION_NAME}}", info.Name);
-                        if (!emailService.SaveEmailTracking(tracking))
+                        if (_emailTrackingRepository.Save(tracking) != 0)
                             SingletonLogger.Instance.Error("Error occured while email saving to email tracking.");
                     }
                 }

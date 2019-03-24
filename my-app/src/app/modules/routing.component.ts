@@ -23,6 +23,8 @@ import { AdminHeaderComponent } from '../core/header/admin-header/admin-header.c
 import { SuperHeaderComponent } from '../core/header/super-header/super-header.component';
 import { UserHeaderComponent } from '../core/header/user-header/user-header.component';
 import { UpdatePasswordComponent } from './components/user/updatePassword.component';
+import { EmailTemplateComponent } from './components/Email/emailTemplate.component';
+import { EmailTemplateDetailComponent } from './components/Email/emailTemplateDetail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -54,7 +56,9 @@ const routes: Routes = [
     { path: 'componentExes', component: ComponentExeComponent }, 
     { path: 'componentExe/:id', component: ComponentExeDetailComponent }, 
     { path: 'componentExe', component: ComponentExeDetailComponent },
-    { path: 'changePassword', component: UpdatePasswordComponent }
+    { path: 'changePassword', component: UpdatePasswordComponent },
+    { path: 'emails', component:EmailTemplateComponent},
+    { path: 'email/:id', component: EmailTemplateDetailComponent }
   ]},
   { path: 'admin', component : AdminHeaderComponent,
     children : [
@@ -80,7 +84,10 @@ const routes: Routes = [
       { path: 'uploadFiles', component: UploadFileComponent},
       { path: 'uploadFile/:id', component: UploadFileDetailComponent },
       { path: 'uploadFile', component: UploadFileDetailComponent },
-      { path: 'changePassword', component: UpdatePasswordComponent }
+      { path: 'changePassword', component: UpdatePasswordComponent },
+      { path: 'emails', component:EmailTemplateComponent},
+      { path: 'email', component:EmailTemplateDetailComponent},
+      { path: 'email/:id', component:EmailTemplateDetailComponent}
     ]},
     { path: 'user', component : UserHeaderComponent,
       children : [

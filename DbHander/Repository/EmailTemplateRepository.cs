@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DbHander
 {
@@ -53,64 +54,15 @@ namespace DbHander
                 }
                 return true;
         }
-
-        public bool DeleteAndResetLevel(int templateId)
-        {
-            #region resetLaevel of other templates for that app,client,token
-
-            EmailTemplate templ = Find(templateId);
-            var result = Delete(templateId);
-            if (templ != null)
-            {
-                var query = objDataContext.EmailTemplates.Where(ET => ET.ClientId == templ.ClientId && ET.ApplicationId == templ.ApplicationId && ET.ApplicationComponentId == templ.ApplicationComponentId && ET.EmailToken == templ.EmailToken);
-                var all = query.Where(x => x.EmailLevelId > templ.EmailLevelId && x.EmailTemplateId != templ.EmailTemplateId).OrderBy(x => x.EmailLevelId).ToList();
-                int levelid = templ.EmailLevelId;
-                foreach (var item in all)
-                {
-                    item.EmailLevelId = levelid;
-                    objDataContext.SaveChanges();
-                    levelid++;
-                }
-            }
-            return result;
-            #endregion
-
-        }
-        
-        #region IEmailTemplateRepository Members
-
-        public IEnumerable<EmailTemplate> GetEmailTemplatesByKeyword(int? clientId = null, int? applicationId = null, int? appComponentId = null, string token = null, int? levelId = null)
-        {
-                var query = FindAll();
-
-                if (clientId.HasValue)
-                    if (clientId.Value > 0)
-                        query = query.Where(ET => ET.ClientId == clientId.Value);
-
-                if (applicationId.HasValue)
-                    if (applicationId.Value > 0)
-                        query = query.Where(ET => ET.ApplicationId == applicationId.Value);
-
-                if (appComponentId.HasValue)
-                    if (appComponentId.Value > 0)
-                        query = query.Where(ET => ET.ApplicationComponentId == appComponentId.Value);
-
-
-                if (levelId.HasValue)
-                    if (levelId.Value > 0)
-                        query = query.Where(ET => ET.EmailLevelId == levelId.Value);
-
-
-                if (!string.IsNullOrEmpty(token))
-                    query = query.Where(ET => ET.EmailToken == token);
-
-                return query.ToArray();
-        }
-
-        
+               
         public bool UpdateStatus(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public EmailTemplate EmailTemplate(Expression<Func<EmailTemplate, bool>> predicate)
+        {
+            return objDataContext.EmailTemplates.SingleOrDefault(predicate);
         }
 
         #region IDisposable Support
@@ -149,7 +101,6 @@ namespace DbHander
         }
         #endregion
 
-        #endregion
     }
 
 }

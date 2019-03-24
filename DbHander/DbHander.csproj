@@ -93,7 +93,6 @@
     <Compile Include="DomainClass\SmtpDetail.cs" />
     <Compile Include="DomainClass\SystemSetting.cs" />
     <Compile Include="DomainClass\User.cs" />
-    <Compile Include="EmailService\EmailService.cs" />
     <Compile Include="Enum\Enum.cs" />
     <Compile Include="Enum\EnumHelper.cs" />
     <Compile Include="IRepository\AbstractRepository.cs" />
