@@ -26,6 +26,17 @@ namespace MobileService.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult EmailToken()
+        {
+            List<EmailToken> result = new List<EmailToken>();
+            foreach (var item in Enum.GetValues(typeof(EmailKeyword)))
+            {
+                result.Add(new EmailToken() { EmailTokenId = Convert.ToByte(item), Keyword = item.ToString() });
+            }
+            return Ok(result);
+        }
+
+        [HttpGet]
         public IHttpActionResult FileKeyword()
         {
             var result = Enum.GetNames(typeof(FileKeyword));

@@ -22,6 +22,11 @@ export class MasterService {
     return this.http.get<any>(this.MasterUrl + '/QueueType');
   }
 
+  getEmailTokens(): Observable<any> {
+    // return of(Users);
+    return this.http.get<any>(this.MasterUrl + '/EmailToken');
+  }
+
   getRunNumerStatus(): Observable<any> {
     // return of(Users);
     return this.http.get<any>(this.MasterUrl + '/RunNumberStatus');

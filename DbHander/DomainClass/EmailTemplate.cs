@@ -6,7 +6,6 @@ namespace DbHander
     {
         public EmailTemplate()
         {
-
         }
         public int EmailTemplateId { get; set; }
         public int EmailFromSmtpId { get; set; }
@@ -24,7 +23,6 @@ namespace DbHander
         public int ClientId { get; set; }
         public int ApplicationId { get; set; }
         public int ApplicationComponentId { get; set; }
-        public int TimeInterval { get; set; }                
-        
+        public int TimeInterval { get; set; }      
     }
 }

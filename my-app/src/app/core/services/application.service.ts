@@ -50,6 +50,11 @@ export class ApplicationService {
     return this.http.put(url, application, httpOptions);
   }
 
+  getApplicationbyClientId(clientId: number): Observable<Application[]> {
+    // return of(Users);
+    return this.http.get<Application[]>(this.ApplicationUrl + '/ApplicationsbyClientId?clientId=' + clientId);
+  }
+
   getApplicationFiles(applicationId: number): Observable<ApplicationFile[]> {
     // return of(Users);
     return this.http.get<ApplicationFile[]>(this.ApplicationUrl + '/ApplicationFiles?applicationId=' + applicationId);

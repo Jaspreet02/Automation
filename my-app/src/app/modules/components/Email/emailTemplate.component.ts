@@ -16,7 +16,7 @@ export class EmailTemplateComponent implements OnInit {
 
   emailTemplates: EmailTemplate[];
 
-  QueueTypes: any[];
+  EmailTokens: any[];
 
   _total: number;
 
@@ -30,16 +30,16 @@ export class EmailTemplateComponent implements OnInit {
 
   selectedEmailTemplate: EmailTemplate;
 
+  loading: boolean;
 
   constructor(private router: Router,private confirmationService: ConfirmationService, private emailTemplateService: EmailTemplateService,private masterService: MasterService) { }
 
   ngOnInit() {    
-    this.masterService.getQueueTypes().subscribe(c=> { this.QueueTypes = c ;
-    this.getEmailTemplates() });
+      this.getEmailTemplates();
   }
 
   GetQueueTypebyId(id) {
-   return this.QueueTypes.find(x=> x.QueueTypeId == id).Status;
+   return this.EmailTokens.find(x=> x.QueueTypeId == id).Status;
   };
 
   showDialogToAdd() {
@@ -51,9 +51,10 @@ export class EmailTemplateComponent implements OnInit {
   }
 
   getEmailTemplates(): void {
+    this.loading = true;
         this.emailTemplateService
           .getEmailTemplates(this.pageNumber, this.pageSize, this.sortF, this.sortO == '1' ? 'asc' : 'desc')
-          .subscribe(x => (this.emailTemplates = x.Result, this._total = x.Count));
+          .subscribe(x => (this.emailTemplates = x.Result, this._total = x.Count, this.loading = false));
   }
 
   paginate(event) {

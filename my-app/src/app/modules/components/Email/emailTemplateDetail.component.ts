@@ -26,7 +26,7 @@ export class EmailTemplateDetailComponent implements OnInit {
 
     selectedEmailTemplate: EmailTemplate;
 
-    queueTypes: any[];
+    emailTokens: any[];
 
     clients: Client[];
 
@@ -40,9 +40,11 @@ export class EmailTemplateDetailComponent implements OnInit {
 
     component: ComponentExe;
 
-    queueType: any;
+    emailToken: any;
 
     text: string;
+    
+    loading: boolean;
 
     emailTemplateForm: FormGroup;
 
@@ -62,50 +64,72 @@ export class EmailTemplateDetailComponent implements OnInit {
         if (this.newEmailTemplate) {
             this.selectedEmailTemplate = new EmailTemplate();
             this.clientService.getClients(0, 0, 'CreatedAt', 'desc', true).subscribe(c => this.clients = c.Result);
-            this.applicationService.getApplications(0, 0, 'CreatedAt', 'desc', true).subscribe(c => this.applications = c.Result);
-            this.componentService.getComponentExes(0, 0, 'CreatedAt', 'desc', true).subscribe(c => this.components = c.Result);
-        }
+            this.masterService.getEmailTokens().subscribe(x=> {this.emailTokens = x;
+                this.emailToken = this.emailTokens.indexOf(0)});             
+         }
         else {
             this.getEmailTransfer();
         }
         this.emailTemplateForm = this.fb.group({
-            'client': new FormControl('', Validators.required),
-            'application': new FormControl('', Validators.required),
-            'component': new FormControl('', Validators.required),
+            'client': new FormControl(''),
+            'application': new FormControl(''),
+            'component': new FormControl(''),
             'subject': new FormControl('', Validators.required),
             'body': new FormControl('', Validators.required),
-            'emailToken': new FormControl('', Validators.required),
-            'emailToIds': new FormControl('', Validators.required),
-            'emailCcIds': new FormControl('', Validators.required),
-            'timeInterval': new FormControl('', Validators.required),
+            'emailToken': new FormControl('',Validators.required),
+            'emailToIds': new FormControl('',Validators.compose([Validators.required,Validators.email])),
+            'emailCcIds': new FormControl('',Validators.email),
+            'timeInterval': new FormControl(''),
             'status': new FormControl('')
         });
     }
 
     getEmailTransfer(): void {
-        this.clientService.getClients(0, 0, 'CreatedAt', 'desc', true).subscribe(c => {
-            this.clients = c.Result;
-            this.applicationService.getApplications(0, 0, 'CreatedAt', 'desc', true).subscribe(c => {
-                this.applications = c.Result;
-                this.componentService.getComponentExes(0, 0, 'CreatedAt', 'desc', true).subscribe(c => {
-                    this.components = c.Result;
-                    this.masterService.getQueueTypes().subscribe(c => {
-                        this.queueTypes = c;
-                        this.emailTemplateService.getEmailTemplate(this.EmailTemplateId)
-                            .subscribe(x => {
-                                this.selectedEmailTemplate = x
-                            });
-                    });
+        this.loading = true;
+             this.masterService.getEmailTokens().subscribe(c => {
+                    this.emailTokens = c;
+                    this.emailTemplateService.getEmailTemplate(this.EmailTemplateId)
+                        .subscribe(x => {                            
+                             this.selectedEmailTemplate = x ;
+                             this.emailToken = this.emailTokens.find(x=> x.Keyword == this.selectedEmailTemplate.EmailToken);
+                             this.selectedEmailTemplate.ClientId > 0 ? 
+                             this.clientService.getClients(0, 0, 'CreatedAt', 'desc', true).subscribe(c => {
+                                 this.clients = c.Result;
+                                 this.client = this.clients.find(x=> x.ClientId == this.selectedEmailTemplate.ClientId);
+                                 this.selectedEmailTemplate.ApplicationId > 0 ?
+                                   this.applicationService.getApplicationbyClientId(this.selectedEmailTemplate.ClientId).subscribe(c => {
+                                    this.applications = c;
+                                    this.application = this.applications.find(x=> x.ApplicationId == this.selectedEmailTemplate.ApplicationId);
+                               this.selectedEmailTemplate.ApplicationComponentId > 0 ?
+                                this.componentService.applicationComponent(this.selectedEmailTemplate.ApplicationId).subscribe(c=> {
+                                   this.components = c;
+                                   this.component = this.components.find(x=> x.ComponentId == this.selectedEmailTemplate.ApplicationComponentId);
+                                }) : null;
+                                }) : null;
+                                }) : null ;
+                              this.loading = false});
                 });
-            });
-        })
+    }
+
+    getApplications() {
+        this.application = null;
+        this.component = null;
+        this.applicationService.getApplicationbyClientId(this.client.ClientId).subscribe(c => this.applications = c);
+    }
+
+    getComponents() {
+        this.componentService.applicationComponent(this.application.ApplicationId).subscribe(c => this.components = c);
     }
 
     save() {
+        this.selectedEmailTemplate.EmailToken = this.emailToken.Keyword;
+        this.selectedEmailTemplate.ClientId =this.client != null ? this.client.ClientId : 0;
+        this.selectedEmailTemplate.ApplicationId =this.application != null ? this.application.ApplicationId : 0;
+        this.selectedEmailTemplate.ApplicationComponentId = this.component!= null ? this.component.ComponentId : 0;
         if (this.newEmailTemplate) {
-            this.emailTemplateService.addEmailTemplate(this.selectedEmailTemplate).subscribe(x => { this.selectedEmailTemplate = null; this.router.navigate(['/' + localStorage.getItem('role') + '/fileTransfers']); });
+            this.emailTemplateService.addEmailTemplate(this.selectedEmailTemplate).subscribe(x => { this.selectedEmailTemplate = null; this.router.navigate(['/' + localStorage.getItem('role') + '/emails']); });
         } else {
-            this.emailTemplateService.updateEmailTemplate(this.selectedEmailTemplate).subscribe(x => { this.selectedEmailTemplate = null; this.router.navigate(['/' + localStorage.getItem('role') + '/fileTransfers']); });
+            this.emailTemplateService.updateEmailTemplate(this.selectedEmailTemplate).subscribe(x => { this.selectedEmailTemplate = null; this.router.navigate(['/' + localStorage.getItem('role') + '/emails']); });
         }
     }
 

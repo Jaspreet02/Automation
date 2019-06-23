@@ -1,12 +1,20 @@
 <div class="container body-content">
     <p-dataTable [value]="emailTemplates" [responsive]="true" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" selectionMode="single"
-      [(selection)]="selectedEmailTemplate" (onRowSelect)="onSelect()">
+      [(selection)]="selectedEmailTemplate" (onRowSelect)="onSelect()" [loading] = "loading">
       <p-header>Email Templates</p-header>
       <!-- <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column> -->
       <p-column field="Subject" header="Subject" [sortable]="true"></p-column>
-      <p-column field="Body" header="Body" [sortable]="true"></p-column>
+      <p-column field="EmailToIds" header="Email To" [sortable]="true">
+        <ng-template let-item="rowData" pTemplate type="body">
+          <p [ngClass]="'old-car'">{{ item.EmailToIds }}</p>
+      </ng-template>
+      </p-column>
+      <p-column field="EmailCcIds" header="Email Cc" [sortable]="true">
+        <ng-template let-item="rowData" pTemplate type="body">
+          <p [ngClass]="'old-car'">{{ item.EmailCcIds }}</p>
+      </ng-template>
+      </p-column>
       <p-column field="EmailToken" header="Email Token" [sortable]="true"></p-column>
-      <p-column field="ClientId" header="ClientId" [sortable]="true"></p-column>
       <p-column field="Status" header="Status" [sortable]="true"></p-column>
       <p-column field="FileTransferSettingId" header="Action" [sortable]="true">
         <ng-template let-index="rowIndex" let-item="rowData" pTemplate type="body">

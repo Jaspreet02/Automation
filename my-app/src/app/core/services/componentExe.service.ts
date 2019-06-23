@@ -54,6 +54,11 @@ export class ComponentExeService {
     const url = `${this.ComponentExeUrl}/AddUpdateTriggerandStatusFile`;
     return this.http.post<TriggerandStatusFile>(url, triggerStatusFile, httpOptions);
   }
+
+  applicationComponent(applicationId: number): Observable<ComponentExe[]> {
+    // return of(Users);
+    return this.http.get<ComponentExe[]>(this.ComponentExeUrl + '/ApplicationComponents?applicationId=' + applicationId);
+  }
 }
 
 export interface PagedResponse<T> {

@@ -67,6 +67,13 @@ namespace MobileService.Controllers
             return Ok(objApplicationRepository.Delete(id));
         }
 
+        [HttpGet]
+        public IHttpActionResult ApplicationsbyClientId(int clientId)
+        {
+            var result = objApplicationRepository.FindAllActive().Where(x=> x.ClientId == clientId);
+            return Ok(result);
+        }
+
 
         [HttpGet]
         public IHttpActionResult ApplicationFiles(int applicationId)

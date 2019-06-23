@@ -12,11 +12,13 @@ namespace MobileService.Controllers
     {
         IComponentRepository _objComponentRepository;
         ITriggerandStatusFileRepository _objTriggerandStatusFileRepository;
+        IApplicationComponentRepository _objApplicationComponentRepository;
 
         public ComponentController()
         {
             _objComponentRepository = new ComponentRepository();
             _objTriggerandStatusFileRepository = new TriggerandStatusFilesRepository();
+            _objApplicationComponentRepository = new ApplicationComponentRepository();
         }
 
         // GET: api/Client
@@ -70,6 +72,13 @@ namespace MobileService.Controllers
         {
             var result = _objTriggerandStatusFileRepository.Save(value);
             return Ok(result);
+        }
+
+        [HttpGet]
+        public IHttpActionResult ApplicationComponents(int applicationId)
+        {
+            var componentIds = _objApplicationComponentRepository.GetApplicationComponentListbyappId(applicationId).Select(x=> x.Component);
+            return Ok(componentIds);
         }
 
         protected override void Dispose(bool disposing)

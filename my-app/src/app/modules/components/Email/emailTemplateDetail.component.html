@@ -5,10 +5,10 @@
                 <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-2">
-                            Client *:
+                            Client :
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="client" name="client" formControlName="client" [options]="clients" [(ngModel)]="client" optionLabel="Name" placeholder="Select Client"></p-dropdown>
+                            <p-dropdown id="client" name="client" formControlName="client" [options]="clients" [(ngModel)]="client" (onChange)="getApplications()" optionLabel="Name" placeholder="Select Client"></p-dropdown>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['client'].valid&&emailTemplateForm.controls['client'].dirty">
@@ -19,10 +19,10 @@
                     </div> 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-2">
-                            Application *:
+                            Application :
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="application" name="application" formControlName="application" [options]="applications" [(ngModel)]="application" optionLabel="Name" placeholder="Select Application"></p-dropdown>
+                            <p-dropdown id="application" name="application" formControlName="application" [options]="applications" [(ngModel)]="application" (onChange)="getComponents()" optionLabel="Name" placeholder="Select Application"></p-dropdown>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['application'].valid&&emailTemplateForm.controls['application'].dirty">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-2">
-                            Component *:
+                            Component :
                         </div>
                         <div class="ui-grid-col-6">
                             <p-dropdown id="component" name="component" formControlName="component" [options]="components" [(ngModel)]="component" optionLabel="Name" placeholder="Select Component"></p-dropdown>
@@ -43,6 +43,49 @@
                                 <i class="fa fa-close"></i>
                                 Component is required
                             </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Email Token *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p-dropdown id="emailToken" name="emailToken" formControlName="emailToken" [options]="emailTokens" [(ngModel)]="emailToken" optionLabel="Keyword" placeholder="Select"></p-dropdown>
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['emailToken'].valid&&emailTemplateForm.controls['emailToken'].dirty">
+                                <i class="fa fa-close"></i>
+                                Email Token is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            To *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="email" formControlName="emailToIds" [(ngModel)]="selectedEmailTemplate.EmailToIds" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['emailToIds'].valid&&emailTemplateForm.controls['emailToIds'].dirty">
+                                <i class="fa fa-close"></i>
+                                <span *ngIf="emailTemplateForm.controls['emailToIds'].errors['required']">Email Address is required</span>
+                                <span *ngIf="emailTemplateForm.controls['emailToIds'].errors['email']">Not valid email address</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                            Cc *:
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <input pInputText type="email" formControlName="emailCcIds" [(ngModel)]="selectedEmailTemplate.EmailCcIds" placeholder="Required" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['emailCcIds'].valid&&emailTemplateForm.controls['emailCcIds'].dirty">
+                                <i class="fa fa-close"></i>
+                                <span *ngIf="emailTemplateForm.controls['emailCcIds'].errors['email']">Not valid email address</span>
+                           </div>
                         </div>
                     </div>
                     <div class="ui-grid-row">

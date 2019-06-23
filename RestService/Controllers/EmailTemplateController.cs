@@ -1,6 +1,7 @@
 ﻿using DbHander;
 using MobileService.Common;
 using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 
@@ -18,10 +19,10 @@ namespace MobileService.Controllers
 
         // GET: api/Client
         [HttpGet]
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get(int pageNumber = 0, int pageSize = 10, string sortField = "CreatedAt", string sortOrder = "desc", bool fetchAll = false)
         {
-            var result = _objEmailTemplateRepository.FindAll();
-            return Ok(result);
+            var result = _objEmailTemplateRepository.FindAll().OrderBy(sortField + " " + sortOrder);
+            return Ok(await CreatePageResult<EmailTemplate>(result, pageNumber, pageSize, fetchAll));
         }
 
         // GET: api/Client/5
