@@ -84,7 +84,6 @@ namespace BLW.Lib.File.BLW
         private int _Offset;
         private int _Length;
         private string _Value;
-        private string line;
 
         #endregion
 

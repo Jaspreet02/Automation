@@ -85,7 +85,7 @@ namespace BLW.Lib.FileTransfer
             }
             catch (Exception ex)
             {
-                throw ;
+                throw ex;
             }
         }
 

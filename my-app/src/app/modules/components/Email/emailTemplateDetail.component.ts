@@ -122,6 +122,7 @@ export class EmailTemplateDetailComponent implements OnInit {
     }
 
     save() {
+        this.selectedEmailTemplate.EmailFromSmtpId = 1;
         this.selectedEmailTemplate.EmailToken = this.emailToken.Keyword;
         this.selectedEmailTemplate.ClientId =this.client != null ? this.client.ClientId : 0;
         this.selectedEmailTemplate.ApplicationId =this.application != null ? this.application.ApplicationId : 0;

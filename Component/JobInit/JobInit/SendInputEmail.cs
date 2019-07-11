@@ -31,7 +31,9 @@ namespace JobInit
                         EmailTemplateId = template.EmailTemplateId,
                         Subjects = template.Subject,
                         Body = template.Body,
-                        EmailStatus = (int)EmailStatusType.Ready
+                        EmailStatus = (int)EmailStatusType.Ready,
+                        EmailToIds = template.EmailToIds,
+                        EmailCcIds = template.EmailCcIds
                     };
                     SingletonLogger.Instance.Debug("trackingID  = " + tracking.EmailTrackingId);
                     if (tracking != null)
@@ -42,6 +44,7 @@ namespace JobInit
                         tracking.Body = tracking.Body.Replace("{{FILE_NAME}}", CreateTable(emailList));
                         tracking.Subjects = tracking.Subjects.Replace("{{APPLICATION_NAME}}", info.Name);
                         tracking.Body = tracking.Body.Replace("{{APPLICATION_NAME}}", info.Name);
+                        tracking.Status = true;
                         if (_emailTrackingRepository.Save(tracking) != 0)
                             SingletonLogger.Instance.Error("Error occured while email saving to email tracking.");
                     }

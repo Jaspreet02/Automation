@@ -50,7 +50,7 @@
                             Email Token *:
                         </div>
                         <div class="ui-grid-col-6">
-                            <p-dropdown id="emailToken" name="emailToken" formControlName="emailToken" [options]="emailTokens" [(ngModel)]="emailToken" optionLabel="Keyword" placeholder="Select"></p-dropdown>
+                            <p-dropdown id="emailToken" name="emailToken" formControlName="emailToken" [options]="emailTokens" [(ngModel)]="emailToken" optionLabel="Note" placeholder="Select"></p-dropdown>
                         </div>
                         <div class="ui-grid-col-4">
                             <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailTemplateForm.controls['emailToken'].valid&&emailTemplateForm.controls['emailToken'].dirty">

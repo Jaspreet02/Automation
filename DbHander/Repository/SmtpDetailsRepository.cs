@@ -15,8 +15,6 @@ namespace DbHander
             return objDataContext.SmtpDetails.SingleOrDefault(x => x.SmtpDetailId.Equals(id));
         }
 
-
-
         public int Save(SmtpDetail dao)
         {
             SmtpDetail entity = objDataContext.SmtpDetails.SingleOrDefault(x => x.SmtpDetailId.Equals(dao.SmtpDetailId));

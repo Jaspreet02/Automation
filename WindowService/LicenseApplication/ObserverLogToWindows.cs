@@ -49,6 +49,7 @@ namespace BLW.Lib.Log
             }
             catch (InvalidOperationException ex)
             {
+                throw ex;
             }
 
         }

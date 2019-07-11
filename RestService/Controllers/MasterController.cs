@@ -1,5 +1,4 @@
 ﻿using DbHander;
-using MobileService.Common;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -31,7 +30,7 @@ namespace MobileService.Controllers
             List<EmailToken> result = new List<EmailToken>();
             foreach (var item in Enum.GetValues(typeof(EmailKeyword)))
             {
-                result.Add(new EmailToken() { EmailTokenId = Convert.ToByte(item), Keyword = item.ToString() });
+                result.Add(new EmailToken() { EmailTokenId = Convert.ToByte(item), Keyword = "{{" + item.ToString() + "}}",Note = EnumHelper.GetEnumDescription((EmailKeyword)item) });
             }
             return Ok(result);
         }

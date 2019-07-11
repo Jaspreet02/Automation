@@ -25,8 +25,6 @@ namespace DbHander
         public string Body { get; set; }
         public string SentMessage { get; set; }
         public int EmailStatus { get; set; }
-        public DateTime SentDate { get; set; }
-        
-        
+        public DateTime SentDate { get; set; }       
     }
 }

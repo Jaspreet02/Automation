@@ -9,70 +9,55 @@ namespace DbHander
     {
         public IQueryable<EmailTracking> FindAll()
         {
-                var EmailTrackings = objDataContext.EmailTrackings;
-                return EmailTrackings;
+            return objDataContext.EmailTrackings;
         }
 
         public IQueryable<EmailTracking> FindAllActive()
         {
-            return objDataContext.EmailTrackings;
+            return objDataContext.EmailTrackings.Where(x=> x.Status);
         }
 
         public EmailTracking Find(int id)
         {
-                var result = objDataContext.EmailTrackings.SingleOrDefault(x => x.EmailTrackingId.Equals(id));
-                return result;  }
+            var result = objDataContext.EmailTrackings.SingleOrDefault(x => x.EmailTrackingId.Equals(id));
+            return result;
+        }
 
         public int Save(EmailTracking dao)
         {
-                EmailTracking entity = objDataContext.EmailTrackings.SingleOrDefault(x => x.EmailTrackingId.Equals(dao.EmailTrackingId));
-                if(entity != null)
-                {
-                    objDataContext.Entry(entity).CurrentValues.SetValues(dao);
-                }
-                else
-                {
-                    dao.CreatedAt = DateTimeOffset.Now;
-                    objDataContext.EmailTrackings.Add(entity);
-                }
-                objDataContext.SaveChanges();
-           
+            dao.FromEmailId = "1";
+            EmailTracking entity = objDataContext.EmailTrackings.SingleOrDefault(x => x.EmailTrackingId.Equals(dao.EmailTrackingId));
+            if (entity != null)
+            {
+                dao.ModifiedAt = DateTimeOffset.Now;
+                objDataContext.Entry(entity).CurrentValues.SetValues(dao);
+            }
+            else
+            {
+                dao.CreatedAt = DateTimeOffset.Now;
+                dao.ModifiedAt = dao.CreatedAt;
+                objDataContext.EmailTrackings.Add(dao);
+            }
+            objDataContext.SaveChanges();
             return dao.EmailTrackingId;
         }
 
         public bool Delete(int id)
         {
-                EmailTracking dbEntity = objDataContext.EmailTrackings.Where(x => x.EmailTrackingId == id).FirstOrDefault();
-                if(dbEntity != null)
-                {
-                    objDataContext.EmailTrackings.Remove(dbEntity);
-                    objDataContext.SaveChanges();
-                }
-                return true;
-         }
-
-       public IEnumerable<EmailTracking> GetEmailTrackingByKeyword(int runNumberId)
-        {
-                var query = FindAll();
-
-                if(runNumberId > 0)
-                    query = query.Where(ET => ET.RunNumberId == runNumberId);
-                else
-                    return new List<EmailTracking>();
-
-                return query.Select(x => x).ToList();
+            EmailTracking dbEntity = objDataContext.EmailTrackings.Where(x => x.EmailTrackingId == id).FirstOrDefault();
+            if (dbEntity != null)
+            {
+                objDataContext.EmailTrackings.Remove(dbEntity);
+                objDataContext.SaveChanges();
+            }
+            return true;
         }
 
-        public IQueryable<EmailTracking> GetReadyEmails(int status)
-        {
-                return objDataContext.EmailTrackings.Where(x=> x.EmailStatus.Equals(status));
-          }
-        
         public bool UpdateStatus(int id)
         {
             throw new NotImplementedException();
         }
-        
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 

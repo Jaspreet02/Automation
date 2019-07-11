@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Reflection;
 
 namespace DbHander
 {
-    static  class EnumHelper
+   public static  class EnumHelper
     {
         public static string GetEnumDescription(EmailKeyword value)
         {
@@ -20,5 +21,10 @@ namespace DbHander
             else
                 return value.ToString();
         }
+
+        //public string GetEnumDescription(EmailKeyword item)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

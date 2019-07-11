@@ -36,9 +36,6 @@ namespace BLW.Lib.CoreUtility
                 if (stream != null)
                     stream.Close();
             }
-
-            //file is not locked
-            return false;
         }
 
         

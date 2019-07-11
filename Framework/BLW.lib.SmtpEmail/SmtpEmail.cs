@@ -11,12 +11,9 @@ namespace BLW.Lib.SmtpEmail
     {
         #region SMTP and Email Properties
 
-        private SmtpClient smtp;
-        private String smtpUser = string.Empty;
-        private String smtpPwd = string.Empty;
-        private String smtpHost = string.Empty;
-        private NetworkCredential cred;
-        private MailMessage mail;
+        private SmtpClient _smtp;
+        private NetworkCredential _credential;
+        private MailMessage _mail;
 
         /// <summary>
         /// Email To
@@ -69,13 +66,14 @@ namespace BLW.Lib.SmtpEmail
         /// <param name="smtpPassword">SMTP Password</param>
         private void SmtpSettings(string smptHost, string smtpUser, string smtpPassword)
         {
-            cred = new NetworkCredential(smtpUser, smtpPassword);
-            smtpHost = smptHost;
-            smtp = new SmtpClient(smtpHost);
-            smtp.UseDefaultCredentials = true;
-            smtp.Credentials = cred;
-            smtp.Host = smtpHost;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            _credential = new NetworkCredential(smtpUser, smtpPassword);
+            _smtp = new SmtpClient(smptHost, 587)
+            {
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                Credentials = _credential,
+                DeliveryMethod = SmtpDeliveryMethod.Network
+            };
         }
 
         /// <summary>
@@ -88,7 +86,7 @@ namespace BLW.Lib.SmtpEmail
             AddAttachment();
             try
             {
-                smtp.Send(mail);
+                _smtp.Send(_mail);
             }
             catch (SmtpException ex)
             {
@@ -103,28 +101,28 @@ namespace BLW.Lib.SmtpEmail
         /// </summary>
         private void MailSettings()
         {
-            mail = new MailMessage();
-            mail.To.Add(To);
-            mail.From = new MailAddress(From, From, System.Text.Encoding.UTF8);
-            mail.Headers.Add("To", To);
-            mail.Headers.Add("Return-Path", From);
-            mail.Headers.Add("Subject", Subject);
+            _mail = new MailMessage();
+            _mail.To.Add(To);
+            _mail.From = new MailAddress(From, From, System.Text.Encoding.UTF8);
+            _mail.Headers.Add("To", To);
+            _mail.Headers.Add("Return-Path", From);
+            _mail.Headers.Add("Subject", Subject);
             if (!string.IsNullOrEmpty(Cc))
             {
-                mail.CC.Add(Cc);
-                mail.Headers.Add("Cc", Cc);
+                _mail.CC.Add(Cc);
+                _mail.Headers.Add("Cc", Cc);
             }
             if (!string.IsNullOrEmpty(Bcc))
             {
-                mail.Bcc.Add(Bcc);
-                mail.Headers.Add("Bcc", Bcc);
+                _mail.Bcc.Add(Bcc);
+                _mail.Headers.Add("Bcc", Bcc);
             }
-            mail.Subject = Subject;
-            mail.SubjectEncoding = System.Text.Encoding.UTF8;
-            mail.Body = Body;
-            mail.BodyEncoding = System.Text.Encoding.UTF8;
-            mail.IsBodyHtml = true;
-            mail.Priority = MailPriority.High;
+            _mail.Subject = Subject;
+            _mail.SubjectEncoding = Encoding.UTF8;
+            _mail.Body = Body;
+            _mail.BodyEncoding = Encoding.UTF8;
+            _mail.IsBodyHtml = true;
+            _mail.Priority = MailPriority.High;
         }
 
         /// <summary>
@@ -138,9 +136,9 @@ namespace BLW.Lib.SmtpEmail
                 {
                     foreach (var item in ZipFilePath)
                     {
-                        smtp.Timeout = 1000000;
+                        _smtp.Timeout = 1000000;
                         Attachment attach = new Attachment(item);
-                        mail.Attachments.Add(attach);
+                        _mail.Attachments.Add(attach);
                     }
                 }
             }
