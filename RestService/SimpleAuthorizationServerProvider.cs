@@ -5,11 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using DbHander;
 using System.Linq;
-using MobileService.Common;
 using Microsoft.AspNet.Identity.Owin;
 using MobileService.App_Start;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MobileService
 {
